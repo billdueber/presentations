@@ -1,0 +1,123 @@
+%section
+  %h1 Datamart
+  %h3 Bill Dueber, University of Michigan
+
+%section
+  %section
+    %h2 Premise
+    %p.fragment Decisions should be informed by data
+    %p.fragment Data that's hard to get to aren't used to inform decisions
+  
+  %section
+    %p 
+      %em Evidence Based Library and Information Practice
+    %p.fragment
+      %strong 
+        What is everyone 
+        %em else
+        doing?
+
+%section
+  %section
+    %h2 How to get people what they need to know?
+    %ul
+      %li 
+        Make decisions without data
+        %span.fragment.red BAD
+      %li.fragment
+        Ask me to get the data for them
+        %span.fragment.red Better
+      %li.fragment
+        Let them ask the data themselves
+        %span.fragment.red Best
+
+  %section
+    %h2 "It's too complex for my librarians!"
+    %ul
+      %li.fragment No, it's not
+      %li.fragment ...and your job is to make it easier
+
+%section
+  %h2 Three Virtues of the programmer
+  %ul
+    %li.fragment
+      %strong Laziness
+      %span.fragment I'm sick of adding functionality to the catalog just because the client stinks
+    %li.fragment
+      %strong Impatience
+      %span No one should have to wait two days for a shelf list
+    %li.fragment
+      %strong Hubris
+      %span "I bet I can build something..."
+
+
+
+%section
+  %h2 A solution in two parts:
+  %ol
+    %li ETL (Extract, Transform, Load)
+    %li 
+      Build a Data Warehouse Front End!
+      %ul
+        %li.fragment ...err, an intelligent query stytem that...err...
+        %li.fragment Well, really, an interactive website with a window onto...
+        %li.fragment Yeah. It builds spreadsheets.
+
+%section
+  %section
+    %h2 Extract, Transform, Load
+  
+  %section
+    %h2 Two things Systems Librarians must accept
+    %ul
+      %li.fragment 
+        My ILS stores data in useless/crazy ways
+        %span.fragment 
+          %em Let go of your anger. Assume they were drunk!
+      %li.fragment 
+        The data themselves are terrible
+        %span.fragment
+          %em Catalogers are the most anal people on the planet. This is the best humans can do.
+      
+  %section
+    %h2 Like what? (examples from Aleph)
+    %ul
+      %li.fragment
+        The Z77_REC_KEY is 35 characters long:
+      %ul
+        %li.fragment A 20 char vendor code
+        %li.fragment A 15 char invoice number
+      %li.fragment Dates and times are stored as 12-character strings (YYYYMMDDHHSS)
+      %li.fragment Ask me about trailing punctuation. I dare you.
+      
+  %section
+    %h2 E & T (Extract and Transform)
+    %ul
+      %li.fragment Not hard, just slow
+      %li.fragment First system based on Talend; Rewriting to use traject
+      %li.fragment Use numeric/date types, varchars, normalize case, etc.
+      %li.fragment Constant arms race with MacroExpress
+      
+  %section
+    %h2 L (Load)
+    %ul
+      %li Totally separate database
+      %li Table structure, normalization, foreign keys, indexes all for querying
+      %li Fill it up anew every night
+
+%section
+  %h2 The Front End: Two ways to go
+  %ul
+    %li.fragment Lots of canned reports
+    %li.fragment 
+      Query builder
+      %span.fragment.red √
+
+%section
+  %h2 Demo
+    %p
+      %a{:href=>"https://datamart.lib.umich.edu/"} Live
+      %a{:href=>"static/index.html"} Local      
+
+  
+  

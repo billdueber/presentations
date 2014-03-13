@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <title>Datamart: Fund (ZZZ) reports</title>
+    <!-- Load jQuery -->
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js'></script>
+    <!-- Load the bootstrap css and js -->
+    <link rel='stylesheet' type='text/css' media='screen' href='css/bootstrap.min.css' />
+    <link rel='stylesheet' type='text/css' media='screen' href='css/bootstrap-responsive.min.css' />
+    <script src='js/bootstrap.js'></script>
+    <!-- Load jquery-UI and a bootstrap-like theme for it -->
+    <script src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js'></script>
+    <link rel='stylesheet' type='text/css' media='screen' href='js/jquery/jquery-ui-bootstrap-theme/css/custom-theme/jquery-ui-1.8.16.custom.css' />
+    <!-- Deal with IE's lack of HTML-5 support -->
+    <!--[if IE]>
+      <script src='http://html5shim.googlecode.com/svn/trunk/html5.js'></script>
+    <![endif]-->
+    <!-- Deserialize from https://github.com/kflorence/jquery-deserialize -->
+    <script src='jquery-deserialize/src/jquery.deserialize.js'></script>
+    <!-- Multi-select with sorting for returned columns -->
+    <script src='js/jquery/bsmSelect/js/jquery.bsmselect.js'></script>
+    <script src='js/jquery/bsmSelect/js/jquery.bsmselect.sortable.js'></script>
+    <script src='js/jquery/bsmSelect/js/jquery.bsmselect.compatibility.js'></script>
+    <link href='js/jquery/bsmSelect/css/jquery.bsmselect.css' rel='stylesheet' type='text/css' media='screen' />
+    <script>
+      var jq = jQuery.noConflict();
+      window.onunload = function(){};
+    </script>
+    <!-- Local -->
+    <script src='js/dm.js'></script>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/dm.css' />
+<script type='text/javascript'>
+  //<![CDATA[
+    history.navigationMode = 'compatible';
+jq(document).ready(function() {
+jq('.collapse').collapse();
+
+jq('.datepicker').datepicker({
+showAnim: 'fadeIn',
+showButtonPanel: true ,
+autoSize: true,
+dateFormat: 'yy-mm-dd',
+numberOfMonths: [1,4],
+showCurrentAtPos: 3,
+stepMonths: 4
+});
+
+jq('#returnfields').bsmSelect(
+{
+addItemTarget: 'bottom',
+showEffect: function($el){ $el.fadeIn(); },
+hideEffect: function($el){ $el.fadeOut(function(){ jq(this).remove(); })} ,
+plugins: [jq.bsmSelect.plugins.sortable(), jq.bsmSelect.plugins.compatibility()],
+title: 'Choose what to return',
+extractLabel: function($o) {return  $o.html() + ' (' + $o.parents('optgroup').attr('label') + ')';},
+containerClass: 'row-fluid',
+listClass: 'returnlist span5'
+}
+);
+jq('.bsmSelect').wrapAll('<div id="resultswrapper" class="span4">');
+jq('#resultswrapper').prepend('<div class="label label-info">Add more columns to the spreadsheet</div>');
+jq('.returnlist').prepend('<div class="label label-info">Drag and drop to dictate the order they appear in the spreadsheet</div>');
+})
+
+  //]]>
+</script>
+  </head>
+  <body>
+    <div class='hero-unit'>
+      <h1>
+        <a href=''>
+          <span id='mliblogo'>Library </span>
+          Datamart
+        </a>
+      </h1>
+    </div>
+    <div class='row-fluid' id='content'><h2 class='first'>Simple fund report (a.k.a. &apos;ZZZ report&apos;)</h2>
+<form id='fundz' method='POST' action=''>
+  <div class='row-fluid'>
+    <div class='form-inline row-fluid'>
+      <h4>Budget year</h4>
+<div class='form-inline row-fluid'>
+    <label for='budget-_-annual_year-_-type_range'>From:</label>
+    <input class='datebox' id='#budget-_-annual_year-_-type_range-_-from' name='budget-_-annual_year-_-type_range' size='4' type='text' placeholder='(e.g., 2001)' value='2014' />
+    <label for='budget-_-annual_year-_-type_range'>To:</label>
+    <input class='datebox' id='#budget-_-annual_year-_-type_range-_-to' name='budget-_-annual_year-_-type_range' size='4' type='text' placeholder='(e.g., 2001)' value='2014' />
+</div>
+
+    </div>
+    <div class='row-fluid'>
+      <div class='span3'>
+        <h4>
+          <label for='budget-_-budget'>Fund(s):</label>
+              <select name='budget-_-fund' size='16' style='width: 100%' multiple='multiple'>
+    <option value=''>Any</option>
+    <option value='1920'>1920</option>
+    <option value='AAEL'>AAEL</option>
+    <option value='AAPI'>AAPI</option>
+    <option value='ADDER'>ADDER</option>
+    <option value='AFRIC'>AFRIC</option>
+    <option value='ALPUB'>ALPUB</option>
+    <option value='AMAZON'>AMAZON</option>
+    <option value='AMURP'>AMURP</option>
+    <option value='ANTHR'>ANTHR</option>
+    <option value='ARCH'>ARCH</option>
+    <option value='ARL'>ARL</option>
+    <option value='ARMEN'>ARMEN</option>
+    <option value='ARMENIA'>ARMENIA</option>
+    <option value='ARNET'>ARNET</option>
+    <option value='ART'>ART</option>
+    <option value='ASTRO'>ASTRO</option>
+    <option value='AUDIO'>AUDIO</option>
+    <option value='BAKER'>BAKER</option>
+    <option value='BARR'>BARR</option>
+    <option value='BARRB'>BARRB</option>
+    <option value='BASIC'>BASIC</option>
+    <option value='BATES'>BATES</option>
+    <option value='BATRB'>BATRB</option>
+    <option value='BENWU'>BENWU</option>
+    <option value='BIND'>BIND</option>
+    <option value='BINDEMK'>BINDEMK</option>
+    <option value='BINGEL'>BINGEL</option>
+    <option value='BIOL'>BIOL</option>
+    <option value='BIOST'>BIOST</option>
+    <option value='BKSAL'>BKSAL</option>
+    <option value='BLDSC'>BLDSC</option>
+    <option value='BME'>BME</option>
+    <option value='BORROW'>BORROW</option>
+    <option value='BOWDI'>BOWDI</option>
+    <option value='BRAND'>BRAND</option>
+    <option value='BROWE'>BROWE</option>
+    <option value='BUCKF'>BUCKF</option>
+    <option value='BUCKF2'>BUCKF2</option>
+    <option value='BURNETT'>BURNETT</option>
+    <option value='BUTLER'>BUTLER</option>
+    <option value='C1920'>C1920</option>
+    <option value='CAAPI'>CAAPI</option>
+    <option value='CAFRI'>CAFRI</option>
+    <option value='CALPU'>CALPU</option>
+    <option value='CANAD'>CANAD</option>
+    <option value='CANHI'>CANHI</option>
+    <option value='CANTH'>CANTH</option>
+    <option value='CARCH'>CARCH</option>
+    <option value='CARMENIA'>CARMENIA</option>
+    <option value='CART'>CART</option>
+    <option value='CASO1'>CASO1</option>
+    <option value='CASO2'>CASO2</option>
+    <option value='CASO3'>CASO3</option>
+    <option value='CASO4'>CASO4</option>
+    <option value='CASS'>CASS</option>
+    <option value='CASTR'>CASTR</option>
+    <option value='CBARR'>CBARR</option>
+    <option value='CBATE'>CBATE</option>
+    <option value='CBIOL'>CBIOL</option>
+    <option value='CBIOS'>CBIOS</option>
+    <option value='CBME'>CBME</option>
+    <option value='CBOWD'>CBOWD</option>
+    <option value='CCANA'>CCANA</option>
+    <option value='CCANH'>CCANH</option>
+    <option value='CCEE'>CCEE</option>
+    <option value='CCENTASIA'>CCENTASIA</option>
+    <option value='CCHEM'>CCHEM</option>
+    <option value='CCHEMENG'>CCHEMENG</option>
+    <option value='CCHIN'>CCHIN</option>
+    <option value='CCLAS'>CCLAS</option>
+    <option value='CCOMM'>CCOMM</option>
+    <option value='CCOYL'>CCOYL</option>
+    <option value='CCS'>CCS</option>
+    <option value='CDANC'>CDANC</option>
+    <option value='CDENT'>CDENT</option>
+    <option value='CDIV'>CDIV</option>
+    <option value='CDOC'>CDOC</option>
+    <option value='CDUNN'>CDUNN</option>
+    <option value='CEAAP'>CEAAP</option>
+    <option value='CEBIO'>CEBIO</option>
+    <option value='CEBNR'>CEBNR</option>
+    <option value='CECHE'>CECHE</option>
+    <option value='CECHI'>CECHI</option>
+    <option value='CECON'>CECON</option>
+    <option value='CECOR'>CECOR</option>
+    <option value='CEDEN'>CEDEN</option>
+    <option value='CEDOC'>CEDOC</option>
+    <option value='CEE'>CEE</option>
+    <option value='CEEEB'>CEEEB</option>
+    <option value='CEENG'>CEENG</option>
+    <option value='CEFIL'>CEFIL</option>
+    <option value='CEFIN'>CEFIN</option>
+    <option value='CEG'>CEG</option>
+    <option value='CEGEO'>CEGEO</option>
+    <option value='CEGRA'>CEGRA</option>
+    <option value='CEGSL'>CEGSL</option>
+    <option value='CEHSL'>CEHSL</option>
+    <option value='CEHUM'>CEHUM</option>
+    <option value='CEILS'>CEILS</option>
+    <option value='CEJAP'>CEJAP</option>
+    <option value='CEKOR'>CEKOR</option>
+    <option value='CEKORFD2'>CEKORFD2</option>
+    <option value='CELEC'>CELEC</option>
+    <option value='CELTR'>CELTR</option>
+    <option value='CEMAP'>CEMAP</option>
+    <option value='CEMAT'>CEMAT</option>
+    <option value='CEMCD'>CEMCD</option>
+    <option value='CEMED'>CEMED</option>
+    <option value='CEMUR'>CEMUR</option>
+    <option value='CEMUS'>CEMUS</option>
+    <option value='CENAT'>CENAT</option>
+    <option value='CENES'>CENES</option>
+    <option value='CENGI'>CENGI</option>
+    <option value='CENGL'>CENGL</option>
+    <option value='CENGR'>CENGR</option>
+    <option value='CENTASIA'>CENTASIA</option>
+    <option value='CENTR'>CENTR</option>
+    <option value='CEPHY'>CEPHY</option>
+    <option value='CEPUB'>CEPUB</option>
+    <option value='CEREF'>CEREF</option>
+    <option value='CESBS'>CESBS</option>
+    <option value='CESCI'>CESCI</option>
+    <option value='CESCL'>CESCL</option>
+    <option value='CESEE'>CESEE</option>
+    <option value='CESOC'>CESOC</option>
+    <option value='CEUGL'>CEUGL</option>
+    <option value='CFARE'>CFARE</option>
+    <option value='CFAST'>CFAST</option>
+    <option value='CFILM'>CFILM</option>
+    <option value='CFINE'>CFINE</option>
+    <option value='CFORD'>CFORD</option>
+    <option value='CFRAN'>CFRAN</option>
+    <option value='CFREN'>CFREN</option>
+    <option value='CFVST'>CFVST</option>
+    <option value='CGCLI'>CGCLI</option>
+    <option value='CGENPER'>CGENPER</option>
+    <option value='CGEOG'>CGEOG</option>
+    <option value='CGEOL'>CGEOL</option>
+    <option value='CGEOR'>CGEOR</option>
+    <option value='CGER'>CGER</option>
+    <option value='CGERM'>CGERM</option>
+    <option value='CGLED'>CGLED</option>
+    <option value='CGLGE'>CGLGE</option>
+    <option value='CGLHI'>CGLHI</option>
+    <option value='CGLHU'>CGLHU</option>
+    <option value='CGLSB'>CGLSB</option>
+    <option value='CGOET'>CGOET</option>
+    <option value='CGREE'>CGREE</option>
+    <option value='CGSCI'>CGSCI</option>
+    <option value='CGTBR'>CGTBR</option>
+    <option value='CHART'>CHART</option>
+    <option value='CHEM'>CHEM</option>
+    <option value='CHEMENG'>CHEMENG</option>
+    <option value='CHINA'>CHINA</option>
+    <option value='CHIO1'>CHIO1</option>
+    <option value='CHIO2'>CHIO2</option>
+    <option value='CHIO3'>CHIO3</option>
+    <option value='CHIO4'>CHIO4</option>
+    <option value='CHSL'>CHSL</option>
+    <option value='CHULS'>CHULS</option>
+    <option value='CHUNT'>CHUNT</option>
+    <option value='CIBER'>CIBER</option>
+    <option value='CINDO'>CINDO</option>
+    <option value='CINPC'>CINPC</option>
+    <option value='CINPS'>CINPS</option>
+    <option value='CINSU'>CINSU</option>
+    <option value='CINTS'>CINTS</option>
+    <option value='CIOE'>CIOE</option>
+    <option value='CITAL'>CITAL</option>
+    <option value='CITLY'>CITLY</option>
+    <option value='CJAPA'>CJAPA</option>
+    <option value='CJAPI'>CJAPI</option>
+    <option value='CJS'>CJS</option>
+    <option value='CJSTD'>CJSTD</option>
+    <option value='CJUV'>CJUV</option>
+    <option value='CKENY'>CKENY</option>
+    <option value='CKINES'>CKINES</option>
+    <option value='CKORE'>CKORE</option>
+    <option value='CKS'>CKS</option>
+    <option value='CLAB'>CLAB</option>
+    <option value='CLAME'>CLAME</option>
+    <option value='CLARRP'>CLARRP</option>
+    <option value='CLASS'>CLASS</option>
+    <option value='CLAW'>CLAW</option>
+    <option value='CLIBS'>CLIBS</option>
+    <option value='CLIN'>CLIN</option>
+    <option value='CLING'>CLING</option>
+    <option value='CLIR'>CLIR</option>
+    <option value='CLITT'>CLITT</option>
+    <option value='CMAP'>CMAP</option>
+    <option value='CMATH'>CMATH</option>
+    <option value='CMCDB'>CMCDB</option>
+    <option value='CMECH'>CMECH</option>
+    <option value='CMED'>CMED</option>
+    <option value='CMICR'>CMICR</option>
+    <option value='CMNCE'>CMNCE</option>
+    <option value='CMSMA'>CMSMA</option>
+    <option value='CMSMH'>CMSMH</option>
+    <option value='CMSMP'>CMSMP</option>
+    <option value='CMSMX'>CMSMX</option>
+    <option value='CMSMZ'>CMSMZ</option>
+    <option value='CMSTD'>CMSTD</option>
+    <option value='CMUSI'>CMUSI</option>
+    <option value='CMUSM'>CMUSM</option>
+    <option value='CNAME'>CNAME</option>
+    <option value='CNATR'>CNATR</option>
+    <option value='CNEAR'>CNEAR</option>
+    <option value='CNELA'>CNELA</option>
+    <option value='CNEST'>CNEST</option>
+    <option value='CNEWS'>CNEWS</option>
+    <option value='CNRE'>CNRE</option>
+    <option value='CNURS'>CNURS</option>
+    <option value='COLRELST'>COLRELST</option>
+    <option value='COMIC'>COMIC</option>
+    <option value='COMM'>COMM</option>
+    <option value='CONS'>CONS</option>
+    <option value='CONT'>CONT</option>
+    <option value='COPY'>COPY</option>
+    <option value='CORIE'>CORIE</option>
+    <option value='COYL'>COYL</option>
+    <option value='CPAPY'>CPAPY</option>
+    <option value='CPASE'>CPASE</option>
+    <option value='CPHAR'>CPHAR</option>
+    <option value='CPHIL'>CPHIL</option>
+    <option value='CPHYS'>CPHYS</option>
+    <option value='CPOLS'>CPOLS</option>
+    <option value='CPORT'>CPORT</option>
+    <option value='CPRIN'>CPRIN</option>
+    <option value='CPROF'>CPROF</option>
+    <option value='CPRON'>CPRON</option>
+    <option value='CPSYC'>CPSYC</option>
+    <option value='CPUBH'>CPUBH</option>
+    <option value='CPUBP'>CPUBP</option>
+    <option value='CREF'>CREF</option>
+    <option value='CRELI'>CRELI</option>
+    <option value='CRL'>CRL</option>
+    <option value='CRUSS'>CRUSS</option>
+    <option value='CSAHI'>CSAHI</option>
+    <option value='CSARG'>CSARG</option>
+    <option value='CSASI'>CSASI</option>
+    <option value='CSCAN'>CSCAN</option>
+    <option value='CSCIT'>CSCIT</option>
+    <option value='CSCLR'>CSCLR</option>
+    <option value='CSCOR'>CSCOR</option>
+    <option value='CSCRE'>CSCRE</option>
+    <option value='CSEAS'>CSEAS</option>
+    <option value='CSENC'>CSENC</option>
+    <option value='CSLAV'>CSLAV</option>
+    <option value='CSLVS'>CSLVS</option>
+    <option value='CSOC'>CSOC</option>
+    <option value='CSOCW'>CSOCW</option>
+    <option value='CSOFP'>CSOFP</option>
+    <option value='CSOSL'>CSOSL</option>
+    <option value='CSOUN'>CSOUN</option>
+    <option value='CSPAC'>CSPAC</option>
+    <option value='CSPAN'>CSPAN</option>
+    <option value='CSPAU'>CSPAU</option>
+    <option value='CSPGL'>CSPGL</option>
+    <option value='CSTAT'>CSTAT</option>
+    <option value='CSTOC'>CSTOC</option>
+    <option value='CTHEA'>CTHEA</option>
+    <option value='CTIBE'>CTIBE</option>
+    <option value='CTOWSP'>CTOWSP</option>
+    <option value='CTYWU'>CTYWU</option>
+    <option value='CUGL'>CUGL</option>
+    <option value='CUGLR'>CUGLR</option>
+    <option value='CURPL'>CURPL</option>
+    <option value='CUSHI'>CUSHI</option>
+    <option value='CVIS'>CVIS</option>
+    <option value='CWEAD'>CWEAD</option>
+    <option value='CWHAL'>CWHAL</option>
+    <option value='CWOM'>CWOM</option>
+    <option value='CYDBGEN'>CYDBGEN</option>
+    <option value='CZAAS'>CZAAS</option>
+    <option value='CZACS'>CZACS</option>
+    <option value='CZADM'>CZADM</option>
+    <option value='CZART'>CZART</option>
+    <option value='CZBIO'>CZBIO</option>
+    <option value='CZCHM'>CZCHM</option>
+    <option value='CZCOM'>CZCOM</option>
+    <option value='CZCON'>CZCON</option>
+    <option value='CZCRJ'>CZCRJ</option>
+    <option value='CZCSC'>CZCSC</option>
+    <option value='CZECN'>CZECN</option>
+    <option value='CZEDU'>CZEDU</option>
+    <option value='CZEGR'>CZEGR</option>
+    <option value='CZELECT'>CZELECT</option>
+    <option value='CZEND'>CZEND</option>
+    <option value='CZENG'>CZENG</option>
+    <option value='CZERS'>CZERS</option>
+    <option value='CZFOR'>CZFOR</option>
+    <option value='CZGRA'>CZGRA</option>
+    <option value='CZHCR'>CZHCR</option>
+    <option value='CZHIS'>CZHIS</option>
+    <option value='CZILL'>CZILL</option>
+    <option value='CZMED'>CZMED</option>
+    <option value='CZMKC'>CZMKC</option>
+    <option value='CZMKE'>CZMKE</option>
+    <option value='CZMKIN'>CZMKIN</option>
+    <option value='CZMKP'>CZMKP</option>
+    <option value='CZMTH'>CZMTH</option>
+    <option value='CZMUS'>CZMUS</option>
+    <option value='CZNUR'>CZNUR</option>
+    <option value='CZPHL'>CZPHL</option>
+    <option value='CZPHY'>CZPHY</option>
+    <option value='CZPSC'>CZPSC</option>
+    <option value='CZPSY'>CZPSY</option>
+    <option value='CZPTP'>CZPTP</option>
+    <option value='CZREF'>CZREF</option>
+    <option value='CZSOC'>CZSOC</option>
+    <option value='CZSOM'>CZSOM</option>
+    <option value='CZSWK'>CZSWK</option>
+    <option value='CZTHE'>CZTHE</option>
+    <option value='DANCE'>DANCE</option>
+    <option value='DBROWN'>DBROWN</option>
+    <option value='DENT'>DENT</option>
+    <option value='DIVE'>DIVE</option>
+    <option value='DOC'>DOC</option>
+    <option value='DUNN'>DUNN</option>
+    <option value='DUNRB'>DUNRB</option>
+    <option value='EAAP'>EAAP</option>
+    <option value='EAST'>EAST</option>
+    <option value='EASTR'>EASTR</option>
+    <option value='EBIO'>EBIO</option>
+    <option value='ECHEM'>ECHEM</option>
+    <option value='ECHIN'>ECHIN</option>
+    <option value='ECON'>ECON</option>
+    <option value='ECORE'>ECORE</option>
+    <option value='EDENT'>EDENT</option>
+    <option value='EDOC'>EDOC</option>
+    <option value='EEBNR'>EEBNR</option>
+    <option value='EENGI'>EENGI</option>
+    <option value='EFILM'>EFILM</option>
+    <option value='EFINE'>EFINE</option>
+    <option value='EG'>EG</option>
+    <option value='EGEOL'>EGEOL</option>
+    <option value='EGRAD'>EGRAD</option>
+    <option value='EHSL'>EHSL</option>
+    <option value='EHUM'>EHUM</option>
+    <option value='EHUNT'>EHUNT</option>
+    <option value='EISEM'>EISEM</option>
+    <option value='EJAPA'>EJAPA</option>
+    <option value='EKORE'>EKORE</option>
+    <option value='ELECT'>ELECT</option>
+    <option value='ELTR'>ELTR</option>
+    <option value='EMAP'>EMAP</option>
+    <option value='EMATH'>EMATH</option>
+    <option value='EMCDB'>EMCDB</option>
+    <option value='EMED'>EMED</option>
+    <option value='EMUS'>EMUS</option>
+    <option value='ENAT'>ENAT</option>
+    <option value='ENEST'>ENEST</option>
+    <option value='ENGIN'>ENGIN</option>
+    <option value='ENGL'>ENGL</option>
+    <option value='ENSDS'>ENSDS</option>
+    <option value='ENTR'>ENTR</option>
+    <option value='EPHYS'>EPHYS</option>
+    <option value='EPLIM'>EPLIM</option>
+    <option value='EPUBH'>EPUBH</option>
+    <option value='EREF'>EREF</option>
+    <option value='ESBS'>ESBS</option>
+    <option value='ESCI'>ESCI</option>
+    <option value='EUGL'>EUGL</option>
+    <option value='FAREA'>FAREA</option>
+    <option value='FILM'>FILM</option>
+    <option value='FINE'>FINE</option>
+    <option value='FIRE'>FIRE</option>
+    <option value='FMCHI'>FMCHI</option>
+    <option value='FMJAP'>FMJAP</option>
+    <option value='FORD'>FORD</option>
+    <option value='FRANC'>FRANC</option>
+    <option value='FREN'>FREN</option>
+    <option value='FRIEN'>FRIEN</option>
+    <option value='FSTOR'>FSTOR</option>
+    <option value='FVST'>FVST</option>
+    <option value='GAME'>GAME</option>
+    <option value='GCLIT'>GCLIT</option>
+    <option value='GEDNE'>GEDNE</option>
+    <option value='GENPER'>GENPER</option>
+    <option value='GEOG'>GEOG</option>
+    <option value='GEOL'>GEOL</option>
+    <option value='GEORF'>GEORF</option>
+    <option value='GER'>GER</option>
+    <option value='GERM'>GERM</option>
+    <option value='GERMSP'>GERMSP</option>
+    <option value='GIFT'>GIFT</option>
+    <option value='GIFTINKIND'>GIFTINKIND</option>
+    <option value='GILLE'>GILLE</option>
+    <option value='GIVE'>GIVE</option>
+    <option value='GLED'>GLED</option>
+    <option value='GLGEN'>GLGEN</option>
+    <option value='GLHIS'>GLHIS</option>
+    <option value='GLHUM'>GLHUM</option>
+    <option value='GLSBS'>GLSBS</option>
+    <option value='GOETH'>GOETH</option>
+    <option value='GOOD'>GOOD</option>
+    <option value='GOODFAM'>GOODFAM</option>
+    <option value='GREEK'>GREEK</option>
+    <option value='GRIG'>GRIG</option>
+    <option value='GSCI'>GSCI</option>
+    <option value='GTBRI'>GTBRI</option>
+    <option value='HABEL'>HABEL</option>
+    <option value='HARRB'>HARRB</option>
+    <option value='HART'>HART</option>
+    <option value='HARTG'>HARTG</option>
+    <option value='HATCH'>HATCH</option>
+    <option value='HEYMA'>HEYMA</option>
+    <option value='HISTFAC'>HISTFAC</option>
+    <option value='HSL'>HSL</option>
+    <option value='HSSP'>HSSP</option>
+    <option value='HUBB'>HUBB</option>
+    <option value='HUDSON'>HUDSON</option>
+    <option value='HUETG'>HUETG</option>
+    <option value='HUETW'>HUETW</option>
+    <option value='HULRB'>HULRB</option>
+    <option value='HULST'>HULST</option>
+    <option value='HUNT'>HUNT</option>
+    <option value='HUNTHUM'>HUNTHUM</option>
+    <option value='HUNTLIT'>HUNTLIT</option>
+    <option value='HUNTSOC'>HUNTSOC</option>
+    <option value='HUNTSTM'>HUNTSTM</option>
+    <option value='HURST'>HURST</option>
+    <option value='IBER'>IBER</option>
+    <option value='IFLA'>IFLA</option>
+    <option value='INDO'>INDO</option>
+    <option value='INLIT'>INLIT</option>
+    <option value='INPC'>INPC</option>
+    <option value='INPS'>INPS</option>
+    <option value='INPUB'>INPUB</option>
+    <option value='INSUR'>INSUR</option>
+    <option value='INTS'>INTS</option>
+    <option value='IOE'>IOE</option>
+    <option value='ITAL'>ITAL</option>
+    <option value='ITLY'>ITLY</option>
+    <option value='JAPAN'>JAPAN</option>
+    <option value='JAPO1'>JAPO1</option>
+    <option value='JAPO2'>JAPO2</option>
+    <option value='JAPO3'>JAPO3</option>
+    <option value='JAPO4'>JAPO4</option>
+    <option value='JSTDS'>JSTDS</option>
+    <option value='JUV'>JUV</option>
+    <option value='KATSAKIS'>KATSAKIS</option>
+    <option value='KENRB'>KENRB</option>
+    <option value='KENY'>KENY</option>
+    <option value='KENYL'>KENYL</option>
+    <option value='KENYT'>KENYT</option>
+    <option value='KILGO'>KILGO</option>
+    <option value='KINES'>KINES</option>
+    <option value='KOREA'>KOREA</option>
+    <option value='KORFD'>KORFD</option>
+    <option value='KORFD2'>KORFD2</option>
+    <option value='KORFD3'>KORFD3</option>
+    <option value='KORO1'>KORO1</option>
+    <option value='KORO2'>KORO2</option>
+    <option value='KORO3'>KORO3</option>
+    <option value='KORO4'>KORO4</option>
+    <option value='LAB'>LAB</option>
+    <option value='LABME'>LABME</option>
+    <option value='LABRE'>LABRE</option>
+    <option value='LABSP'>LABSP</option>
+    <option value='LAMER'>LAMER</option>
+    <option value='LARRP'>LARRP</option>
+    <option value='LASCO1'>LASCO1</option>
+    <option value='LASCO4'>LASCO4</option>
+    <option value='LAW'>LAW</option>
+    <option value='LIBSC'>LIBSC</option>
+    <option value='LIBSP'>LIBSP</option>
+    <option value='LIGHT'>LIGHT</option>
+    <option value='LING'>LING</option>
+    <option value='LITT'>LITT</option>
+    <option value='LONGONE'>LONGONE</option>
+    <option value='LOST'>LOST</option>
+    <option value='MACDO'>MACDO</option>
+    <option value='MAP'>MAP</option>
+    <option value='MASSD'>MASSD</option>
+    <option value='MATH'>MATH</option>
+    <option value='MATR'>MATR</option>
+    <option value='MBIND'>MBIND</option>
+    <option value='MCDB'>MCDB</option>
+    <option value='MECH'>MECH</option>
+    <option value='MED'>MED</option>
+    <option value='MEDIA'>MEDIA</option>
+    <option value='MEDSP'>MEDSP</option>
+    <option value='MEILL'>MEILL</option>
+    <option value='MEREF'>MEREF</option>
+    <option value='MERES'>MERES</option>
+    <option value='MESTF'>MESTF</option>
+    <option value='MLA'>MLA</option>
+    <option value='MLC'>MLC</option>
+    <option value='MNCE'>MNCE</option>
+    <option value='MOVIMAGE'>MOVIMAGE</option>
+    <option value='MSMA'>MSMA</option>
+    <option value='MSMH'>MSMH</option>
+    <option value='MSMP'>MSMP</option>
+    <option value='MSMX'>MSMX</option>
+    <option value='MSMZ'>MSMZ</option>
+    <option value='MSSP'>MSSP</option>
+    <option value='MSTD'>MSTD</option>
+    <option value='MURPHY'>MURPHY</option>
+    <option value='MUSIC'>MUSIC</option>
+    <option value='MUSM'>MUSM</option>
+    <option value='NAME'>NAME</option>
+    <option value='NATRE'>NATRE</option>
+    <option value='NE'>NE</option>
+    <option value='NEAR'>NEAR</option>
+    <option value='NELAN'>NELAN</option>
+    <option value='NEO1'>NEO1</option>
+    <option value='NEO1EXT'>NEO1EXT</option>
+    <option value='NEO2'>NEO2</option>
+    <option value='NEO3'>NEO3</option>
+    <option value='NEO4'>NEO4</option>
+    <option value='NESTA'>NESTA</option>
+    <option value='NEURO'>NEURO</option>
+    <option value='NEWCOL$'>NEWCOL$</option>
+    <option value='NEWS'>NEWS</option>
+    <option value='NISO'>NISO</option>
+    <option value='NONE'>NONE</option>
+    <option value='NRE'>NRE</option>
+    <option value='NUREF'>NUREF</option>
+    <option value='NURES'>NURES</option>
+    <option value='NURS'>NURS</option>
+    <option value='OCLCS'>OCLCS</option>
+    <option value='ORIEN'>ORIEN</option>
+    <option value='OSS'>OSS</option>
+    <option value='PAPSP'>PAPSP</option>
+    <option value='PAPY'>PAPY</option>
+    <option value='PARKER'>PARKER</option>
+    <option value='PARKER2'>PARKER2</option>
+    <option value='PASEA'>PASEA</option>
+    <option value='PHARM'>PHARM</option>
+    <option value='PHARR'>PHARR</option>
+    <option value='PHILO'>PHILO</option>
+    <option value='PHILS'>PHILS</option>
+    <option value='PHOTO'>PHOTO</option>
+    <option value='PHREF'>PHREF</option>
+    <option value='PHYS'>PHYS</option>
+    <option value='PILOT'>PILOT</option>
+    <option value='PMATS'>PMATS</option>
+    <option value='POLLO'>POLLO</option>
+    <option value='POLO1'>POLO1</option>
+    <option value='POLO2'>POLO2</option>
+    <option value='POLO3'>POLO3</option>
+    <option value='POLO4'>POLO4</option>
+    <option value='POLSC'>POLSC</option>
+    <option value='POLSCI'>POLSCI</option>
+    <option value='PORRB'>PORRB</option>
+    <option value='PORT'>PORT</option>
+    <option value='POSTA'>POSTA</option>
+    <option value='POSTE'>POSTE</option>
+    <option value='POSTP'>POSTP</option>
+    <option value='PRICE'>PRICE</option>
+    <option value='PRIM'>PRIM</option>
+    <option value='PRINT'>PRINT</option>
+    <option value='PRKIL'>PRKIL</option>
+    <option value='PROB'>PROB</option>
+    <option value='PROGR'>PROGR</option>
+    <option value='PRONT'>PRONT</option>
+    <option value='PRYOR'>PRYOR</option>
+    <option value='PSSPCOL'>PSSPCOL</option>
+    <option value='PSYC'>PSYC</option>
+    <option value='PSYCH'>PSYCH</option>
+    <option value='PUBHE'>PUBHE</option>
+    <option value='PUBP'>PUBP</option>
+    <option value='PUBRF'>PUBRF</option>
+    <option value='PUBSF'>PUBSF</option>
+    <option value='QUEB'>QUEB</option>
+    <option value='QUECH'>QUECH</option>
+    <option value='QUINTA'>QUINTA</option>
+    <option value='RADIO'>RADIO</option>
+    <option value='RARCH'>RARCH</option>
+    <option value='RARE'>RARE</option>
+    <option value='RARSP'>RARSP</option>
+    <option value='RART'>RART</option>
+    <option value='REF'>REF</option>
+    <option value='REFIL'>REFIL</option>
+    <option value='REFORM'>REFORM</option>
+    <option value='RELIG'>RELIG</option>
+    <option value='RELIGFAC'>RELIGFAC</option>
+    <option value='REPLA'>REPLA</option>
+    <option value='RESGR'>RESGR</option>
+    <option value='RESRE'>RESRE</option>
+    <option value='RLG'>RLG</option>
+    <option value='RLN'>RLN</option>
+    <option value='ROBER'>ROBER</option>
+    <option value='RODGERS'>RODGERS</option>
+    <option value='RUSO1'>RUSO1</option>
+    <option value='RUSO2'>RUSO2</option>
+    <option value='RUSO3'>RUSO3</option>
+    <option value='RUSO4'>RUSO4</option>
+    <option value='RUSS'>RUSS</option>
+    <option value='SAFRA'>SAFRA</option>
+    <option value='SAHIS'>SAHIS</option>
+    <option value='SARGE'>SARGE</option>
+    <option value='SARRB'>SARRB</option>
+    <option value='SASIA'>SASIA</option>
+    <option value='SASO2'>SASO2</option>
+    <option value='SASO3'>SASO3</option>
+    <option value='SASO4'>SASO4</option>
+    <option value='SASOEX'>SASOEX</option>
+    <option value='SCAN'>SCAN</option>
+    <option value='SCISP'>SCISP</option>
+    <option value='SCITE'>SCITE</option>
+    <option value='SCLAU'>SCLAU</option>
+    <option value='SCLAV'>SCLAV</option>
+    <option value='SCLCL'>SCLCL</option>
+    <option value='SCLCUL'>SCLCUL</option>
+    <option value='SCLER'>SCLER</option>
+    <option value='SCLFP'>SCLFP</option>
+    <option value='SCLGR'>SCLGR</option>
+    <option value='SCLHU'>SCLHU</option>
+    <option value='SCLR'>SCLR</option>
+    <option value='SCLST'>SCLST</option>
+    <option value='SCLTHC'>SCLTHC</option>
+    <option value='SCLTR'>SCLTR</option>
+    <option value='SCORE'>SCORE</option>
+    <option value='SCREF'>SCREF</option>
+    <option value='SEABF'>SEABF</option>
+    <option value='SEAO1'>SEAO1</option>
+    <option value='SEAO1EXT'>SEAO1EXT</option>
+    <option value='SEAO2'>SEAO2</option>
+    <option value='SEAO3'>SEAO3</option>
+    <option value='SEAO4'>SEAO4</option>
+    <option value='SEAOEX'>SEAOEX</option>
+    <option value='SEASI'>SEASI</option>
+    <option value='SENCE'>SENCE</option>
+    <option value='SERV'>SERV</option>
+    <option value='SLAV'>SLAV</option>
+    <option value='SLVST'>SLVST</option>
+    <option value='SOC'>SOC</option>
+    <option value='SOCI'>SOCI</option>
+    <option value='SOCWK'>SOCWK</option>
+    <option value='SOLOV'>SOLOV</option>
+    <option value='SOSLA'>SOSLA</option>
+    <option value='SOSO1'>SOSO1</option>
+    <option value='SOSO2'>SOSO2</option>
+    <option value='SOSO3'>SOSO3</option>
+    <option value='SOSO4'>SOSO4</option>
+    <option value='SOUND'>SOUND</option>
+    <option value='SPACE'>SPACE</option>
+    <option value='SPAN'>SPAN</option>
+    <option value='SPARC'>SPARC</option>
+    <option value='SPART'>SPART</option>
+    <option value='SPASI'>SPASI</option>
+    <option value='SPAST'>SPAST</option>
+    <option value='SPAUL'>SPAUL</option>
+    <option value='SPBIOL'>SPBIOL</option>
+    <option value='SPBST'>SPBST</option>
+    <option value='SPCHE'>SPCHE</option>
+    <option value='SPDEN'>SPDEN</option>
+    <option value='SPDENT'>SPDENT</option>
+    <option value='SPEEN'>SPEEN</option>
+    <option value='SPELL'>SPELL</option>
+    <option value='SPENG'>SPENG</option>
+    <option value='SPFIL'>SPFIL</option>
+    <option value='SPGEO'>SPGEO</option>
+    <option value='SPGL'>SPGL</option>
+    <option value='SPGLELEC'>SPGLELEC</option>
+    <option value='SPGRE'>SPGRE</option>
+    <option value='SPHEA'>SPHEA</option>
+    <option value='SPJUD'>SPJUD</option>
+    <option value='SPMAP'>SPMAP</option>
+    <option value='SPMAT'>SPMAT</option>
+    <option value='SPMSM'>SPMSM</option>
+    <option value='SPMUS'>SPMUS</option>
+    <option value='SPNAT'>SPNAT</option>
+    <option value='SPNE'>SPNE</option>
+    <option value='SPPHY'>SPPHY</option>
+    <option value='SPPUB'>SPPUB</option>
+    <option value='SPSASIA'>SPSASIA</option>
+    <option value='SPSLV'>SPSLV</option>
+    <option value='SPSOC'>SPSOC</option>
+    <option value='SPUGL'>SPUGL</option>
+    <option value='SPZUC'>SPZUC</option>
+    <option value='STATL'>STATL</option>
+    <option value='STAVROS'>STAVROS</option>
+    <option value='STOCK'>STOCK</option>
+    <option value='STPR'>STPR</option>
+    <option value='SURG'>SURG</option>
+    <option value='TAURE'>TAURE</option>
+    <option value='TEXTL'>TEXTL</option>
+    <option value='THAL'>THAL</option>
+    <option value='THEAT'>THEAT</option>
+    <option value='TIBET'>TIBET</option>
+    <option value='TOWSP'>TOWSP</option>
+    <option value='TSERM'>TSERM</option>
+    <option value='TSGEN'>TSGEN</option>
+    <option value='TSGMSC'>TSGMSC</option>
+    <option value='TSGTVL'>TSGTVL</option>
+    <option value='TYWU'>TYWU</option>
+    <option value='UGL'>UGL</option>
+    <option value='UGLRF'>UGLRF</option>
+    <option value='UGLRS'>UGLRS</option>
+    <option value='UIP'>UIP</option>
+    <option value='UKLIT'>UKLIT</option>
+    <option value='UNDES'>UNDES</option>
+    <option value='URLP'>URLP</option>
+    <option value='URPL'>URPL</option>
+    <option value='USHIS'>USHIS</option>
+    <option value='VEND'>VEND</option>
+    <option value='VIDEO'>VIDEO</option>
+    <option value='VIP'>VIP</option>
+    <option value='VIS'>VIS</option>
+    <option value='WAN'>WAN</option>
+    <option value='WAN2'>WAN2</option>
+    <option value='WEAD'>WEAD</option>
+    <option value='WEBER'>WEBER</option>
+    <option value='WELCH'>WELCH</option>
+    <option value='WGCLC'>WGCLC</option>
+    <option value='WHALL'>WHALL</option>
+    <option value='WHELP'>WHELP</option>
+    <option value='WINB'>WINB</option>
+    <option value='WOM'>WOM</option>
+    <option value='WOMSP'>WOMSP</option>
+    <option value='WUSHI'>WUSHI</option>
+    <option value='YDBGEN'>YDBGEN</option>
+    <option value='ZAAS'>ZAAS</option>
+    <option value='ZACS'>ZACS</option>
+    <option value='ZADM'>ZADM</option>
+    <option value='ZART'>ZART</option>
+    <option value='ZBEK'>ZBEK</option>
+    <option value='ZBIO'>ZBIO</option>
+    <option value='ZCHM'>ZCHM</option>
+    <option value='ZCOM'>ZCOM</option>
+    <option value='ZCON'>ZCON</option>
+    <option value='ZCRJ'>ZCRJ</option>
+    <option value='ZCSC'>ZCSC</option>
+    <option value='ZECN'>ZECN</option>
+    <option value='ZEDU'>ZEDU</option>
+    <option value='ZEGR'>ZEGR</option>
+    <option value='ZELECT'>ZELECT</option>
+    <option value='ZEND'>ZEND</option>
+    <option value='ZENG'>ZENG</option>
+    <option value='ZENKE'>ZENKE</option>
+    <option value='ZERS'>ZERS</option>
+    <option value='ZFOR'>ZFOR</option>
+    <option value='ZGAS'>ZGAS</option>
+    <option value='ZGDD'>ZGDD</option>
+    <option value='ZGDH'>ZGDH</option>
+    <option value='ZGEBN'>ZGEBN</option>
+    <option value='ZGFT'>ZGFT</option>
+    <option value='ZGGB'>ZGGB</option>
+    <option value='ZGIM'>ZGIM</option>
+    <option value='ZGLS'>ZGLS</option>
+    <option value='ZGMD'>ZGMD</option>
+    <option value='ZGMW'>ZGMW</option>
+    <option value='ZGPA'>ZGPA</option>
+    <option value='ZGPG'>ZGPG</option>
+    <option value='ZGPS'>ZGPS</option>
+    <option value='ZGRA'>ZGRA</option>
+    <option value='ZGVA'>ZGVA</option>
+    <option value='ZGVP'>ZGVP</option>
+    <option value='ZHCR'>ZHCR</option>
+    <option value='ZHIS'>ZHIS</option>
+    <option value='ZILL'>ZILL</option>
+    <option value='ZLFL'>ZLFL</option>
+    <option value='ZLRC'>ZLRC</option>
+    <option value='ZMED'>ZMED</option>
+    <option value='ZMEDIA'>ZMEDIA</option>
+    <option value='ZMKAN'>ZMKAN</option>
+    <option value='ZMKBA'>ZMKBA</option>
+    <option value='ZMKBI'>ZMKBI</option>
+    <option value='ZMKCS'>ZMKCS</option>
+    <option value='ZMKED'>ZMKED</option>
+    <option value='ZMKHE'>ZMKHE</option>
+    <option value='ZMKIN'>ZMKIN</option>
+    <option value='ZMKLS'>ZMKLS</option>
+    <option value='ZMKNU'>ZMKNU</option>
+    <option value='ZMKPA'>ZMKPA</option>
+    <option value='ZMKPT'>ZMKPT</option>
+    <option value='ZMTH'>ZMTH</option>
+    <option value='ZMUS'>ZMUS</option>
+    <option value='ZNUR'>ZNUR</option>
+    <option value='ZPHL'>ZPHL</option>
+    <option value='ZPHY'>ZPHY</option>
+    <option value='ZPSC'>ZPSC</option>
+    <option value='ZPSY'>ZPSY</option>
+    <option value='ZPTP'>ZPTP</option>
+    <option value='ZREF'>ZREF</option>
+    <option value='ZREP'>ZREP</option>
+    <option value='ZSOC'>ZSOC</option>
+    <option value='ZSOM'>ZSOM</option>
+    <option value='ZSTUD'>ZSTUD</option>
+    <option value='ZSWK'>ZSWK</option>
+    <option value='ZTHE'>ZTHE</option>
+    <option value='ZUCKER'>ZUCKER</option>
+    <option value='ZWHCR'>ZWHCR</option>
+    <option value='ZWMED'>ZWMED</option>
+    <option value='ZWNUR'>ZWNUR</option>
+    <option value='ZWSOM'>ZWSOM</option>
+    <option value='ZZZZZ'>ZZZZZ</option>
+  
+</select>
+        </h4>
+      </div>
+      <div class='span3'>
+        <h4>
+          <label for='budget-_-type'>Transaction type:</label>
+            <select id='budget-_-type' name='budget-_-type' size='7' multiple='multiple'>
+              <option value=''>Any</option>
+              <option value='ALC'>ALC -- Additional allocation</option>
+              <option value='CRO'>CRO -- Carryover</option>
+              <option value='ENC'>ENC -- Encumbrance</option>
+              <option value='ILC'>INC -- Initial allocation</option>
+              <option value='INV'>INV -- Invoice</option>
+              <option value='TRN'>TRN -- Transfer</option>
+            </select>
+        </h4>
+        <h4>
+          <label for='budget-_-credit_debit'>Credit/Debit:</label>
+            <select id='budget-_-credit_debit' name='budget-_-credit_debit' size='1'>
+              <option value=''>Either</option>
+              <option value='C'>Credit</option>
+              <option value='D'>Debit</option>
+            </select>
+        </h4>
+        <h4>
+          <label for='budget-_-paid'>Paid?</label>
+            <select id='budget-_-paid' name='budget-_-paid' size='1'>
+              <option value=''>Either paid or unpaid</option>
+              <option value='Y'>Yes, paid</option>
+              <option value='N'>No, not paid</option>
+            </select>
+        </h4>
+      </div>
+      <div class='row-fluid'>
+        <div class='span3'>
+          <h4>
+            <label for='vendor-_-code'>Vendor(s):</label>
+              <select name='budget-_-vendor_code' size='13' style='width:' 100%', :multiple='multiple'>
+  <option value=''>Any</option>
+  <option value='ABEBOOKS'>ABEBOOKS</option>
+  <option value='ADAMMATT'>ADAMMATT</option>
+  <option value='ALEXANDER'>ALEXANDER</option>
+  <option value='ALMUTH'>ALMUTH</option>
+  <option value='AMAZ'>AMAZ</option>
+  <option value='ARKIVM'>ARKIVM</option>
+  <option value='ATC'>ATC</option>
+  <option value='AUXAM'>AUXAM</option>
+  <option value='BACH'>BACH</option>
+  <option value='BARLOVENTO'>BARLOVENTO</option>
+  <option value='BCBT'>BCBT</option>
+  <option value='BENN'>BENN</option>
+  <option value='BERENGUER'>BERENGUER</option>
+  <option value='BERN'>BERN</option>
+  <option value='BH'>BH</option>
+  <option value='BRILL'>BRILL</option>
+  <option value='CAMBE'>CAMBE</option>
+  <option value='CASAL'>CASAL</option>
+  <option value='CIBTC'>CIBTC</option>
+  <option value='CIC'>CIC</option>
+  <option value='CRL'>CRL</option>
+  <option value='CTS'>CTS</option>
+  <option value='DAVIDBROWN'>DAVIDBROWN</option>
+  <option value='DIGITALIA'>DIGITALIA</option>
+  <option value='DMAHJ'>DMAHJ</option>
+  <option value='EAST'>EAST</option>
+  <option value='EBSCO'>EBSCO</option>
+  <option value='EBSCOPUBL'>EBSCOPUBL</option>
+  <option value='ELSEV'>ELSEV</option>
+  <option value='ELSEVENG'>ELSEVENG</option>
+  <option value='ESTEVA'>ESTEVA</option>
+  <option value='EULYO'>EULYO</option>
+  <option value='EMERY'>EMERY</option>
+  <option value='FINOPS'>FINOPS</option>
+  <option value='FRONT'>FRONT</option>
+  <option value='GALE'>GALE</option>
+  <option value='GRUYT'>GRUYT</option>
+  <option value='GRUYTGMBH'>GRUYTGMBH</option>
+  <option value='HARR'>HARR</option>
+  <option value='IBERBKSANCUS'>IBERBKSANCUS</option>
+  <option value='ISIS'>ISIS</option>
+  <option value='ITUR'>ITUR</option>
+  <option value='JERUS'>JERUS</option>
+  <option value='JPTC'>JPTC</option>
+  <option value='KINOKUNIYA'>KINOKUNIYA</option>
+  <option value='LCENT'>LCENT</option>
+  <option value='LEILA'>LEILA</option>
+  <option value='LIBER'>LIBER</option>
+  <option value='LEXICKWY'>LEXICKWY</option>
+  <option value='MCLS'>MCLS</option>
+  <option value='MGSHAM'>MGSHAM</option>
+  <option value='MIDTAPE'>MIDTAPE</option>
+  <option value='MIPP'>MIPP</option>
+  <option value='MLSC'>MLSC</option>
+  <option value='NEWSB'>NEWSB</option>
+  <option value='NICOLA'>NICOLA</option>
+  <option value='OIONO'>OIONO</option>
+  <option value='PROQ'>PROQ</option>
+  <option value='PUVIL'>PUVIL</option>
+  <option value='RETTA'>RETTA</option>
+  <option value='SCIDIRECT'>SCIDIRECT</option>
+  <option value='SULAI'>SULAI</option>
+  <option value='SWETU'>SWETU</option>
+  <option value='TOUZ'>TOUZ</option>
+  <option value='VAULT'>VAULT</option>
+  <option value='WILEY'>WILEY</option>
+  
+</select>
+
+          </h4>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class='row-fluid' id='returnfieldsection'>
+    <h3 class='span10'>Data to put in the Excel spreadsheet</h3>
+  </div>
+  <select id='returnfields' name='returnfields' multiple='multiple'>
+  <optgroup label='Budget'>
+  <option value='budget-_-budget'>Budget</option>
+  <option value='budget-_-fund'>Fund name</option>
+  <option value='budget-_-annual_year'>Annual (fiscal) year</option>
+  <option value='budget-_-invoice_no'>Invoice number</option>
+  <option value='budget-_-open_date'>Date</option>
+  <option value='budget-_-type'>Transaction type</option>
+  <option value='budget-_-credit_debit'>Credit/Debit (C/D)</option>
+  <option value='budget-_-local_sum'>Amount</option>
+  <option value='budget-_-paid'>Paid? (Y/N)</option>
+  <option value='budget-_-external_budget'>External budget</option>
+  <option value='budget-_-budget_type'>Budget type</option>
+  <option value='budget-_-p_date'>Payment date</option>
+  <option value='budget-_-vendor_code'>Vendor code (budget)</option>
+  
+</optgroup>
+  <optgroup label='Order'>
+  <option value='orders-_-order_number'>Order number</option>
+  <option value='orders-_-order_status'>Order status</option>
+  <option value='orders-_-vendor_code'>Vendor Code (order)</option>
+  <option value='orders-_-order_type'>Order type</option>
+  <option value='orders-_-material_type'>Material type -- Code</option>
+  <option value='orders-_-orders_material_type_english'>Material type -- Desc</option>
+  <option value='orders-_-method_of_acquisition'>Method of Acquisition</option>
+  <option value='orders-_-latest_payment_date'>Latest Payment Date</option>
+  <option value='orders-_-latest_payment_amount'>Latest Payment Amount</option>
+  <option value='orders-_-order_sub_library'>Order sublibrary</option>
+  <option value='orders-_-ordering_unit'>Receiving (ordering) unit</option>
+  
+</optgroup>
+  <optgroup label='Bib'>
+  <option value='bib-_-rec_key'> Record number</option>
+  <option value='bib-_-year'>Year</option>
+  <option value='bib-_-title'>Title</option>
+  <option value='bib-_-file_title'>Sortable (filing) title</option>
+  <option value='bib-_-author'>Author</option>
+  <option value='bib-_-imprint'>Imprint</option>
+  <option value='bib-_-isbn_issn'>ISBN or ISSN</option>
+  <option value='bib-_-format'>Two-character format code</option>
+  <option value='bib-_-lang'>Language code</option>
+  <option value='bib-_-cntry'>Country code</option>
+  <option value='bib-_-open_date'>Open date</option>
+  <option value='bib-_-update_date'>Update date</option>
+  <option value='bib-_-author_code'>Author field code</option>
+  <option value='bib-_-title_code'>Title field code</option>
+  <option value='bib-_-isbn_issn_code'>ISBN/ISSN field code</option>
+  <option value='bib-_-edition'>Edition</option>
+  <option value='bib-_-collation'>Collation (from 300 field)</option>
+  <option value='bib-_-suppr'>Suppressed</option>
+  
+</optgroup>
+</select>
+<script>
+  function resetReturns () {
+    jq('.bsmSelect option[value="budget-_-budget"]:not(:selected)').attr('selected', 'selected');
+    jq('.bsmSelect').trigger('change');
+    jq('.bsmSelect option[value="bib-_-title"]:not(:selected)').attr('selected', 'selected');
+    jq('.bsmSelect').trigger('change');
+    jq('.bsmSelect option[value="budget-_-type"]:not(:selected)').attr('selected', 'selected');
+    jq('.bsmSelect').trigger('change');
+    jq('.bsmSelect option[value="budget-_-open_date"]:not(:selected)').attr('selected', 'selected');
+    jq('.bsmSelect').trigger('change');
+    jq('.bsmSelect option[value="budget-_-local_sum"]:not(:selected)').attr('selected', 'selected');
+    jq('.bsmSelect').trigger('change');
+    jq('.bsmSelect option[value="budget-_-credit_debit"]:not(:selected)').attr('selected', 'selected');
+    jq('.bsmSelect').trigger('change');
+    jq('.bsmSelect option[value="budget-_-paid"]:not(:selected)').attr('selected', 'selected');
+    jq('.bsmSelect').trigger('change');
+    jq('.bsmSelect option[value="orders-_-order_number"]:not(:selected)').attr('selected', 'selected');
+    jq('.bsmSelect').trigger('change');
+    jq('.bsmSelect option[value="budget-_-invoice_no"]:not(:selected)').attr('selected', 'selected');
+    jq('.bsmSelect').trigger('change');
+    jq('.bsmSelect option[value="orders-_-material_type"]:not(:selected)').attr('selected', 'selected');
+    jq('.bsmSelect').trigger('change');
+    jq('.bsmSelect option[value="orders-_-method_of_acquisition"]:not(:selected)').attr('selected', 'selected');
+    jq('.bsmSelect').trigger('change');
+    }
+  jq(document).ready(function() {
+    resetReturns();
+  });
+</script>
+
+  <div class='row-fluid' id='excel'>
+    <div class='span9'>
+      <input class='btn btn-primary' type='submit' value='Generate Excel file' />
+    </div>
+  </div>
+</form>
+</div>
+    <div id='footer'>
+      <div class='row-fluid'>
+        <div class='span3'>
+          Feedback: 
+          <a href='mailto:lso-support@umich.edu'>lso-support@umich.edu</a>
+        </div>
+        <div class='offset7' style='text-align: right'>
+          <span id='copyright'>&copy; 2012&ndash;2013, Regents of the University of Michigan</span>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

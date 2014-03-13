@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <title>Datamart: Home</title>
+    <!-- Load jQuery -->
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js'></script>
+    <!-- Load the bootstrap css and js -->
+    <link rel='stylesheet' type='text/css' media='screen' href='css/bootstrap.min.css' />
+    <link rel='stylesheet' type='text/css' media='screen' href='css/bootstrap-responsive.min.css' />
+    <script src='js/bootstrap.js'></script>
+    <!-- Load jquery-UI and a bootstrap-like theme for it -->
+    <script src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js'></script>
+    <link rel='stylesheet' type='text/css' media='screen' href='js/jquery/jquery-ui-bootstrap-theme/css/custom-theme/jquery-ui-1.8.16.custom.css' />
+    <!-- Deal with IE's lack of HTML-5 support -->
+    <!--[if IE]>
+      <script src='http://html5shim.googlecode.com/svn/trunk/html5.js'></script>
+    <![endif]-->
+    <!-- Deserialize from https://github.com/kflorence/jquery-deserialize -->
+    <script src='jquery-deserialize/src/jquery.deserialize.js'></script>
+    <!-- Multi-select with sorting for returned columns -->
+    <script src='js/jquery/bsmSelect/js/jquery.bsmselect.js'></script>
+    <script src='js/jquery/bsmSelect/js/jquery.bsmselect.sortable.js'></script>
+    <script src='js/jquery/bsmSelect/js/jquery.bsmselect.compatibility.js'></script>
+    <link href='js/jquery/bsmSelect/css/jquery.bsmselect.css' rel='stylesheet' type='text/css' media='screen' />
+    <script>
+      var jq = jQuery.noConflict();
+      window.onunload = function(){};
+    </script>
+    <!-- Local -->
+    <script src='js/dm.js'></script>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/dm.css' />
+<script type='text/javascript'>
+  //<![CDATA[
+    history.navigationMode = 'compatible';
+jq(document).ready(function() {
+jq('.collapse').collapse();
+
+jq('.datepicker').datepicker({
+showAnim: 'fadeIn',
+showButtonPanel: true ,
+autoSize: true,
+dateFormat: 'yy-mm-dd',
+numberOfMonths: [1,4],
+showCurrentAtPos: 3,
+stepMonths: 4
+});
+
+jq('#returnfields').bsmSelect(
+{
+addItemTarget: 'bottom',
+showEffect: function($el){ $el.fadeIn(); },
+hideEffect: function($el){ $el.fadeOut(function(){ jq(this).remove(); })} ,
+plugins: [jq.bsmSelect.plugins.sortable(), jq.bsmSelect.plugins.compatibility()],
+title: 'Choose what to return',
+extractLabel: function($o) {return  $o.html() + ' (' + $o.parents('optgroup').attr('label') + ')';},
+containerClass: 'row-fluid',
+listClass: 'returnlist span5'
+}
+);
+jq('.bsmSelect').wrapAll('<div id="resultswrapper" class="span4">');
+jq('#resultswrapper').prepend('<div class="label label-info">Add more columns to the spreadsheet</div>');
+jq('.returnlist').prepend('<div class="label label-info">Drag and drop to dictate the order they appear in the spreadsheet</div>');
+})
+
+  //]]>
+</script>
+  </head>
+  <body>
+    <div class='hero-unit'>
+      <h1>
+        <a href=''>
+          <span id='mliblogo'>Library </span>
+          Datamart
+        </a>
+      </h1>
+    </div>
+    <div class='row-fluid' id='content'><div id='frontpage'>
+  <div class='row-fluid'>
+    <div class='span11'>
+      <h1>Welcome to Datamart</h1>
+      <p>
+        Datamart provides on-demand self-service reporting for library staff.  
+        The set of available reports is expected to grow, and existing reports 
+        will be refined, guided primarily by user input.  Please send feedback, including questions, suggested improvements to existing reports, and 
+        suggestions for additional reports to 
+        <a href='mailto:lso-support@umich.edu'>lso-support@umich.edu</a>
+      </p>
+      <p>Please note that the data in Datamart is intended for MLibrary internal use only.</p>
+      <p>
+        <a href='enhancementslist.haml'>Planned Enhancements</a>
+      </p>
+    </div>
+  </div>
+</div>
+  <div class='row-fluid' id='reportselector'>
+    <div class='span4' id='reportcats'>
+      <div class=' cat'>
+        <a href='budget_reports'>Aleph Budget report forms</a>
+      </div>
+      <div class=' cat'>
+        <a href='inventory_reports'>Aleph Inventory report forms</a>
+      </div>
+      <div class='cat selectedcat'>
+        <a href='events_reports'>Aleph Events report forms</a>
+      </div>
+      <div class=' cat'>
+        <a href='stats_reports'>Statistical reports</a>
+      </div>
+    </div>
+    <div class='span8' id='reportlist'>
+      <div class='report'>
+        <div class='title'>
+          <a href='sublibevents'>Sub-library events report form</a>
+        </div>
+        <div>
+          Retrieve data from the events table (loans, renews, browses, etc.) for a sublibrary.
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
+    <div id='footer'>
+      <div class='row-fluid'>
+        <div class='span3'>
+          Feedback: 
+          <a href='mailto:lso-support@umich.edu'>lso-support@umich.edu</a>
+        </div>
+        <div class='offset7' style='text-align: right'>
+          <span id='copyright'>&copy; 2012&ndash;2013, Regents of the University of Michigan</span>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
