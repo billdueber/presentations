@@ -82,13 +82,9 @@
   %section
     %h2 Like what? (examples from Aleph)
     %ul
-      %li.fragment
-        The Z77_REC_KEY is 35 characters long:
-      %ul
-        %li.fragment A 20 char vendor code
-        %li.fragment A 15 char invoice number
       %li.fragment Dates and times are stored as 12-character strings (YYYYMMDDHHSS)
-      %li.fragment Ask me about trailing punctuation. I dare you.
+      %li.fragment Many numbers are stored in CHAR fields
+      %li.fragment The invoice number is in characters 21-35 of field z30_rec_key_3 in the z30 table
       
   %section
     %h2 E & T (Extract and Transform)
