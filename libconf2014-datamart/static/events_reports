@@ -3,13 +3,13 @@
   <head>
     <title>Datamart: Home</title>
     <!-- Load jQuery -->
-    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js'></script>
+    <script src='js/jquery.min.js'></script>
     <!-- Load the bootstrap css and js -->
     <link rel='stylesheet' type='text/css' media='screen' href='css/bootstrap.min.css' />
     <link rel='stylesheet' type='text/css' media='screen' href='css/bootstrap-responsive.min.css' />
     <script src='js/bootstrap.js'></script>
     <!-- Load jquery-UI and a bootstrap-like theme for it -->
-    <script src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js'></script>
+    <script src='js/jquery-ui.min.js'></script>
     <link rel='stylesheet' type='text/css' media='screen' href='js/jquery/jquery-ui-bootstrap-theme/css/custom-theme/jquery-ui-1.8.16.custom.css' />
     <!-- Deal with IE's lack of HTML-5 support -->
     <!--[if IE]>

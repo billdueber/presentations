@@ -1,0 +1,358 @@
+
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <title>Datamart: Results</title>
+    <!-- Load jQuery -->
+    <script src='js/jquery.min.js'></script>
+    <!-- Load the bootstrap css and js -->
+    <link rel='stylesheet' type='text/css' media='screen' href='css/bootstrap.min.css' />
+    <link rel='stylesheet' type='text/css' media='screen' href='css/bootstrap-responsive.min.css' />
+    <script src='js/bootstrap.js'></script>
+    <!-- Load jquery-UI and a bootstrap-like theme for it -->
+    <script src='js/jquery-ui.min.js'></script>
+    <link rel='stylesheet' type='text/css' media='screen' href='js/jquery/jquery-ui-bootstrap-theme/css/custom-theme/jquery-ui-1.8.16.custom.css' />
+    <!-- Deal with IE's lack of HTML-5 support -->
+    <!--[if IE]>
+      <script src='http://html5shim.googlecode.com/svn/trunk/html5.js'></script>
+    <![endif]-->
+    <!-- Deserialize from https://github.com/kflorence/jquery-deserialize -->
+    <script src='js/jquery-deserialize/src/jquery.deserialize.js'></script>
+    <!-- Multi-select with sorting for returned columns -->
+    <script src='js/jquery/bsmSelect/js/jquery.bsmselect.js'></script>
+    <script src='js/jquery/bsmSelect/js/jquery.bsmselect.sortable.js'></script>
+    <script src='js/jquery/bsmSelect/js/jquery.bsmselect.compatibility.js'></script>
+    <link href='js/jquery/bsmSelect/css/jquery.bsmselect.css' rel='stylesheet' type='text/css' media='screen' />
+    <script>
+      var jq = jQuery.noConflict();
+      window.onunload = function(){};
+    </script>
+    <!-- Local -->
+    <script src='js/dm.js'></script>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/dm.css' />
+<script type='text/javascript'>
+  //<![CDATA[
+    history.navigationMode = 'compatible';
+jq(document).ready(function() {
+jq('.collapse').collapse();
+
+jq('.datepicker').datepicker({
+showAnim: 'fadeIn',
+showButtonPanel: true ,
+autoSize: true,
+dateFormat: 'yy-mm-dd',
+numberOfMonths: [1,4],
+showCurrentAtPos: 3,
+stepMonths: 4
+});
+
+jq('#returnfields').bsmSelect(
+{
+addItemTarget: 'bottom',
+showEffect: function($el){ $el.fadeIn(); },
+hideEffect: function($el){ $el.fadeOut(function(){ jq(this).remove(); })} ,
+plugins: [jq.bsmSelect.plugins.sortable(), jq.bsmSelect.plugins.compatibility()],
+title: 'Choose what to return',
+extractLabel: function($o) {return  $o.html() + ' (' + $o.parents('optgroup').attr('label') + ')';},
+containerClass: 'row-fluid',
+listClass: 'returnlist span5'
+}
+);
+jq('.bsmSelect').wrapAll('<div id="resultswrapper" class="span4">');
+jq('#resultswrapper').prepend('<div class="label label-info">Add more columns to the spreadsheet</div>');
+jq('.returnlist').prepend('<div class="label label-info">Drag and drop to dictate the order they appear in the spreadsheet</div>');
+})
+
+  //]]>
+</script>
+  </head>
+  <body>
+    <div class='hero-unit'>
+      <h1>
+        <a href='/'>
+          <span id='mliblogo'>Library </span>
+          Datamart
+        </a>
+      </h1>
+    </div>
+    <div class='row-fluid' id='content'><h1>Results</h1>
+<div>
+  There are
+  1002
+  rows in the result.
+  The first
+  250
+  are shown below
+</div>
+<div>
+  The spreadsheet is ready: 
+  <a href='dueberb_Inventory_19332_1394804107.xlsx'>dueberb_Inventory_19332_1394804107.xlsx</a>
+</div>
+<table class="sample">
+<tr><th>Barcode</th><th> Record number</th><th>Year</th><th>Title</th><th>Call number</th><th>Number of loans since 1988</th><th>Date last returned</th></tr>
+<tr><td>39015073816350</td><td>005840230</td><td>1985</td><td>Ghosts 'n goblins</td><td>$$jGAME NES Ghosts</td><td>10</td><td>2013-08-20T00:00:00</td></tr>
+<tr><td>39015061791318</td><td>005880689</td><td>2006</td><td>Need for speed.</td><td>$$jGAME PS2 Need 2</td><td>12</td><td>2014-02-13T00:00:00</td></tr>
+<tr><td>39015073818661</td><td>005916402</td><td>1985</td><td>Dr. Mario</td><td>$$jGAME NES Dr</td><td>24</td><td>2014-01-31T00:00:00</td></tr>
+<tr><td>39015061788926</td><td>005838035</td><td>2005</td><td>Fable</td><td>$$jGAME XBOX Fable</td><td>26</td><td>2013-03-14T00:00:00</td></tr>
+<tr><td>39015061763861</td><td>009362436</td><td>1995</td><td>Panzer dragoon</td><td>$$jGAME SAT Panzer</td><td>5</td><td>2013-09-23T00:00:00</td></tr>
+<tr><td>39015073819263</td><td>005932625</td><td>1997</td><td>Bomber Man 64</td><td>$$jGAME N64 Bomber 64</td><td>14</td><td>2013-10-12T00:00:00</td></tr>
+<tr><td>39015061786656</td><td>007468868</td><td>2010</td><td>Endless ocean.</td><td>$$jGAME WII Endless</td><td>9</td><td>2013-03-21T00:00:00</td></tr>
+<tr><td>39015073819842</td><td>005960516</td><td>1999</td><td>Super Smash Bros</td><td>$$jGAME N64 Super</td><td>214</td><td>2014-02-21T00:00:00</td></tr>
+<tr><td>39015061784107</td><td>005835527</td><td>2007</td><td>Battlefield 2</td><td>$$jGAME PC Battlefield 2</td><td>8</td><td>2013-05-29T00:00:00</td></tr>
+<tr><td>39015061789395</td><td>005901926</td><td>2003</td><td>NBA street.</td><td>$$jGAME XBOX NBA 2</td><td>6</td><td>2014-02-08T00:00:00</td></tr>
+<tr><td>39015061784479</td><td>005863523</td><td>2008</td><td>Far Cry 2</td><td>$$jGAME PC Far2</td><td>5</td><td>2011-10-14T00:00:00</td></tr>
+<tr><td>39015061788231</td><td>005901763</td><td>2003</td><td>The Lord of the Rings.</td><td>$$jGAME GAMECUBE Lord</td><td>24</td><td>2014-02-22T00:00:00</td></tr>
+<tr><td>39015061781251</td><td>005932357</td><td>2006</td><td>Madden NFL 07</td><td>$$jGAME PS3 Madden 2007</td><td>6</td><td>2013-07-25T00:00:00</td></tr>
+<tr><td>39015061790930</td><td>005860223</td><td>2006</td><td>Mortal Kombat Armageddon</td><td>$$jGAME PS2 Mortal</td><td>8</td><td>2014-02-18T00:00:00</td></tr>
+<tr><td>39015061790898</td><td>005933303</td><td>2005</td><td>Mortal Kombat.</td><td>$$jGAME PS2 Mortal</td><td>6</td><td>2013-12-11T00:00:00</td></tr>
+<tr><td>39015065042577</td><td>005848552</td><td>2000</td><td>Game Boy.</td><td>Nintendo Game Boy</td><td>5</td><td>2013-11-20T00:00:00</td></tr>
+<tr><td>39015061783950</td><td>005976482</td><td>2007</td><td>WWE SmackDown vs. Raw 2008</td><td>$$jGAME X360 WWE</td><td>28</td><td>2014-02-07T00:00:00</td></tr>
+<tr><td>39015061786995</td><td>006818994</td><td>2009</td><td>Grand slam tennis</td><td>$$jGAME WII Grand</td><td>26</td><td>2013-11-16T00:00:00</td></tr>
+<tr><td>39015061781541</td><td>005825021</td><td>2007</td><td>Ratchet & Clank future</td><td>$$jGAME PS3 Ratchet</td><td>13</td><td>2012-11-30T00:00:00</td></tr>
+<tr><td>39015061781848</td><td>005825025</td><td>2007</td><td>Uncharted</td><td>$$jGAME PS3 Uncharted</td><td>59</td><td>2014-02-21T00:00:00</td></tr>
+<tr><td>39015061782697</td><td>005825556</td><td>2008</td><td>Gears of war</td><td>$$jGAME X360 Gears</td><td>30</td><td>2014-02-07T00:00:00</td></tr>
+<tr><td>39015061781285</td><td>005824967</td><td>2008</td><td>Metal Gear Solid 4</td><td>$$jGAME PS3 Metal 4</td><td>30</td><td>2013-11-16T00:00:00</td></tr>
+<tr><td>39015061781574</td><td>005825024</td><td>2006</td><td>Resistance</td><td>$$jGAME PS3 Resistance</td><td>10</td><td>2013-02-18T00:00:00</td></tr>
+<tr><td>39015061780683</td><td>005825026</td><td>2007</td><td>Assassin's creed</td><td>$$jGAME PS3 Assassins</td><td>52</td><td>2013-09-05T00:00:00</td></tr>
+<tr><td>39015061782218</td><td>005825534</td><td>2008</td><td>Bully.</td><td>$$jGAME X360 Bully</td><td>6</td><td>2012-12-20T00:00:00</td></tr>
+<tr><td>39015061782739</td><td>005825536</td><td>2006</td><td>Grand theft auto IV</td><td>$$jGAME X360 Grand 4</td><td>83</td><td>2014-01-28T00:00:00</td></tr>
+<tr><td>39015061782127</td><td>005825541</td><td>2007</td><td>BioShock</td><td>$$jGAME X360 Bioshock</td><td>60</td><td>2014-01-27T00:00:00</td></tr>
+<tr><td>39015061782861</td><td>005825543</td><td>2007</td><td>Halo 3</td><td>$$jGAME X360 Halo 3</td><td>130</td><td>2014-02-19T00:00:00</td></tr>
+<tr><td>39015087284611</td><td>005826422</td><td>2008</td><td>Super Smash Bros.</td><td>$$jGAME WII Super</td><td>550</td><td>2014-02-28T00:00:00</td></tr>
+<tr><td>39015061782838</td><td>005826346</td><td>2007</td><td>Guitar hero III</td><td>$$jGAME X360 Guitar 3</td><td>34</td><td>2014-02-18T00:00:00</td></tr>
+<tr><td>39015061782259</td><td>005826350</td><td>2006</td><td>Call of duty 3</td><td>$$jGAME X360 Call 3</td><td>5</td><td>2013-06-19T00:00:00</td></tr>
+<tr><td>39015061783885</td><td>005825561</td><td>2006</td><td>Virtua tennis 3</td><td>$$jGAME X360 Virtua 3</td><td>40</td><td>2013-04-26T00:00:00</td></tr>
+<tr><td>39015061782242</td><td>005826353</td><td>2006</td><td>Call of duty 2</td><td>$$jGAME X360 Call 2</td><td>11</td><td>2014-01-30T00:00:00</td></tr>
+<tr><td>39015061790062</td><td>005826997</td><td>2001</td><td>Gauntlet</td><td>$$jGAME PS2 Gauntlet</td><td>7</td><td>2014-01-31T00:00:00</td></tr>
+<tr><td>39015061790385</td><td>005826505</td><td>2007</td><td>Wii sports</td><td>$$jGAME WII Wii</td><td>20</td><td>2013-10-25T00:00:00</td></tr>
+<tr><td>39015061784024</td><td>005827427</td><td>2006</td><td>Age of empires collector's edition</td><td>$$jGAME PC Age</td><td>28</td><td>2013-12-13T00:00:00</td></tr>
+<tr><td>39015061790955</td><td>005826355</td><td>2007</td><td>Super Mario galaxy</td><td>$$jGAME WII SUPER</td><td>41</td><td>2014-01-15T00:00:00</td></tr>
+<tr><td>39015073816293</td><td>005827631</td><td>1980</td><td>Space invaders</td><td>$$jGAME ATARI Space</td><td>11</td><td>2014-02-13T00:00:00</td></tr>
+<tr><td>39015061782556</td><td>005825566</td><td>2007</td><td>The elder scrolls IV</td><td>$$jGAME X360 Elder 4</td><td>45</td><td>2013-02-11T00:00:00</td></tr>
+<tr><td>39015061784032</td><td>005835300</td><td>2007</td><td>Age of mythology</td><td>$$jGAME PC Age</td><td>12</td><td>2013-01-31T00:00:00</td></tr>
+<tr><td>39015061784677</td><td>005835570</td><td>2001</td><td>Super Smash Bros. melee</td><td>$$jGAME GAMECUBE Super</td><td>407</td><td>2011-12-10T00:00:00</td></tr>
+<tr><td>39015061788009</td><td>005835568</td><td>2003</td><td>Mario Kart.</td><td>$$jGAME GAMECUBE Mario</td><td>174</td><td>2014-03-12T00:00:00</td></tr>
+<tr><td>39015061790831</td><td>005840881</td><td>2003</td><td>Metal gear solid 2</td><td>$$jGAME PS2 Metal 2</td><td>5</td><td>2013-07-26T00:00:00</td></tr>
+<tr><td>39015061780543</td><td>005840892</td><td>2006</td><td>Final fantasy XII</td><td>$$jGAME PS2 Final 12</td><td>14</td><td>2014-02-14T00:00:00</td></tr>
+<tr><td>39015061785914</td><td>005835314</td><td>2004</td><td>Rome</td><td>$$jGAME PC Rome</td><td>16</td><td>2011-12-15T00:00:00</td></tr>
+<tr><td>39015061790625</td><td>005840899</td><td>2002</td><td>Kingdom hearts</td><td>$$jGAME PS2 Kingdom</td><td>35</td><td>2014-03-13T00:00:00</td></tr>
+<tr><td>39015061790567</td><td>005840901</td><td>2003</td><td>Katamari Damacy</td><td>$$jGAME PS2 Katamari</td><td>43</td><td>2014-01-31T00:00:00</td></tr>
+<tr><td>39015061788314</td><td>005835562</td><td>2002</td><td>Sonic mega collection</td><td>$$jGAME GAMECUBE Sonic</td><td>17</td><td>2013-03-14T00:00:00</td></tr>
+<tr><td>39015061781665</td><td>005838723</td><td>2008</td><td>Soul calibur IV</td><td>$$jGAME PS3 Soul 4</td><td>33</td><td>2014-01-11T00:00:00</td></tr>
+<tr><td>39015061787407</td><td>005860777</td><td>2008</td><td>Rapala's fishing frenzy</td><td>$$jGAME WII Rapalas</td><td>12</td><td>2014-02-11T00:00:00</td></tr>
+<tr><td>39015061780527</td><td>005840895</td><td>2002</td><td>Final fantasy X</td><td>$$jGAME PS2 Final 10</td><td>13</td><td>2013-04-26T00:00:00</td></tr>
+<tr><td>39015061788256</td><td>005835564</td><td>2004</td><td>Paper Mario.</td><td>$$jGAME GAMECUBE Paper</td><td>9</td><td>2014-02-27T00:00:00</td></tr>
+<tr><td>39015061788405</td><td>005835567</td><td>2001</td><td>Super monkey ball</td><td>$$jGAME GAMECUBE Super</td><td>15</td><td>2014-01-22T00:00:00</td></tr>
+<tr><td>39015061787605</td><td>005838765</td><td>2008</td><td>Star Wars.</td><td>$$jGAME WII Star</td><td>17</td><td>2014-02-19T00:00:00</td></tr>
+<tr><td>39015061791482</td><td>005840920</td><td>2002</td><td>Ratchet & Clank</td><td>$$jGAME PS2 Ratchet</td><td>5</td><td>2012-10-19T00:00:00</td></tr>
+<tr><td>39015061791292</td><td>005840927</td><td>2006</td><td>Need for speed.</td><td>$$jGAME PS2 Need</td><td>11</td><td>2013-11-19T00:00:00</td></tr>
+<tr><td>39015061790179</td><td>005840910</td><td>2003</td><td>Grand theft auto III</td><td>$$jGAME PS2 Grand 3</td><td>5</td><td>2013-03-16T00:00:00</td></tr>
+<tr><td>39015061790344</td><td>005840903</td><td>2001</td><td>Jak and Daxter</td><td>$$jGAME PS2 Jak</td><td>25</td><td>2014-02-13T00:00:00</td></tr>
+<tr><td>39015073816426</td><td>005840579</td><td>1985</td><td>Duck hunt</td><td>$$jGAME NES Duck</td><td>35</td><td>2014-02-22T00:00:00</td></tr>
+<tr><td>39015073816509</td><td>005842889</td><td>1989</td><td>Super Mario Bros. 2</td><td>$$jGAME NES Super 2</td><td>10</td><td>2013-07-11T00:00:00</td></tr>
+<tr><td>39015061788785</td><td>006781599</td><td>2003</td><td>Counter strike</td><td>$$jGAME XBOX Counter</td><td>5</td><td>2012-09-06T00:00:00</td></tr>
+<tr><td>39015061782515</td><td>006776085</td><td>2007</td><td>Earth defense force 2017</td><td>$$jGAME X360 Earth</td><td>13</td><td>2013-09-05T00:00:00</td></tr>
+<tr><td>39015061783596</td><td>006776082</td><td>2006</td><td>Samurai warriors 2</td><td>$$jGAME X360 Samurai 2</td><td>14</td><td>2013-10-19T00:00:00</td></tr>
+<tr><td>39015061782655</td><td>006776091</td><td>2008</td><td>FIFA street 3</td><td>$$jGAME X360 Fifa 3</td><td>18</td><td>2013-09-26T00:00:00</td></tr>
+<tr><td>39015073821624</td><td>006782197</td><td>1983</td><td>Mario Bros</td><td>$$jGAME ATARI Mario</td><td>15</td><td>2013-11-16T00:00:00</td></tr>
+<tr><td>39015061793298</td><td>006782346</td><td>1999</td><td>Crazy taxi</td><td>$$jGAME DC Crazy</td><td>6</td><td>2013-10-11T00:00:00</td></tr>
+<tr><td>39015061788090</td><td>006782314</td><td>2005</td><td>One piece.</td><td>$$jGAME GAMECUBE One</td><td>5</td><td>2013-07-22T00:00:00</td></tr>
+<tr><td>39015073821780</td><td>006782421</td><td>1993</td><td>Family feud</td><td>$$jGAME SNES Family</td><td>8</td><td>2014-02-28T00:00:00</td></tr>
+<tr><td>39015061787381</td><td>006795065</td><td>2009</td><td>Punch-Out!!</td><td>$$jGAME WII Punch</td><td>13</td><td>2014-03-10T00:00:00</td></tr>
+<tr><td>39015061787035</td><td>006795070</td><td>2009</td><td>House of the dead.</td><td>$$jGAME WII House</td><td>41</td><td>2013-11-01T00:00:00</td></tr>
+<tr><td>39015073821723</td><td>006782167</td><td>1981</td><td>Pac-man</td><td>$$jGAME ATARI Pacman</td><td>7</td><td>2014-01-31T00:00:00</td></tr>
+<tr><td>39015073822143</td><td>006782284</td><td>2007</td><td>Phoenix Wright ace attorney</td><td>$$jGAME DS Phoenix</td><td>12</td><td>2014-02-21T00:00:00</td></tr>
+<tr><td>39015061788124</td><td>006782304</td><td>2003</td><td>Dragon Ball Z</td><td>$$jGAME GAMECUBE Dragonball</td><td>6</td><td>2013-12-18T00:00:00</td></tr>
+<tr><td>39015061788116</td><td>006782300</td><td>2005</td><td>Donkey Kong jungle beat</td><td>$$jGAME GAMECUBE Donkey</td><td>6</td><td>2014-01-09T00:00:00</td></tr>
+<tr><td>39015073821608</td><td>006782347</td><td>1991</td><td>Ms. Pac-Man</td><td>$$jGAME GENESIS Ms</td><td>5</td><td>2013-07-23T00:00:00</td></tr>
+<tr><td>39015061781939</td><td>006805729</td><td>2009</td><td>X-men origins.</td><td>$$jGAME PS3 Xmen</td><td>27</td><td>2012-07-18T00:00:00</td></tr>
+<tr><td>39015061790591</td><td>006803210</td><td>2005</td><td>Killer 7</td><td>$$jGAME PS2 Killer</td><td>5</td><td>2013-12-13T00:00:00</td></tr>
+<tr><td>39015061781905</td><td>006805715</td><td>2009</td><td>Virtua tennis 2009</td><td>$$jGAME PS3 Virtua 2009</td><td>29</td><td>2013-07-16T00:00:00</td></tr>
+<tr><td>39015061781517</td><td>006805723</td><td>2009</td><td>(Prototype)</td><td>$$jGAME PS3 Prototype</td><td>12</td><td>2013-06-11T00:00:00</td></tr>
+<tr><td>39015061782846</td><td>006805741</td><td>2009</td><td>Guitar hero smash hits</td><td>$$jGAME X360 Guitar</td><td>16</td><td>2014-02-15T00:00:00</td></tr>
+<tr><td>39015061785765</td><td>006804197</td><td>2009</td><td>Overlord II</td><td>$$jGAME PC Overlord2</td><td>6</td><td>2014-03-13T00:00:00</td></tr>
+<tr><td>39015079303221</td><td>006805686</td><td>2009</td><td>Class of heroes</td><td>$$jGAME PSP Class</td><td>23</td><td>2013-02-06T00:00:00</td></tr>
+<tr><td>39015061784446</td><td>006804247</td><td>2008</td><td>Europa Universalis III complete</td><td>$$jGAME PC Europa3</td><td>44</td><td>2013-02-07T00:00:00</td></tr>
+<tr><td>39015061791532</td><td>005880476</td><td>2005</td><td>Resident evil 4</td><td>$$jGAME PS2 Resident 4</td><td>12</td><td>2014-01-13T00:00:00</td></tr>
+<tr><td>39015061788363</td><td>006813380</td><td>2002</td><td>StarFox adventures</td><td>$$jGAME GAMECUBE Starfox</td><td>14</td><td>2013-11-16T00:00:00</td></tr>
+<tr><td>39015061792209</td><td>006817786</td><td>2003</td><td>Yu-Gi-Oh!</td><td>$$jGAME PS2 Yu</td><td>6</td><td>2014-02-14T00:00:00</td></tr>
+<tr><td>39015061787449</td><td>006813362</td><td>2006</td><td>Redsteel</td><td>$$jGAME WII Redsteel</td><td>5</td><td>2012-02-17T00:00:00</td></tr>
+<tr><td>39015061788058</td><td>006813367</td><td>2002</td><td>Naruto</td><td>$$jGAME GAMECUBE Naruto</td><td>11</td><td>2013-05-02T00:00:00</td></tr>
+<tr><td>39015061788892</td><td>006813152</td><td>2002</td><td>The elder scrolls III</td><td>$$jGAME XBOX Elder 3</td><td>6</td><td>2013-10-02T00:00:00</td></tr>
+<tr><td>39015061788595</td><td>005939981</td><td>2003</td><td>Aquaman</td><td>$$jGAME XBOX Aquaman</td><td>6</td><td>2011-04-01T00:00:00</td></tr>
+<tr><td>39015061789791</td><td>006817692</td><td>2005</td><td>Star wars.</td><td>$$jGAME XBOX Star</td><td>13</td><td>2013-10-09T00:00:00</td></tr>
+<tr><td>39015061784792</td><td>006834858</td><td>2008</td><td>Mount & blade</td><td>$$jGAME PC Mount</td><td>5</td><td>2013-11-25T00:00:00</td></tr>
+<tr><td>39015061782986</td><td>006834645</td><td>2009</td><td>The king of fighters XII</td><td>$$jGAME X360 King</td><td>8</td><td>2013-02-16T00:00:00</td></tr>
+<tr><td>39015061787472</td><td>006835174</td><td>2009</td><td>Wii sports resort</td><td>$$jGAME WII Resort</td><td>37</td><td>2013-12-12T00:00:00</td></tr>
+<tr><td>39015061780402</td><td>006833067</td><td>2002</td><td>Dragon Ball Z.</td><td>$$jGAME PS2 Dragon</td><td>27</td><td>2014-02-13T00:00:00</td></tr>
+<tr><td>39015061781400</td><td>006834636</td><td>2009</td><td>NCAA football 10</td><td>$$jGAME PS3 NCAA</td><td>38</td><td>2013-11-25T00:00:00</td></tr>
+<tr><td>39015061784255</td><td>006834878</td><td>2006</td><td>Cricket 07</td><td>$$jGAME PC Cricket 2007</td><td>20</td><td>2013-11-21T00:00:00</td></tr>
+<tr><td>39015061788140</td><td>008440331</td><td>2004</td><td>Final fantasy.</td><td>$$jGAME GAMECUBE Final</td><td>11</td><td>2014-02-07T00:00:00</td></tr>
+<tr><td>39015061783158</td><td>006875039</td><td>2009</td><td>Ultimate alliance 2</td><td>$$jGAME X360 Ultimate2</td><td>13</td><td>2013-12-18T00:00:00</td></tr>
+<tr><td>39015080688321</td><td>006834590</td><td>2009</td><td>Monster hunter.</td><td>$$jGAME PSP Monster</td><td>5</td><td>2014-02-14T00:00:00</td></tr>
+<tr><td>39015061780709</td><td>007076405</td><td>2009</td><td>Assassin's creed II</td><td>$$jGAME PS3 Assassins 2</td><td>77</td><td>2014-02-22T00:00:00</td></tr>
+<tr><td>39015093506965</td><td>012444202</td><td>1999</td><td>Super Smash Bros</td><td>$$jGAME SNES Super</td><td>11</td><td>2013-11-16T00:00:00</td></tr>
+<tr><td>39015061784750</td><td>006859770</td><td>2008</td><td>Medieval II, total war</td><td>$$jGAME PC Medieval 2</td><td>13</td><td>2013-08-30T00:00:00</td></tr>
+<tr><td>39015061780717</td><td>006859668</td><td>2009</td><td>Batman.</td><td>$$jGAME PS3 Batman</td><td>38</td><td>2013-06-13T00:00:00</td></tr>
+<tr><td>39015080769550</td><td>006871831</td><td>2009</td><td>Scribblenauts</td><td>$$jGAME DS Scribble</td><td>18</td><td>2013-11-16T00:00:00</td></tr>
+<tr><td>39015061782879</td><td>006871891</td><td>2009</td><td>Halo 3</td><td>$$jGAME X360 Halo 3</td><td>35</td><td>2014-02-21T00:00:00</td></tr>
+<tr><td>39015061780345</td><td>006871846</td><td>2008</td><td>Disgaea</td><td>$$jGAME PS2 Disgaea</td><td>37</td><td>2013-04-26T00:00:00</td></tr>
+<tr><td>39015061782101</td><td>006871883</td><td>2009</td><td>The Beatles rockband</td><td>$$jGAME X360 Beatles</td><td>15</td><td>2014-02-22T00:00:00</td></tr>
+<tr><td>39015061786821</td><td>007710540</td><td>2009</td><td>Monster hunter 3</td><td>$$jGAME WII Monster 3</td><td>65</td><td>2013-06-20T00:00:00</td></tr>
+<tr><td>39015089194743</td><td>011250780</td><td>2011</td><td>The king of fighters XIII</td><td>$$jGAME PS3 King13</td><td>38</td><td>2014-02-28T00:00:00</td></tr>
+<tr><td>39015089415692</td><td>009867262</td><td>1999</td><td>Abalone</td><td>$$jGAME BOARD Abalone</td><td>8</td><td>2014-01-24T00:00:00</td></tr>
+<tr><td>39015061790518</td><td>007710496</td><td>2003</td><td>Jak II</td><td>$$jGAME PS2 Jak 2</td><td>24</td><td>2013-12-19T00:00:00</td></tr>
+<tr><td>39015061791847</td><td>007710497</td><td>2004</td><td>Sly 2.</td><td>$$jGAME PS2 Sly 2</td><td>16</td><td>2013-04-29T00:00:00</td></tr>
+<tr><td>39015061790526</td><td>007710494</td><td>2004</td><td>Jak 3</td><td>$$jGAME PS2 Jak 3</td><td>21</td><td>2014-02-24T00:00:00</td></tr>
+<tr><td>39015061781038</td><td>007710499</td><td>2010</td><td>God of war III</td><td>$$jGAME PS3 God 3</td><td>111</td><td>2013-12-18T00:00:00</td></tr>
+<tr><td>39015061787043</td><td>007710541</td><td>2007</td><td>The house of the dead 2 & 3 return</td><td>$$jGAME WII House 2&3</td><td>8</td><td>2013-01-12T00:00:00</td></tr>
+<tr><td>39015085813486</td><td>007710460</td><td>2009</td><td>Professor Layton and the diabolical box</td><td>$$jGAME DS Professor</td><td>28</td><td>2014-02-12T00:00:00</td></tr>
+<tr><td>39015061783026</td><td>007710524</td><td>2009</td><td>Left 4 dead 2</td><td>$$jGAME X360 Left 2</td><td>137</td><td>2014-02-17T00:00:00</td></tr>
+<tr><td>39015061791839</td><td>007804454</td><td>2002</td><td>Sly Cooper and the thievius raccoonus</td><td>$$jGAME PS2 Sly</td><td>14</td><td>2014-02-14T00:00:00</td></tr>
+<tr><td>39015061782820</td><td>008582901</td><td>2010</td><td>Guitar hero.</td><td>$$jGAME X360 Guitar</td><td>30</td><td>2013-11-19T00:00:00</td></tr>
+<tr><td>39015082872584</td><td>008864705</td><td>1991</td><td>Street fighter II</td><td>$$jGAME SNES Street 2</td><td>7</td><td>2011-10-14T00:00:00</td></tr>
+<tr><td>39015082872006</td><td>008864516</td><td>1991</td><td>Mega Man X</td><td>$$jGAME SNES Mega 10</td><td>14</td><td>2011-10-27T00:00:00</td></tr>
+<tr><td>39015082872188</td><td>005965162</td><td>1998</td><td>Super Mario 64</td><td>$$jGAME N64 Super 64</td><td>51</td><td>2014-02-01T00:00:00</td></tr>
+<tr><td>39015061783554</td><td>008863216</td><td>2010</td><td>Rock of the dead</td><td>$$jGAME X360 Rock</td><td>13</td><td>2012-04-24T00:00:00</td></tr>
+<tr><td>39015082872899</td><td>008864537</td><td>1991</td><td>Super castlevania IV</td><td>$$jGAME SNES Castlevania 4</td><td>11</td><td>2014-01-11T00:00:00</td></tr>
+<tr><td>39015061781715</td><td>008863002</td><td>2010</td><td>Star Wars.</td><td>$$jGAME PS3 Star 2</td><td>23</td><td>2013-06-12T00:00:00</td></tr>
+<tr><td>39015061780857</td><td>008863172</td><td>2010</td><td>Castlevania.</td><td>$$jGAME PS3 Castlevania</td><td>23</td><td>2014-02-04T00:00:00</td></tr>
+<tr><td>39015061780956</td><td>008863177</td><td>2010</td><td>Enslaved.</td><td>$$jGAME PS3 Enslaved</td><td>5</td><td>2012-05-10T00:00:00</td></tr>
+<tr><td>39015082872154</td><td>008864495</td><td>1995</td><td>Killer instinct</td><td>$$jGAME SNES Killer</td><td>8</td><td>2014-01-24T00:00:00</td></tr>
+<tr><td>39015082872741</td><td>008864544</td><td>1993</td><td>NBA jam</td><td>$$jGAME SNES NBA</td><td>8</td><td>2013-12-18T00:00:00</td></tr>
+<tr><td>39015061783273</td><td>008863225</td><td>2010</td><td>NBA 2K11</td><td>$$jGAME X360 NBA 2011</td><td>257</td><td>2013-04-03T00:00:00</td></tr>
+<tr><td>39015082872311</td><td>005861681</td><td>1994</td><td>Super metroid</td><td>$$jGAME SNES Super</td><td>5</td><td>2013-12-11T00:00:00</td></tr>
+<tr><td>39015082872592</td><td>008864550</td><td>1996</td><td>Super Mario RPG.</td><td>$$jGAME SNES Super</td><td>25</td><td>2013-11-27T00:00:00</td></tr>
+<tr><td>39015084007916</td><td>008862996</td><td>2010</td><td>Super Scribblenauts</td><td>$$jGAME DS Super</td><td>9</td><td>2012-12-12T00:00:00</td></tr>
+<tr><td>39015061787845</td><td>008863227</td><td>2010</td><td>Wii party</td><td>$$jGAME WII WII</td><td>9</td><td>2014-02-01T00:00:00</td></tr>
+<tr><td>39015061787084</td><td>008863232</td><td>2010</td><td>Kirby's epic yarn</td><td>$$jGAME WII Kirbys</td><td>14</td><td>2013-10-04T00:00:00</td></tr>
+<tr><td>39015061787225</td><td>008863235</td><td>2010</td><td>NBA jam</td><td>$$jGAME WII NBA</td><td>37</td><td>2014-02-18T00:00:00</td></tr>
+<tr><td>39015061782606</td><td>008863200</td><td>2010</td><td>Fallout.</td><td>$$jGAME X360 Fallout</td><td>43</td><td>2014-01-08T00:00:00</td></tr>
+<tr><td>39015082872303</td><td>008864058</td><td>1995</td><td>Donkey Kong country.</td><td>$$jGAME SNES Donkey 2</td><td>23</td><td>2014-01-24T00:00:00</td></tr>
+<tr><td>39015082872733</td><td>008864676</td><td>1993</td><td>Mortal kombat</td><td>$$jGAME SNES Mortal</td><td>17</td><td>2014-01-30T00:00:00</td></tr>
+<tr><td>39015089197902</td><td>011879410</td><td>2008</td><td>NBA 2K9</td><td>$$jGAME PS2 NBA 2009</td><td>9</td><td>2013-12-18T00:00:00</td></tr>
+<tr><td>39015061781749</td><td>008930458</td><td>2010</td><td>Time crisis.</td><td>$$jGAME PS3 Time</td><td>8</td><td>2013-10-25T00:00:00</td></tr>
+<tr><td>39015061790641</td><td>008930453</td><td>2006</td><td>Kingdom hearts II</td><td>$$jGAME PS2 Kingdom 2</td><td>11</td><td>2013-11-02T00:00:00</td></tr>
+<tr><td>39015061333673</td><td>012288176</td><td>2013</td><td>MLB 13, the show</td><td>$$jGAME PS3 MLB 2013</td><td>12</td><td>2014-01-09T00:00:00</td></tr>
+<tr><td>39015061793751</td><td>005826505</td><td>2007</td><td>Wii sports</td><td>$$jGAME WII Wii</td><td>20</td><td>2013-02-28T00:00:00</td></tr>
+<tr><td>39015061793975</td><td>005963628</td><td>2005</td><td>God of war</td><td>$$jGAME PS2 God</td><td>6</td><td>2013-08-27T00:00:00</td></tr>
+<tr><td>39015061794031</td><td>005869032</td><td>2006</td><td>Shadow of the colossus</td><td>$$jGAME PS2 Shadow</td><td>18</td><td>2013-07-24T00:00:00</td></tr>
+<tr><td>39015082892574</td><td>005862267</td><td>1992</td><td>The legend of Zelda</td><td>$$jGAME SNES Legend</td><td>17</td><td>2012-09-20T00:00:00</td></tr>
+<tr><td>39015082892970</td><td>009446876</td><td>1992</td><td>Contra III.</td><td>$$jGAME SNES Contra 3</td><td>38</td><td>2014-02-13T00:00:00</td></tr>
+<tr><td>39015061763275</td><td>009458955</td><td>2007</td><td>Resident evil.</td><td>$$jGAME WII Resident</td><td>10</td><td>2013-08-30T00:00:00</td></tr>
+<tr><td>39015061757772</td><td>009458824</td><td>2011</td><td>Hyperdimension Neptunia</td><td>$$jGAME PS3 Hyper</td><td>7</td><td>2014-02-24T00:00:00</td></tr>
+<tr><td>39015061763218</td><td>009458826</td><td>2010</td><td>Fist of the north star.</td><td>$$jGAME PS3 Fist</td><td>5</td><td>2013-09-14T00:00:00</td></tr>
+<tr><td>39015061793884</td><td>009446769</td><td>1997</td><td>Parappa the rapper</td><td>$$jGAME PS Parappa</td><td>8</td><td>2014-03-12T00:00:00</td></tr>
+<tr><td>39015061757699</td><td>009458954</td><td>2006</td><td>Metal slug anthology</td><td>$$jGAME WII Metal</td><td>22</td><td>2014-03-12T00:00:00</td></tr>
+<tr><td>39015061758010</td><td>009617643</td><td>2011</td><td>Ridge racer 3D</td><td>$$jGAME 3DS Ridge</td><td>10</td><td>2012-02-11T00:00:00</td></tr>
+<tr><td>39015061758044</td><td>009617646</td><td>2011</td><td>Pilotwings Resort</td><td>$$jGAME 3DS Pilotwings</td><td>11</td><td>2013-10-03T00:00:00</td></tr>
+<tr><td>39015061763374</td><td>009458839</td><td>2011</td><td>Driver.</td><td>$$jGAME X360 Driver</td><td>23</td><td>2013-10-25T00:00:00</td></tr>
+<tr><td>39015087284793</td><td>009458837</td><td>2011</td><td>Marvel vs. Capcom.</td><td>$$jGAME X360 Marvel 3</td><td>192</td><td>2014-01-28T00:00:00</td></tr>
+<tr><td>39015061757657</td><td>009458951</td><td>2010</td><td>You don't know Jack</td><td>$$jGAME WII You</td><td>9</td><td>2013-04-06T00:00:00</td></tr>
+<tr><td>39015089196938</td><td>011654419</td><td>2007</td><td>Mario strikers charged</td><td>$$jGAME WII Mario</td><td>20</td><td>2014-02-07T00:00:00</td></tr>
+<tr><td>39015089196169</td><td>011585004</td><td>2012</td><td>Mortal kombat</td><td>$$jGAME PSV Mortal</td><td>7</td><td>2013-05-06T00:00:00</td></tr>
+<tr><td>39015089196375</td><td>011585003</td><td>2012</td><td>Mario tennis open</td><td>$$jGAME 3DS Mario</td><td>7</td><td>2013-09-25T00:00:00</td></tr>
+<tr><td>39015061794023</td><td>005840899</td><td>2002</td><td>Kingdom hearts</td><td>$$jGAME PS2 Kingdom</td><td>17</td><td>2014-02-26T00:00:00</td></tr>
+<tr><td>39015061757665</td><td>009458847</td><td>2011</td><td>Mario sports mix</td><td>$$jGAME WII Mario</td><td>21</td><td>2013-12-06T00:00:00</td></tr>
+<tr><td>39015061379064</td><td>012200523</td><td>2013</td><td>Etrian odyssey IV</td><td>$$jGAME 3DS Etrian 4</td><td>10</td><td>2013-10-25T00:00:00</td></tr>
+<tr><td>39015061793769</td><td>009462331</td><td>2009</td><td>Wii sports resort</td><td>$$jGAME WII Wii</td><td>14</td><td>2014-01-28T00:00:00</td></tr>
+<tr><td>39015088405926</td><td>009485161</td><td>2000</td><td>Chrononauts</td><td>$$jGAME BOARD Chrononauts</td><td>9</td><td>2013-03-20T00:00:00</td></tr>
+<tr><td>39015082894521</td><td>009480391</td><td>2000</td><td>Pokémon.</td><td>$$jGAME GAMEBOY-C Pokemon</td><td>12</td><td>2014-02-18T00:00:00</td></tr>
+<tr><td>39015061758952</td><td>009662269</td><td>2000</td><td>Crash bash</td><td>$$jGAME PS Crash</td><td>14</td><td>2013-11-22T00:00:00</td></tr>
+<tr><td>39015088405934</td><td>009485152</td><td>2001</td><td>Munchkin</td><td>$$jGAME BOARD Munchkin</td><td>32</td><td>2014-02-14T00:00:00</td></tr>
+<tr><td>39015088406858</td><td>009485155</td><td>2006</td><td>Citadels</td><td>$$jGAME BOARD Citadels</td><td>14</td><td>2014-02-08T00:00:00</td></tr>
+<tr><td>39015090595540</td><td>010360136</td><td>1983</td><td>Nuclear escalation</td><td>$$jGAME BOARD Nuclear</td><td>6</td><td>2013-09-18T00:00:00</td></tr>
+<tr><td>39015061762996</td><td>010360221</td><td>2011</td><td>The legend of Zelda.</td><td>$$jGAME 3DS Legend</td><td>62</td><td>2013-11-15T00:00:00</td></tr>
+<tr><td>39015090595532</td><td>010360145</td><td>2011</td><td>7 wonders</td><td>$$jGAME BOARD Seven</td><td>36</td><td>2014-02-28T00:00:00</td></tr>
+<tr><td>39015087284801</td><td>010360151</td><td>2011</td><td>NCAA football 12</td><td>$$jGAME X360 NCAA 2010</td><td>121</td><td>2013-01-22T00:00:00</td></tr>
+<tr><td>39015061763077</td><td>010360197</td><td>2011</td><td>Catherine</td><td>$$jGAME PS3 Catherine</td><td>26</td><td>2014-02-28T00:00:00</td></tr>
+<tr><td>39015061763002</td><td>010360202</td><td>2011</td><td>Infamous 2</td><td>$$jGAME PS3 Infamous 2</td><td>63</td><td>2013-11-08T00:00:00</td></tr>
+<tr><td>39015061763036</td><td>010360149</td><td>2011</td><td>Child of Eden</td><td>$$jGAME X360 Child</td><td>5</td><td>2012-10-24T00:00:00</td></tr>
+<tr><td>39015061763176</td><td>010360206</td><td>2011</td><td>El Shaddai.</td><td>$$jGAME PS3 Shaddai</td><td>8</td><td>2012-02-04T00:00:00</td></tr>
+<tr><td>39015087284785</td><td>010991379</td><td>2011</td><td>FIFA soccer 12</td><td>$$jGAME X360 FIFA 2012</td><td>398</td><td>2014-02-20T00:00:00</td></tr>
+<tr><td>39015089194511</td><td>011189835</td><td>2011</td><td>Red faction.</td><td>$$jGAME X360 Red</td><td>5</td><td>2012-11-26T00:00:00</td></tr>
+<tr><td>39015089194537</td><td>011189856</td><td>2011</td><td>Rayman origins</td><td>$$jGAME PS3 Rayman</td><td>35</td><td>2013-11-13T00:00:00</td></tr>
+<tr><td>39015089203486</td><td>011189865</td><td>2011</td><td>Fortune Street</td><td>$$jGAME WII Fortune</td><td>42</td><td>2014-01-29T00:00:00</td></tr>
+<tr><td>39015089203460</td><td>011189868</td><td>2011</td><td>Mariokart 7</td><td>$$jGAME 3DS Mario 7</td><td>32</td><td>2014-02-28T00:00:00</td></tr>
+<tr><td>39015087283969</td><td>012353871</td><td>2005</td><td>Pokémon.</td><td>$$jGAME GAMEBOY-A Pokemon</td><td>6</td><td>2013-07-25T00:00:00</td></tr>
+<tr><td>39015089198025</td><td>011878568</td><td>2012</td><td>Forza horizon</td><td>$$jGAME X360 Forza</td><td>43</td><td>2014-02-22T00:00:00</td></tr>
+<tr><td>39015089419546</td><td>011052133</td><td>1997</td><td>Rampage world tour</td><td>$$jGAME N64 Rampage</td><td>9</td><td>2014-01-30T00:00:00</td></tr>
+<tr><td>39015061794395</td><td>010815405</td><td>2001</td><td>Super Smash Bros. melee</td><td>$$hGAME GAMECUBE Super</td><td>151</td><td>2014-02-28T00:00:00</td></tr>
+<tr><td>39015090686133</td><td>011250753</td><td>2011</td><td>Munchkin Axe Cop</td><td>$$jGAME BOARD Axe</td><td>5</td><td>2013-01-26T00:00:00</td></tr>
+<tr><td>39015090686117</td><td>011250757</td><td>2011</td><td>Mystery date game</td><td>$$jGAME BOARD Mystery</td><td>9</td><td>2013-12-12T00:00:00</td></tr>
+<tr><td>39015091022189</td><td>011609399</td><td>1994</td><td>Mortal kombat II</td><td>$$jGAME SNES Mortal 2</td><td>8</td><td>2014-02-20T00:00:00</td></tr>
+<tr><td>39015089197084</td><td>011661108</td><td>2012</td><td>Lego Batman 2</td><td>$$jGAME PS3 Lego 2</td><td>16</td><td>2014-02-22T00:00:00</td></tr>
+<tr><td>39015088120657</td><td>011584937</td><td>2011</td><td>Core worlds</td><td>$$jGAME BOARD Core</td><td>11</td><td>2014-02-28T00:00:00</td></tr>
+<tr><td>39015089196698</td><td>011598367</td><td>2011</td><td>StarFox64 3D</td><td>$$jGAME 3DS Starfox</td><td>7</td><td>2013-09-07T00:00:00</td></tr>
+<tr><td>39015089196581</td><td>011598376</td><td>2011</td><td>Ace combat.</td><td>$$jGAME X360 Ace</td><td>5</td><td>2013-12-20T00:00:00</td></tr>
+<tr><td>39015091018518</td><td>011683737</td><td>1994</td><td>Sonic & Knuckles</td><td>$$jGAME GENESIS Sonic</td><td>19</td><td>2014-02-08T00:00:00</td></tr>
+<tr><td>39015091022825</td><td>011695217</td><td>1996</td><td>Sonic blast</td><td>$$jGAME GAMEGEAR Sonic</td><td>6</td><td>2013-11-20T00:00:00</td></tr>
+<tr><td>39015089197134</td><td>011720531</td><td>2012</td><td>New Super Mario Bros. 2</td><td>$$jGAME 3DS New 2</td><td>10</td><td>2013-12-06T00:00:00</td></tr>
+<tr><td>39015089203262</td><td>011738354</td><td>2012</td><td>Ratchet & Clank collection</td><td>$$jGAME PS3 Ratchet</td><td>6</td><td>2013-01-18T00:00:00</td></tr>
+<tr><td>39015089197829</td><td>011738373</td><td>2012</td><td>FIFA soccer 13</td><td>$$jGAME X360 Fifa 2013</td><td>535</td><td>2014-03-13T00:00:00</td></tr>
+<tr><td>39015089197068</td><td>011661117</td><td>2012</td><td>Dragon's dogma</td><td>$$jGAME PS3 Dragons</td><td>16</td><td>2014-02-21T00:00:00</td></tr>
+<tr><td>39015091250921</td><td>011661133</td><td>2009</td><td>Dominion Seaside</td><td>$$jGAME BOARD Seaside</td><td>16</td><td>2014-02-04T00:00:00</td></tr>
+<tr><td>39015088121663</td><td>011644791</td><td>2001</td><td>Paper Mario</td><td>$$jGAME N64 Paper</td><td>12</td><td>2014-03-11T00:00:00</td></tr>
+<tr><td>39015091255888</td><td>011720432</td><td>2011</td><td>Penny arcade the game</td><td>$$jGAME BOARD Penny</td><td>6</td><td>2013-04-04T00:00:00</td></tr>
+<tr><td>39015089197100</td><td>011720530</td><td>2012</td><td>The last story</td><td>$$jGAME WII Last</td><td>36</td><td>2014-02-28T00:00:00</td></tr>
+<tr><td>39015089197142</td><td>011720532</td><td>2011</td><td>Gravity rush</td><td>$$jGAME PSV Gravity</td><td>24</td><td>2013-12-06T00:00:00</td></tr>
+<tr><td>39015089197159</td><td>011720525</td><td>2012</td><td>Darksiders II</td><td>$$jGAME X360 Dark 2</td><td>24</td><td>2014-01-18T00:00:00</td></tr>
+<tr><td>39015092205759</td><td>011661103</td><td>2012</td><td>Spec ops.</td><td>$$jGAME X360 Spec</td><td>6</td><td>2013-02-27T00:00:00</td></tr>
+<tr><td>39015089197092</td><td>011661116</td><td>2011</td><td>Kingdoms of Amalur.</td><td>$$jGAME PS3 Kingdoms</td><td>10</td><td>2013-05-06T00:00:00</td></tr>
+<tr><td>39015089197837</td><td>011738313</td><td>2012</td><td>The testament of Sherlock Holmes</td><td>$$jGAME PS3 Testament</td><td>16</td><td>2012-11-26T00:00:00</td></tr>
+<tr><td>39015092205791</td><td>011688085</td><td>2011</td><td>Mario & Sonic at the London 2012 Olympic games</td><td>$$jGAME WII Mario</td><td>9</td><td>2013-12-13T00:00:00</td></tr>
+<tr><td>39015061333707</td><td>012288167</td><td>2013</td><td>Injustice</td><td>$$jGAME PS3 Injustice</td><td>40</td><td>2014-02-27T00:00:00</td></tr>
+<tr><td>39015089196318</td><td>011654361</td><td>2011</td><td>PES 2012</td><td>$$jGAME PS3 PES 2012</td><td>233</td><td>2014-03-10T00:00:00</td></tr>
+<tr><td>39015089196326</td><td>011654357</td><td>2009</td><td>Tekken 6</td><td>$$jGAME PS3 Tekken 6</td><td>26</td><td>2014-02-27T00:00:00</td></tr>
+<tr><td>39015089196912</td><td>011654410</td><td>2011</td><td>The first Templar</td><td>$$jGAME X360 First</td><td>9</td><td>2013-10-24T00:00:00</td></tr>
+<tr><td>39015089197035</td><td>011654415</td><td>2012</td><td>Street fighter x Tekken</td><td>$$jGAME X360 Street</td><td>10</td><td>2013-10-12T00:00:00</td></tr>
+<tr><td>39015089197811</td><td>011738375</td><td>2012</td><td>Dead or alive 5</td><td>$$jGAME X360 Dead 5</td><td>27</td><td>2014-02-27T00:00:00</td></tr>
+<tr><td>39015089203270</td><td>011738305</td><td>2012</td><td>Soul calibur V</td><td>$$jGAME PS3 Soul 5</td><td>7</td><td>2013-12-19T00:00:00</td></tr>
+<tr><td>39015089197027</td><td>011644831</td><td>2001</td><td>Sonic Adventure 2 battle</td><td>$$jGAME GAMECUBE Sonic 2</td><td>18</td><td>2014-02-27T00:00:00</td></tr>
+<tr><td>39015089196839</td><td>011644901</td><td>2005</td><td>Fire emblem</td><td>$$jGAME GAMECUBE Fire</td><td>35</td><td>2014-02-06T00:00:00</td></tr>
+<tr><td>39015061789247</td><td>005860834</td><td>2002</td><td>Mechassault</td><td>$$jGAME XBOX Mechassault</td><td>6</td><td>2013-09-05T00:00:00</td></tr>
+<tr><td>39015088545911</td><td>009362451</td><td>1993</td><td>The lost vikings</td><td>$$jGAME GENESIS Lost</td><td>5</td><td>2013-11-18T00:00:00</td></tr>
+<tr><td>39015061790229</td><td>005983285</td><td>2008</td><td>Guilty gear XX core plus</td><td>$$jGAME PS2 Guilty</td><td>6</td><td>2012-11-09T00:00:00</td></tr>
+<tr><td>39015061783638</td><td>005963426</td><td>2007</td><td>The Simpsons game</td><td>$$jGAME X360 Simpsons</td><td>8</td><td>2013-07-22T00:00:00</td></tr>
+<tr><td>39015065042585</td><td>005849616</td><td>2004</td><td>DS.</td><td>GAME HANDHELD DS</td><td>260</td><td>2014-02-28T00:00:00</td></tr>
+<tr><td>39015073816368</td><td>005840242</td><td>1989</td><td>Tetris</td><td>$$jGAME NES Tetris</td><td>9</td><td>2013-02-08T00:00:00</td></tr>
+<tr><td>39015061781111</td><td>006767505</td><td>2009</td><td>Infamous</td><td>$$jGAME PS3 Infamous</td><td>50</td><td>2014-01-30T00:00:00</td></tr>
+<tr><td>39015073817218</td><td>005850666</td><td>1997</td><td>Goldeneye 007</td><td>$$jGAME N64 Goldeneye</td><td>17</td><td>2012-04-12T00:00:00</td></tr>
+<tr><td>39015061786516</td><td>005849484</td><td>2008</td><td>Dance dance revolution</td><td>$$jGAME WII Dance 2</td><td>6</td><td>2012-05-22T00:00:00</td></tr>
+<tr><td>39015074063051</td><td>005849817</td><td>2005</td><td>Mariokart DS</td><td>$$jGAME DS Mariokart</td><td>15</td><td>2014-01-17T00:00:00</td></tr>
+<tr><td>39015074062921</td><td>005849881</td><td>2007</td><td>God of war</td><td>$$jGAME PSP God</td><td>10</td><td>2013-02-28T00:00:00</td></tr>
+<tr><td>39015061786789</td><td>005848123</td><td>2007</td><td>Metroid prime.</td><td>$$jGAME WII Metroid 3</td><td>23</td><td>2014-03-12T00:00:00</td></tr>
+<tr><td>39015065042569</td><td>005848551</td><td>2000</td><td>Game Boy Color.</td><td>Nintendo Game Boy Color</td><td>29</td><td>2014-02-18T00:00:00</td></tr>
+<tr><td>39015061783166</td><td>005848107</td><td>2007</td><td>Mass effect</td><td>$$jGAME X360 Mass</td><td>37</td><td>2013-05-08T00:00:00</td></tr>
+<tr><td>39015061787100</td><td>005848117</td><td>2006</td><td>The legend of Zelda.</td><td>$$jGAME WII Legend</td><td>62</td><td>2014-02-15T00:00:00</td></tr>
+<tr><td>39015073817226</td><td>005850922</td><td>1999</td><td>Star wars.</td><td>$$jGAME N64 Star</td><td>17</td><td>2013-11-21T00:00:00</td></tr>
+<tr><td>39015073817101</td><td>005849132</td><td>1998</td><td>MarioParty</td><td>$$jGAME N64 Mario</td><td>34</td><td>2014-02-08T00:00:00</td></tr>
+<tr><td>39015065042726</td><td>005848552</td><td>2000</td><td>Game Boy.</td><td>Nintendo Game Boy</td><td>5</td><td>2013-01-25T00:00:00</td></tr>
+<tr><td>39015074062939</td><td>005849827</td><td>2007</td><td>MySims</td><td>$$jGAME DS Mysims</td><td>5</td><td>2012-11-16T00:00:00</td></tr>
+<tr><td>39015074062889</td><td>005849841</td><td>2005</td><td>Nintendogs.</td><td>$$jGAME DS Nintendogs</td><td>5</td><td>2012-04-09T00:00:00</td></tr>
+<tr><td>39015061785807</td><td>005848144</td><td>2008</td><td>The political machine 2008</td><td>$$jGAME PC Political 2008</td><td>6</td><td>2012-12-14T00:00:00</td></tr>
+<tr><td>39015061783752</td><td>005848240</td><td>2008</td><td>Tales of Vesperia</td><td>$$jGAME X360 Tales</td><td>31</td><td>2013-06-04T00:00:00</td></tr>
+<tr><td>39015061788934</td><td>005861657</td><td>2004</td><td>Fatal frame II</td><td>$$jGAME XBOX Fatal 2</td><td>14</td><td>2013-10-24T00:00:00</td></tr>
+<tr><td>39015061781137</td><td>006871854</td><td>2009</td><td>Katamari forever</td><td>$$jGAME PS3 Katamari</td><td>18</td><td>2014-02-21T00:00:00</td></tr>
+<tr><td>39015061781988</td><td>006878126</td><td>2007</td><td>Ace combat.</td><td>$$jGAME X360 Ace</td><td>57</td><td>2014-02-27T00:00:00</td></tr>
+<tr><td>39015061783810</td><td>006878129</td><td>2008</td><td>Tom Clancy's Rainbow six.</td><td>$$jGAME X360 Tom2</td><td>7</td><td>2014-01-09T00:00:00</td></tr>
+<tr><td>39015061787852</td><td>005826505</td><td>2007</td><td>Wii sports</td><td>$$jGAME WII Wii</td><td>18</td><td>2013-08-27T00:00:00</td></tr>
+<tr><td>39015061787118</td><td>006879980</td><td>2007</td><td>Lego Star wars.</td><td>$$jGAME WII Lego</td><td>13</td><td>2014-02-27T00:00:00</td></tr>
+<tr><td>39015061782804</td><td>006878146</td><td>2009</td><td>Guitar hero 5</td><td>$$jGAME X360 Guitar 5</td><td>29</td><td>2014-02-26T00:00:00</td></tr>
+<tr><td>39015061761584</td><td>010815641</td><td>2006</td><td>God Hand</td><td>$$hGAME PS2 God</td><td>6</td><td>2014-02-17T00:00:00</td></tr>
+</table>
+
+</div>
+    <div id='footer'>
+      <div class='row-fluid'>
+        <div class='span3'>
+          Feedback: 
+          <a href='mailto:lso-support@umich.edu'>lso-support@umich.edu</a>
+        </div>
+        <div class='offset7' style='text-align: right'>
+          <span id='copyright'>&copy; 2012&ndash;2013, Regents of the University of Michigan</span>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
