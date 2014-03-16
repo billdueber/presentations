@@ -2,16 +2,21 @@
   %h1 Knowing users by their digital footprint
   %h3 Bill Dueber, University of Michigan
 
+
 %section
-  %h2 Who uses your library?
+  %h2 Who uses your library, and what do they do?
+
+%section
+  %h2 Who uses your library, and what are they trying to do?
   %ul
     %li.fragment
       Need to define
       %em every
       word in that question
+  %aside.notes Who feels like they have a good handle on that question?
 
 %section
-  %h2 All Library patrons are created equal
+  %h2 All Animals are created equal
   %p.fragment ...but some are more equal than others
 
 %section
@@ -29,45 +34,145 @@
     = "<span class='red'>P</span>erfect"
     = "<span class='red'>U</span>nder"
     = "<span class='red'>G</span>raduates"
-      
+
+%section
+  %h2 Does that get us most of what we need?      
 
 %section
   %h2 Data-driven decisions?
-  %p In an average year, the average patron interacts with a librarian 0 times (to several significant digits)
-  %p.fragment
-    %em source: totally made up
+  %p 
+    In an average year, the average patron interacts with a librarian 
+    %strong ZERO
+    times (to several significant digits)
+  %p.fragment.em source: totally made up
+  %aside.notes But you know it's true
+
+%section
+  %h2 What percentage of your patrons
+  %ul
+    %li.fragment ...get personalized help from a librarian at a reference desk?
+    %li.fragment ...attend classes on library use?
+    %li.fragment ...use chat/email reference?
+    %li.fragment ...look at instructional posters/screens/whatever?
+    %li.fragment.strong ...ever even enter the building?
+
    
 %section
-  %h2 A call to arms
+  %h2 Electronic interaction data to the rescue!
   %ul
-    %li.fragment Electronic interaction data to the rescue!
+    %li.fragment Gather smart logging data!
     %li.fragment ...from lots of diverse systems
     %li.fragment ...about people that you'll never meet
-    %li.fragment ...that reveal no personally-identifying informaiton
     %li.fragment ...whose intentions are totally opaque
-    
+    %li.fragment ...that reveal no personally-identifying information
+    %li.fragment ...and are periodically scrubbed and destroyed
 
 
+%section
+  %h2 What kinds of questions?
 
+%section
+  %h2 The easy-but-important stuff
+  %ul
+    %li.fragment How many times is [X] viewed?
+    %li.fragment What percentage of users are on [X] technology
+    %li.fragment What are the overall traffic patterns (scheduled maintenance)
+    %li.fragment What are the section-by-section patterns (over time)
+
+%section
+  %h2 Google Analytics
+  %ul
+    %li Easy peasy to set up
+    %li Gets you a looooooong way there
+    %li More sophisticated every release
+    %li Answers all the easy questions and more
+
+%section
+  %h2 Slightly harder questions:
+  %p How much time and energy should I spend on <X>
+  %ul.fragment
+    %li Smart paging / infinite scrolling
+    %li Previous/Next buttons
+    %li Detailed views
+    %li.fragment.red Are poorly used things unwanted or unknown? Are high-use things clicked out of desire or desperation?
+  %aside.notes If your 'help' link is clicked a lot, this is not an indicator that you should spend a lot of time on your help pages!!!
+
+%section
+  %h2 Harder interesting questions
+  %ul
+    %li.fragment How often are people doing discovery vs. known-item searching?
+    %li.fragment Are people finding stuff quickly enough?
+
+%section
+  %h2 "Hey, you! What do you have against Usability Testing?"
+  %ul
+    %li.fragment 
+      Nothing    
+      %span.fragment.red -ish
+    %li.fragment Interested in both usability and utility
+    %li.fragment Knowing what people do is a good hint to their intentions
+
+%section
+  %h2 The kicker
+  %p I'm not interested in clicks. I'm interested in patrons.
+  %p.fragment Differentiate between things with broad use and those with narrow but intense use.
+
+
+%section
+  %h2 My approach to gathering data in the catalog
+  %ul
+    %li Every important link has an (illegal HTML) 'ref' attribute
+    %li It has pipe-delimited data in it
+    %li When clicked, an AJAX call sends a "fire and forget" call which is logged to a database
+
+%section
+  %h2 What to gather?
+  %p Depends on the type of action. 
+  %p Generic: Take up to four extra pieces of data
+  %ul
+    %li.fragment Action (80ish)
+    %li.fragment Search text / index
+    %li.fragment Record being acted upon
+    %li.fragment Number of results
+    %li.fragment Index in list (e.g., '1st', '2nd')
+    %li.fragment Link text / link target domain 
+  %p.fragment Store with the sessionID, timestamp
+  %p.fragment
+    %a{:href=>'../static/mirlyn.lib.umich.edu/Search/res.html'} Search Results 
+    = " / " 
+    %a{:href=>'../static/mirlyn.lib.umich.edu/Record/rec.html'} Record view
+
+%section
+  %h2 But....why???
+  %p.fragment Because I know how to push around a relational database
+
+%section
+  %h2 Sample data
+  %ul
 
 
 %section
   %h2 Overview
   %ul
+    %li Last four months or so
+    %li 1.04M recorded events
     %li 260K sessions
-    %li 
-      72K without any searches
+    %li How many without any searches?
+    %li.fragment
       %ul
+        %li 72K
         %li 50% are clicks on e-links; did their search elsewhere
         %li 25% people logging in to renew/check their accounts
         %li Some undetermined number are ILL, bookmarks, etc.
-    %li 
+    %li.fragment
       188K sessions with searches
       %ul
         %li 60K have nothing but a single search
         %li Another 23K have nothing but multiple searches
 
-
+%section
+  %h2 The enemy of my data
+  %p.fragment ...is the useful search-results page
 
 
 %section
