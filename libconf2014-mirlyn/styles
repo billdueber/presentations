@@ -1,0 +1,8 @@
+    <style type="text/css" media="screen">
+      p { text-align: left;}
+      .red {color: red;}
+      .strong {font-weight: bold;}
+      .em { font-style: italic;}
+    </style>
+      
+

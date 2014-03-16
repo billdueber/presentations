@@ -1,0 +1,2453 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<!-- Working from 141.211.168.143 on path /www/vufind/web/mirlyn/web -->
+<title>Mirlyn: Search Results</title>
+<script type="text/javascript">
+    //<![CDATA[
+    var is_ie6 = ('ActiveXObject' in window && !('XMLHttpRequest' in window));
+    //]]>
+    </script>
+<link rel="alternate" type="application/rss+xml" title="Mirlyn search for rosencrantz" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=rosencrantz&amp;page=1&amp;view=atom">
+<link rel="unapi-server" type="application/xml" title="unAPI" href="http://mirlyn.lib.umich.edu/unapi">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="../../ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+<!-- corners -->
+<script src="http://www.lib.umich.edu/sites/www.lib.umich.edu/modules/mlibrary/favorites/jquery.corner.js" type="text/javascript" charset="utf-8"></script>
+<!-- Fancybox -->
+<script src="http://mirlyn.lib.umich.edu/static/jquery.fancybox/jquery.fancybox-1.2.1.js" type="text/javascript" charset="utf-8"></script>
+<link rel="stylesheet" type="text/css" media="screen" href="http://mirlyn.lib.umich.edu/static/jquery.fancybox/jquery.fancybox.css">
+<!--    <link rel="stylesheet" type="text/css" media="screen" href="/interface/themes/um/css/jquery.fancybox.css"> -->
+<script type="text/javascript" charset="utf-8">
+   var jq = jQuery.noConflict();
+   $ = jq;
+
+   var tempAddLink = "Select";
+   var tempRemoveLink = "Unselect";
+   var tempset = "Selected items";
+   var jssearchcomps = "type%5B%5D=all&lookfor%5B%5D=rosencrantz&page=1";
+   var username = "";
+  </script>
+<script src="http://mirlyn.lib.umich.edu/js/favorites.js" type="text/javascript" charset="utf-8"></script>
+<script language="JavaScript" type="text/javascript">
+    path = 'http://mirlyn.lib.umich.edu';
+
+    
+
+
+String.prototype.trim = function() {
+	return this.replace(/^\s+|\s+$/g,"");
+}
+
+function trimForm(infrm) {
+  infrm.value = infrm.value.trim()
+ }
+
+function fixform(f) {
+  // jq('#lookfor').value = jq('#lookfor').value.trim();
+
+  if (jq('#searchtype').val() == 'journaltitle') {
+    // jq('#searchtype').val('title');
+    jq(f).append('<input type="hidden" name="filter[]" value=\'format:Serial\'>');
+  }
+
+  if (jq('#lookfor', f).val() == 'enter search terms') {
+    jq('#lookfor', f).val('');
+  }
+
+}
+
+function loginLink() {
+  
+  login = 'https://www.lib.umich.edu/vf/vflogin_dbsess.php?returnto=';
+  
+  loc = window.location.href;
+  return login + escape(loc);
+}
+
+
+
+jq.fn.clearForm = function(exceptions) {
+  return this.each(function() {
+    if (jq(this).hasClass('stickyform')) {
+      return;
+    }
+    var type = this.type, tag = this.tagName.toLowerCase();
+    if (tag == 'form')
+      return jq(':input',this).clearForm();
+    if (type == 'text' || type == 'password' || tag == 'textarea')
+      this.value = '';
+    else if (type == 'checkbox' || type == 'radio')
+      this.checked = false;
+    else if (tag == 'select')
+      this.selectedIndex = 0;
+  });
+};
+
+function pausecomp(millis)
+{
+  var date = new Date();
+  var curDate = null;
+
+  do { curDate = new Date(); }
+  while(curDate-date < millis);
+}
+
+// function submitFeedback()
+// {
+//   document.getElementById('popupbox').innerHTML +=  document.getElementById('feedback_thanks').innerHTML;
+//   setTimeout("hideLightbox()", 1500);
+//   return true;
+// }
+
+function hideMenu(elemId)
+{
+    document.getElementById(elemId).style.display='none';
+}
+
+
+/* Set up fancybox for dolightbox class */
+
+jq(function(){
+  jq('.dolightbox').fancybox({
+    hideOnContentClick: false,
+    overlayShow: true,
+    frameHeight: 410
+  });
+
+});
+
+
+
+  </script>
+<script type="text/javascript" charset="utf-8">
+  var isSelectedItemsPage = false;
+  var isFavoritesPage     = false;
+</script>
+<script src="http://www.lib.umich.edu/sites/www.lib.umich.edu/modules/mlibrary/favorites/export.js" type="text/javascript" charset="utf-8"></script>
+<link rel="stylesheet" type="text/css" media="screen" href="http://www.lib.umich.edu/sites/www.lib.umich.edu/modules/mlibrary/favorites/export.css">
+<!-- Our CSS -->
+<!-- <link rel="search" type="application/opensearchdescription+xml" title="Library Catalog Search" href="http://mirlyn.lib.umich.edu/Search/OpenSearch?method=describe"> -->
+<link rel="stylesheet" type="text/css" media="screen" href="http://mirlyn.lib.umich.edu/interface/themes/um/css/normalize.css">
+<link rel="stylesheet" type="text/css" media="screen" href="http://mirlyn.lib.umich.edu/interface/themes/um/css/styles.css">
+<link rel="stylesheet" type="text/css" media="screen" href="http://mirlyn.lib.umich.edu/interface/themes/um/css/wrapper.css">
+<link rel="stylesheet" type="text/css" media="screen" href="http://mirlyn.lib.umich.edu/interface/themes/um/css/mlibrary_header.css">
+<link rel="stylesheet" type="text/css" media="screen" href="http://mirlyn.lib.umich.edu/interface/themes/um/css/mlibrary_footer.css">
+<link rel="stylesheet" type="text/css" media="print" href="http://mirlyn.lib.umich.edu/interface/themes/um/css/print.css">
+<!--[if lt IE 8]> <link rel="stylesheet" type="text/css" media="screen" href="/interface/themes/um/css/pre-ie8.css"> <![endif]-->
+<style type="text/css">
+.my-tags.tag-icon .inner:hover {
+border: none;
+}
+</style>
+</head>
+<body>
+<!--
+###################### BEGIN POPOUT DISPLAY TEXT########################
+-->
+<div id="searchhistory_help" style="display:none;" >
+<h2>Search History</h2>
+<p>We’re still working on Search History.  We hope to have it available soon. Once it’s here, it will provide a list of your recent searches and allow you to revisit them within a browser session.</p>
+</div>
+<div  class="overlay" style="display:none; text-align: left" id="searchtips_text">
+<div style="padding: 3em;">
+<div style="text-align: left">
+<h2>Search Tips</h2>
+<h3>Phrase Searching</h3>
+<p>Use quotes to search an exact phrase: e.g. "occult fiction"</p>
+<h3>Boolean Searching</h3> 
+<p>Use AND, OR, and NOT between words to combine them with Boolean logic: e.g. <i>(heart OR cardiac) AND surgery NOT procedures</i> will find items about heart surgery or cardiac surgery but not about surgery procedures. Boolean terms must be in uppercase </p>
+<h3>Plus (+) and Minus (-) Operators</h3>
+Use '+' (plus) immediately before a word to make that word required --  items must contain that word in order to  match your search. Use '-' (minus) immediately before a word to exclude that word  -- items must not contain that word in order to match your search. <i>+cat -dog</i> would match all items that contain the word cat but not the word dog.
+</div>  </div>
+</div>
+<div  class="overlay" style="display:none; text-align: left" id="loginDialog">
+<div style="padding: 3em;">
+<div>
+<h2>Not logged in</h2>
+You need to
+<a href="https://www.lib.umich.edu/vf/vflogin_dbsess.php?returnto=http%3A%2F%2Fmirlyn.lib.umich.edu%2FSearch%2FHome%3Fcheckspelling%3Dtrue%26inst%3Dall%26showsearchonly%3Dfalse%26oft%3Dfalse%26lookfor%3Drosencrantz%26type%3Dall%26submit%3DFind%26use_dismax%3D1">log in</a>
+to access that functionality.
+</div>  </div>
+</div>
+<div  id="login_to_text" style="display:none;" >
+<h3>Send record via text message</h3>
+<p>Texting is only available to logged-in users. Please <a id="text_login_link" href="Home%3Fcheckspelling=true&amp;inst=all&amp;showsearchonly=false&amp;oft=false&amp;lookfor=rosencrantz&amp;type=all&amp;submit=Find&amp;use_dismax=1.html">log in</a>.
+</p>
+<script language="JavaScript" type="text/javascript">
+    jq('#text_login_link').attr('href', loginLink());
+  </script>
+</div>
+<div  id="login_to_email" style="display:none;" >
+<h3>Email</h3>
+<p>Email is only available to logged-in users. Please <a id="email_login_link" href="Home%3Fcheckspelling=true&amp;inst=all&amp;showsearchonly=false&amp;oft=false&amp;lookfor=rosencrantz&amp;type=all&amp;submit=Find&amp;use_dismax=1.html">log in</a>.
+</p>
+<script language="JavaScript" type="text/javascript">
+    jq('#email_login_link').attr('href', loginLink());
+  </script>
+</div>
+<div class="overlay" style="display:none; text-align: left" id="htso">
+<div style="padding: 3em;">
+<h3>Search only (no full text)</h3>
+<p>There are some items in Mirlyn that have a status of "Search only (no full text)."
+These are items that have been digitized, but due to copyright restrictions, are not actually viewable.
+The contents of these items are searchable within the HathiTrust Digital Library interface.
+This ability to search within materials may be useful to help you determine whether a volume is relevant to
+your needs/interests so you can decide whether to obtain a physical copy.
+</p>
+<p>"Search only (no full text)" items are not included in default search results.  Check this box if
+you want to include them.   The box will remain checked and will apply to all searches in your
+session until you uncheck it.
+</p>
+</div>
+</div>
+<div class="overlay" style="display:none; text-align: left" id="fulltextonly">
+<div style="padding: 3em;">
+<h3>Available online</h3>
+<p>Titles are identified in Mirlyn as being “Available online” when at least one complete volume,
+issue, or part of the primary content is accessible online to all current U-M students, faculty and staff.</p>
+<p>Check this box to restrict search results to "Available online" titles.
+The box will remain checked and will apply to all searches in your session until you uncheck it.</p>
+</div>
+</div>
+<div class="overlay" style="display:none; text-align: left" id="section108">
+<div style="padding: 3em;">
+<p>Section 108 of United States copyright law allows full view access to this item in limited circumstances (listed below).
+In all other cases, access will be search only.
+<ul>
+<li>Full view is available to <b>authenticated University of Michigan users</b>
+(limited to one user at a time).
+<li>Full view is available from <b>public in-library workstations</b> in the following UM libraries:
+<ul>
+<li><a href="http://www.lib.umich.edu/art-architecture-engineering-library">Art, Architecture, and Engineering Library</a>
+<li><a href="http://www.lib.umich.edu/buhr-remote-shelving-facility">Buhr Remote Shelving Facility</a>
+<li><a href="http://www.lib.umich.edu/hatcher-graduate-library">Hatcher Graduate Library</a>
+<li><a href="http://www.lib.umich.edu/health-sciences-libraries">Health Sciences Libraries</a>
+<li><a href="http://www.lib.umich.edu/music-library">Music Library</a>
+<li><a href="http://www.lib.umich.edu/shapiro-undergraduate-library">Shapiro Undergraduate Library</a>
+<li><a href="http://www.lib.umich.edu/shapiro-science-library">Shapiro Science Library</a>
+</ul>
+</ul>
+<p style="margin-top: 1em; font-size: 80%">Notice Concerning Copyright Restrictions:  Access to this digital reproduction is governed by the copyright law of the United States [Title 17, United States Code].  Libraries and archives are authorized to provide access to a digitized reproduction under certain conditions.  No further reproduction and distribution of this digitized material is permitted by transmission or any other means. A user who reproduces or transmits this material may be liable for copyright infringement.</p>
+</div>
+</div>
+<!--
+###################### END POPOUT DISPLAY TEXT########################
+-->
+<nav id="header-links">
+<div id="home-links">
+<a href="http://mirlyn.lib.umich.edu/" id="mirlyn_logo"><img alt="Mirlyn Catalog" src="http://mirlyn.lib.umich.edu/images/mirlyn_catalog_on_white_cropped.jpg"></a>
+<a href="http://www.lib.umich.edu/" id="mlib_logo"><img src="http://mirlyn.lib.umich.edu/images/mlibrary.png" width="82" height="23" alt="Mlibrary Homepage"></a>
+</div>
+<div id="external-nav">
+<h2 class="hiddentext">Related Sites</h2>
+<a href="http://www.lib.umich.edu/searchtools">Search Tools</a>
+<a href="http://www.lib.umich.edu/searchtools#articlesplus/search">ArticlesPlus</a>
+<a href="http://mgetit.lib.umich.edu.proxy.lib.umich.edu/?SS_Page=refiner&amp;SS_RefinerEditable=yes">MGet It</a>
+<a href="https://ill.lib.umich.edu/illiad/illiad.dll?" title="Interlibrary Loans">I.L.L.</a>
+<a href="http://www.lib.umich.edu/ask-librarian" target="ask" class="last">Ask a Librarian</a>
+</div>
+<div id="login-nav">
+<h2 class="hiddentext">Account</h2>
+<a class="clickpostlog" ref="topaccountNLI" href="https://www.lib.umich.edu/my-account" title="Log in and view your account information">My Account</a>
+<a class="clickpostlog" ref="topfavorites" href="https://www.lib.umich.edu/my-account/favorites" title="Favorites"><span class="favorites">Favorites</span></a>
+<a href="https://www.lib.umich.edu/vf/vflogin_dbsess.php?returnto=http%3A%2F%2Fmirlyn.lib.umich.edu%2FSearch%2FHome%3Fcheckspelling%3Dtrue%26inst%3Dall%26showsearchonly%3Dfalse%26oft%3Dfalse%26lookfor%3Drosencrantz%26type%3Dall%26submit%3DFind%26use_dismax%3D1" class="last">Login</a>
+</div>
+</nav>
+<div id="doc3" class="yui-t8"> <!-- Change id for page width, class for menu layout. -->
+<!-- Searchbox -->
+<div id="bd">
+<div id="yui-main" style="*margin-left: 0em;">
+<form method="GET" id="searchForm" action="http://mirlyn.lib.umich.edu/Search/Home" name="searchForm" onsubmit="fixform(this)" class="search searchbox">
+<h2 class="hiddentext">Search</h2>
+<input type="hidden" name="checkspelling" value="true" />
+<div class="search-location-select">
+<label for="inst">Search in: </label>
+<div class="clean-select">
+<select name="inst" id="inst" class="stickyform" >
+<option value="all" selected>All Libraries</option>
+<option value="aa">UM Ann Arbor Libraries</option>
+<option value="flint">Flint Thompson Library</option>
+<option value="umtri">Transportation Research Institute Library (UMTRI)</option>
+<option value="bentley">Bentley Historical Library</option>
+<option value="clements">William L. Clements Library</option>
+</select>
+</div>
+</div>
+<div class="search-query-block">
+<input type="button" value="Clear" onclick="jq('#searchForm').clearForm(['inst']);" id="clear_searchbox" class="searchbox-button">
+<p class="hiddentext">The "Clear" button resets all the search form elements.</p>
+<script type="text/javascript" charset="utf-8">
+  function logcheckbox(type, status) {
+    clickpostlog(this, [type, status])
+    return true
+  }
+</script>
+<input id='sso' type="hidden" name="showsearchonly" value="false"/>
+<input id='oft' type='hidden' name='oft' value="false"/>
+<div class="secondRowOfTheSearchBox">
+<input id="onlyfulltext"  type="checkbox" value="true"
+onclick="if (jq(this).is(':checked')) {logcheckbox('fulltextcheckbox', 'on'); jq('#oft').val('true')} 
+else {logcheckbox('fulltextcheckbox', 'off'); jq('#oft').val('false')}"
+>
+<label for="onlyfulltext">Limit to <strong>Available online</strong> <a href="Home%3Fcheckspelling=true&amp;inst=all&amp;showsearchonly=false&amp;oft=false&amp;lookfor=rosencrantz&amp;type=all&amp;submit=Find&amp;use_dismax=1.html#fulltextonly" class="dolightbox"><img  style="vertical-align: middle;" alt="" src="http://mirlyn.lib.umich.edu/images/silk/help.png"></a></label>
+<input  style="margin-left: 2em" id="showsearchonly" type="checkbox" value="true"
+onclick="if (jq(this).is(':checked')) {logcheckbox('htsocheckbox', 'on'); jq('#sso').val('true')} else {logcheckbox('htsocheckbox', 'off'); jq('#sso').val('false')}"
+>
+<label for="showsearchonly">Include <strong>Search only</strong> (no full text) <a href="Home%3Fcheckspelling=true&amp;inst=all&amp;showsearchonly=false&amp;oft=false&amp;lookfor=rosencrantz&amp;type=all&amp;submit=Find&amp;use_dismax=1.html#htso" class="dolightbox"><img  style="vertical-align: middle;" alt="" src="http://mirlyn.lib.umich.edu/images/silk/help.png"></a></label>
+</div>
+<label for="lookfor" class="hiddentext">Search terms: </label>
+<input type="text" name="lookfor" id="lookfor" size="30" value="rosencrantz">
+<label for="searchtype" class="hiddentext">Search type: </label>
+<div class="clean-select">
+<select name="type" id="searchtype">
+<option value="all">All Fields</option>
+<option value="title">Title</option>
+<option value="author">Author</option>
+<option value="subject">Subject</option>
+<option value="hlb">Academic Discipline</option>
+<option value="callnumber">Call Number starts with</option>
+<option value="isn">ISBN / ISSN / etc.</option>
+<option value="serialtitle">Journal/Serial name</option>
+</select>
+</div>
+<input  type="submit" name="submit" value="Find" class="searchbox-button">
+<input type="hidden" name="use_dismax" value="1">
+</div>
+<span class="search-extras">
+<a href="Home%3Fcheckspelling=true&amp;inst=all&amp;showsearchonly=false&amp;oft=false&amp;lookfor=rosencrantz&amp;type=all&amp;submit=Find&amp;use_dismax=1.html#searchtips_text" class="dolightbox searchbox-button">Search Tips</a>
+<div  class="overlay" style="display:none; text-align: left" id="searchtips_text">
+<div style="padding: 3em;">
+<div style="text-align: left">
+<h2>Search Tips</h2>
+<h3>Phrase Searching</h3>
+<p>Use quotes to search an exact phrase: e.g. "occult fiction"</p>
+<h3>Boolean Searching</h3> 
+<p>Use AND, OR, and NOT between words to combine them with Boolean logic: e.g. <i>(heart OR cardiac) AND surgery NOT procedures</i> will find items about heart surgery or cardiac surgery but not about surgery procedures. Boolean terms must be in uppercase </p>
+<h3>Plus (+) and Minus (-) Operators</h3>
+Use '+' (plus) immediately before a word to make that word required --  items must contain that word in order to  match your search. Use '-' (minus) immediately before a word to exclude that word  -- items must not contain that word in order to match your search. <i>+cat -dog</i> would match all items that contain the word cat but not the word dog.
+</div>          </div>
+</div>
+<a href="http://mirlyn.lib.umich.edu/Search/Advanced" class="small searchbox-button">Advanced<span class="hiddentext"> Search</span></a>
+</span>
+</form>
+</div>
+</div>
+<!-- Content -->
+<script language="JavaScript" type="text/javascript" src="http://mirlyn.lib.umich.edu/services/Search/ajax.js"></script>
+<script language="JavaScript" type="text/javascript" src="http://mirlyn.lib.umich.edu/js/googleLinks.js"></script>
+<script language="JavaScript" type="text/javascript">
+
+
+function changeSearchOnly(check) {
+  url = document.location.href
+  checked =  jq(check).is(":checked")
+  url=url.replace(/[?&]showsearchonly=[^&]+/, '')
+  url=url.replace(/[?&]page=[^&]+/g, '')
+  url += '&showsearchonly=' + checked
+  document.location.href=url
+}
+
+
+</script>
+<!-- Main Listing -->
+<div id="bd">
+<div id="yui-main" class="content">
+<div class="yui-b first contentbox">
+<!-- Narrow Options for an Author Search-->
+<!-- End Narrow Options -->
+<!-- Spelling suggestion -->
+<!-- Listing Options -->
+<div class="yui-ge resulthead">
+<div class="yui-u first">
+Showing
+<b>1</b> - <b>20</b>
+of <b>68</b>
+Results for <b>all fields:rosencrantz</b>
+</div>
+<div class="yui-u toggle" style="width: auto">
+Sort&nbsp;<select name="sort" onChange="document.location.href='/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=rosencrantz&amp;page=1&amp;sort=' + this.options[this.selectedIndex].value;">
+<option value="">Relevance</option>
+<option value="year">Date (newest first)</option>
+<option value="yearup">Date (oldest first)</option>            
+<!-- <option value="callnumber">Call Number</option> -->
+<option value="author">Author</option>
+<!--            <option value="title">Title</option>  -->
+<option value="dateadded">Date added</option>
+</select>
+</div>
+</div>
+<style type="text/css" media="screen">
+button.tempSelected {
+color: red;
+}
+button.tempUnselected {
+color: green;
+}
+.tools button.temptoggle {
+margin-top: -.5em;
+}
+.erError {
+padding-top: 1em;
+}
+</style>
+<div id="smsSingle"   style="background-color: #fff; display: none">
+<div class="fancyboxInner">
+<h2>Send record via SMS</h2>
+<form method="post" action="http://mirlyn.lib.umich.edu/Search/null"
+onSubmit="sendSMS('', jq(this)); return false;">
+<table>
+<tr>
+<td>Number: </td>
+<td><input type="text" name="to" value="10-Digit Phone Number" onfocus="if(this.value=='10-Digit Phone Number'){this.value=''}" onblur = "if(this.value==''){this.value='10-Digit Phone Number'}"></td>
+</tr>
+<tr>
+<td>Provider: </td>
+<td>
+<select name="provider">
+<option selected=true value="">Select your carrier</option>
+<option value="att">AT&amp;T</option>
+<option value="verizon">Verizon</option>
+<option value="tmobile">T Mobile</option>
+<option value="sprint">Sprint</option>
+<option value="nextel">Nextel</option>
+<option value="vmobile">Virgin Mobile</option>
+<option value="alltel">Alltel</option>
+<option value="cricket">Cricket</option>
+</select>
+</td>
+</tr>
+<tr>
+<td></td>
+<td><button onclick="sendSMS(''); return false;">Send</button></td>
+</tr>
+</table>
+</form>
+<div class="erError"></div>
+</div>
+</div>
+<div id="emailSingle"   style="background-color: #fff; display: none">
+<div class="fancyboxInner">
+<p><strong>Email this item</strong></p>    
+<p>By filling out the form below, you can email this item to yourself or someone else.</p>
+<p>Please make sure the "To" address is a complete, valid email address (e.g., user@umich.edu).</p>
+<form action="http://mirlyn.lib.umich.edu/Search/GET" action="/Search/SearchExport">
+<input type="hidden" name="method" value="emailRecords">
+<input type="hidden" name="id" value="">
+<table style="margin:0; padding: 0; width: auto;">
+<tbody>
+<tr>
+<td>To:</td><td><input name="to" type="text" size="20"></td>
+</tr>
+<tr>
+<td>From:</td><td></td>
+</tr>
+<tr>
+<td>Message:</td><td><textarea  name="message"></textarea></td>
+</tr>
+</tbody>
+</table>
+<input type="button" value="Send email" onclick="emailSelectedRecords({'handpicked': ''}); return false;">
+</form>
+<div class="erError"></div>
+</div>
+</div>
+<div id="emailRecords" style="background-color: #fff; display: none">
+<div class="fancyboxInner">
+<p><strong>Email <span class="tempcount">0</span>  selected <span class="tempdenom">items</span></strong></p>    
+<p>Email the selected <span class="tempcount">0</span> <span class="tempdenom">items</span> to the address given below. </p>
+<p>Please make sure the "To" address is a complete, valid email address (e.g., user@umich.edu).</p>
+<form type="GET" action="http://mirlyn.lib.umich.edu/Search/SearchExport">
+<input type="hidden" name="method" value="emailRecords">
+<input type="hidden" name="tag" value="168.1435326342460ea53.67847116">
+<table style="margin:0; padding: 0; width: auto;">
+<tbody>
+<tr>
+<td>To:</td><td><input name="to" type="text" size="20"></td>
+</tr>
+<tr>
+<td>From:</td><td></td>
+</tr>
+<tr>
+<td>Message:</td><td><textarea  name="message"></textarea></td>
+</tr>
+</tbody>
+</table>
+<input type="button" value="Send email" onclick="emailSelectedRecords({'tempset': 1}); return false;">
+</form>
+<div class="erError" style="padding-top: 1em;"></div>
+<p style="text-align: right"><a href="Home%3Fcheckspelling=true&amp;inst=all&amp;showsearchonly=false&amp;oft=false&amp;lookfor=rosencrantz&amp;type=all&amp;submit=Find&amp;use_dismax=1.html#" onclick="replaceLightbox('exportMenu'); return false">(back)</a></p>
+</div>
+</div>
+<div id="exportRecords" style="background-color: #fff; display: none">
+<div style=" padding:3em;">
+<p><strong>Export or Save <span class="tempcount">0</span> 
+<span class="tempdenom">items</span>
+</strong></p>
+<p>Clicking on the link below will download the records in "RIS" format, which can be read by Endnote, Procite, Zotero, etc. </p>
+<p>You may either open the file in Endnote (or other program) directly, or save it and subsequently import it into your program.
+Saving and then importing will usually correct any foreign-language characters that import incorrectly with a direct import.]</p>
+<p style="text-align: center">
+<a href="http://mirlyn.lib.umich.edu/Search/SearchExport?method=ris&amp;tag=168.1435326342460ea53.67847116" onclick="setTimeout('jq.fn.fancybox.close()', 2500); return true;">Export the selected 
+<span class="tempcount">0</span> <span class="tempdenom">items</span> in RIS Format</a>
+</p>
+<p style="text-align: right">
+<a href="Home%3Fcheckspelling=true&amp;inst=all&amp;showsearchonly=false&amp;oft=false&amp;lookfor=rosencrantz&amp;type=all&amp;submit=Find&amp;use_dismax=1.html#" onclick="replaceLightbox('exportMenu'); return false">(back)</a>
+</p>
+</div>
+</div>
+<div id="exportMenu" style="background-color: #fff; display: none">
+<div class="fancyboxInner">
+<p><strong>Export <span class="tempcount">0</span> selected <span class="tempdenom">items</span></strong></p>
+<p>You have selected <span class="tempcount">0</span> <span class="tempdenom">items</span>. You may:</p>
+<ul>
+<li><a href="Home%3Fcheckspelling=true&amp;inst=all&amp;showsearchonly=false&amp;oft=false&amp;lookfor=rosencrantz&amp;type=all&amp;submit=Find&amp;use_dismax=1.html#" onclick="replaceLightbox('exportRefworks'); return false;">send the selected <span class="tempdenom">items</span> to Refworks</a></li>
+<li><a href="Home%3Fcheckspelling=true&amp;inst=all&amp;showsearchonly=false&amp;oft=false&amp;lookfor=rosencrantz&amp;type=all&amp;submit=Find&amp;use_dismax=1.html#" onclick="replaceLightbox('exportRecords'); return false;">export the selected <span class="tempdenom">items</span> to a text file or a  program like Endnote, Procite, or Zotero</a></li>
+</ul>
+</div>
+</div>
+<div id="exportRefworks" style="background-color: #fff; display: none">
+<div class="fancyboxInner">
+<p><strong>Export to Refworks</strong></p>
+<p>Clicking on the button below will send the <span class="tempcount">0</span> selected 
+<span class="tempdenom">items</span> to Refworks.</p>
+<p>A new window will open, and you may be asked to log into Refworks to continue.[Refworks is allowed access for about ten minutes. If you wait longer than that, you'll need to do the export again.]</p>
+<p>Choose the campus through which you use RefWorks:</p>
+<form>
+<input type="radio" name="campus" value="aa"> Ann Arbor<br/>
+<input type="radio" name="campus" value="flint"> Flint<br/>
+<div  style="padding-top: 1em;"><button onclick="exportTempToRefworks('tempset=1'); return false">Export to RefWorks</button></div>
+</form>
+<p style="text-align: right">
+<a href="Home%3Fcheckspelling=true&amp;inst=all&amp;showsearchonly=false&amp;oft=false&amp;lookfor=rosencrantz&amp;type=all&amp;submit=Find&amp;use_dismax=1.html#" onclick="replaceLightbox('exportMenu'); return false">(back)</a>
+</p>  
+</div>
+</div>
+<div id="exportRefworksSingle" style="background-color: #fff; display: none">
+<div class="fancyboxInner">
+<p><strong>Export to Refworks</strong></p>
+<p>Clicking on the button below will send this item, <i></i>, to Refworks.</p>
+<p>A new window will open, and you may be asked to log into Refworks to continue.[Refworks is allowed access for about ten minutes. If you wait longer than that, you'll need to do the export again.]</p>
+<p>Choose the campus through which you use RefWorks:</p>
+<form>
+<input type="radio" name="campus" value="aa"> Ann Arbor<br/>
+<input type="radio" name="campus" value="flint"> Flint<br/>
+<div  style="padding-top: 1em;"><button style="padding-top: 1em;" onclick="exportTempToRefworks('handpicked='); return false">Export to RefWorks</button></div>
+</form>
+</div>
+</div>
+<div id="clearSelected" style="background-color: #fff; display: none">
+<div class="fancyboxInner">
+<p><strong>Clear selected <span class="tempdenom">items</span> </strong></p>
+<p> By clicking the below button, you will remove the "selected" status from the  <span class="tempcount">0</span> 
+currently selected <span class="tempdenom">items</span>. Are you sure?</p>
+<p><button onclick="clearTempItems();">Clear selected items</button></p>
+<div class="erError" style="padding-top: 1em;"></div>
+</div>
+</div>
+<div id="deleteFavorite" style="background-color: #fff; display: none">
+<div class="fancyboxInner">
+<h2>Remove Favorite</h2>
+<p>Are you sure you want to remove:</p>
+<div style="padding-left: 1.5em;"><i><span class="favFormTitle"></span></i></div>
+<p>...from your list of favorites?</p>
+<p><button class="deleteButton">Remove from Favorites</button>
+<button onclick="jq.fn.fancybox.close()">Cancel</button></p>
+</div>
+</div>
+<a id="openEditFavorite" class="dolightbox" href="Home%3Fcheckspelling=true&amp;inst=all&amp;showsearchonly=false&amp;oft=false&amp;lookfor=rosencrantz&amp;type=all&amp;submit=Find&amp;use_dismax=1.html#editFavorite" style="display:none"></a>
+<div id="editFavorite" style="background-color: #fff; display: none">
+<div class="fancyboxInner">
+<h2><span class="favFormTitle"></span></h2>
+<input type="hidden" name="id">
+<div class="currentFavorites">
+<h3>Choose which tags to keep or remove</h3>
+<table class="currentFavorites">
+<thead><tr><th style="width: 10%">Keep?</th><th>Tag</th></tr></thead>
+<tbody class="currentFavoritesCheckboxes">
+</tbody>
+</table>
+</div>
+<p><label for="newtags">Add new tags (separate with commas)</label><br>
+<input id="newtags" name="newtags" size="45"></p>
+<div class="buttonlist">
+<!-- this.parent.parent to get to the whole div with all the data in it -->
+<button onclick="editFavorite(jq(this).parent().parent())">Submit</button>
+<button onclick="jq.fn.fancybox.close();return false">Cancel</button>
+<button onclick="openDeleteFavorite(jq(this).parent().parent());return false;" 
+href="#deleteFavorite" class="deleteButton">Remove from Favorites</button>
+</div>
+</div>
+</div>
+<div id="saveToFavorites" style="background-color: #fff; display: none">
+<div class="fancyboxInner">
+<p><strong>Saving to <span class="favorites">Favorites</span></strong></p>
+<p>...requires you to first <a href="https://www.lib.umich.edu/vf/vflogin_dbsess.php?returnto=http%3A%2F%2Fmirlyn.lib.umich.edu%2FSearch%2FHome%3Fcheckspelling%3Dtrue%26inst%3Dall%26showsearchonly%3Dfalse%26oft%3Dfalse%26lookfor%3Drosencrantz%26type%3Dall%26submit%3DFind%26use_dismax%3D1">Login</a></p>
+</div>
+</div>
+<div id="tempBoxes">
+<a id="saveToFavoritesLink" class="dolightbox" href="Home%3Fcheckspelling=true&amp;inst=all&amp;showsearchonly=false&amp;oft=false&amp;lookfor=rosencrantz&amp;type=all&amp;submit=Find&amp;use_dismax=1.html#saveToFavorites" style="display:none"></a>
+<div id="tempFolder"  style="display:none">
+<span class="templine" id="tempFolder"><strong>For Selected  <span class="tempdenom">Items</span></strong> (<span class="tempcount">0</span>)</span>:
+<ul id="tempbox">
+<li class="first list"><a title="List selected items for viewing or printing" href="http://mirlyn.lib.umich.edu/Tags/SelectedItems">List</a></li>
+<li><a href="Home%3Fcheckspelling=true&amp;inst=all&amp;showsearchonly=false&amp;oft=false&amp;lookfor=rosencrantz&amp;type=all&amp;submit=Find&amp;use_dismax=1.html#login_to_email" class="mail dolightbox">Email</a></li>
+<li><a class="dolightbox" title="Export selected items" href="Home%3Fcheckspelling=true&amp;inst=all&amp;showsearchonly=false&amp;oft=false&amp;lookfor=rosencrantz&amp;type=all&amp;submit=Find&amp;use_dismax=1.html#exportMenu">Export</a></li>
+<li><a class="dolightbox" title="Remove all items from Selected Items list" href="Home%3Fcheckspelling=true&amp;inst=all&amp;showsearchonly=false&amp;oft=false&amp;lookfor=rosencrantz&amp;type=all&amp;submit=Find&amp;use_dismax=1.html#clearSelected">Clear</a></li>
+<li><a id="inFavorites_tempset" class="dolightbox" title="Save all selected items to Favorites" href="Home%3Fcheckspelling=true&amp;inst=all&amp;showsearchonly=false&amp;oft=false&amp;lookfor=rosencrantz&amp;type=all&amp;submit=Find&amp;use_dismax=1.html#loginDialog"><img class="stof" alt="Save selected items to favorites" src="http://mirlyn.lib.umich.edu/images/saveselected-enabled.png">
+</a></li>
+</ul>
+</div>
+<div id="tempFolderEmpty">
+<span class="templine" id="tempFolder"><strong>For Selected  <span class="tempdenom">Items</span></strong> (<span class="tempcount">0</span>):</span>
+<ul id="tempboxEmpty">
+<li class="first list">List</li>
+<li style="padding-left: 20px">Email</li>
+<li>Export</li>
+<li>Clear</li>
+<li><img class="stof" src="http://mirlyn.lib.umich.edu/images/saveselected-disabled.png" alt="Disabled: would save selected items to favorites if any items were selected"></li>
+</ul>
+</div>
+</div>
+<!-- End Listing Options -->
+<div class="pagination"><span>1</span><a class="clickpostlog" ref="pickpage|2" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=rosencrantz&amp;page=1&amp;page=2" title="page 2">2</a><a class="clickpostlog" ref="pickpage|3" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=rosencrantz&amp;page=1&amp;page=3" title="page 3">3</a><a class="clickpostlog" ref="pickpage|4" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=rosencrantz&amp;page=1&amp;page=4" title="page 4">4</a><a class="clickpostlog" ref="pickpage|2" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=rosencrantz&amp;page=1&amp;page=2" title="next page">Next &raquo;</a></div>
+<script>
+  
+  tagredraw = function(me) {
+    var tag_host = 'https://www.lib.umich.edu';
+    jq('div.tag div.remove-tag', me).click( function() {
+      //Trigger an api remove.
+      var x = jq(this).parent().parent().parent();
+      var y = jq(this).parent();
+      var q = jq('input.favorite-ids', x).val() + '&' +encodeURIComponent('tags[0]')+'='+ encodeURIComponent( jq('.actual', y).text());
+      jq.getJSON(
+        tag_host + '/favorites/api/remove?callback=?&' + q,
+        function(data) { }
+      );
+      y.remove();
+    });
+    jq('div.in-favorites', me).click(function() {
+      jq(this).addClass('ajax-hidden');
+      var x = jq(this).parent();
+      jq('div.not-in-favorites', x).removeClass('ajax-hidden');
+      jq('div.my-tags', x).addClass('ajax-hidden');
+      var q = jq('input.favorite-ids', x).val() + '&' + jq('input.favorite-internal-tags', x).val();
+      jq.getJSON(
+        tag_host + '/favorites/api/remove?callback=?&' + q,
+        function(data) { }
+      );
+    });
+    jq('div.not-in-favorites', me).click(function() {
+      jq(this).addClass('ajax-hidden');
+      var x = jq(this).parent();
+      jq('div.in-favorites', x).removeClass('ajax-hidden');
+      jq('div.my-tags', x).removeClass('ajax-hidden');
+      var q = jq('input.favorite-ids', x).val() + '&' + jq('input.favorite-internal-tags', x).val();
+      jq.getJSON(
+        tag_host + '/favorites/api/add?callback=?&' + q,
+        function(data) { }
+      );
+    });
+  }
+
+
+</script>
+<div style="margin-top: 1.5em">
+<div id="record_001073574"  class="result record1  ">
+<div class="yui-ge">
+<div class="yui-u first">
+<div class="googleCoverColumn">
+<div class="temp" id="temp_001073574" style="float:left; padding-right: 3px">
+<input type="checkbox" id="inSelected_001073574" onclick="selectedToggle(this)" class="selectedCheckbox" value="on">
+</div>
+<div id="GoogleCover_001073574" class="googleCover">
+<img src="http://mirlyn.lib.umich.edu/images/noCover2.gif">
+</div>
+<div class="tempAndFavorites">
+<div class="wsfavorites" id="favorites-001073574">
+<div class="button special-button unstar-icon" style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; "><a
+class="wsfavlogin inner dolightbox" href="Home%3Fcheckspelling=true&amp;inst=all&amp;showsearchonly=false&amp;oft=false&amp;lookfor=rosencrantz&amp;type=all&amp;submit=Find&amp;use_dismax=1.html#loginDialog">Save to<br>Favorites</a></div>
+</div>
+</div>
+</div>
+<div class="resultitem">
+<abbr class="unapi-id" title="urn:bibnum:001073574"></abbr>
+<div id="resultItemLine1" class="results_title">
+<!-- title array -->
+<a ref="recview|001073574||1" href="http://mirlyn.lib.umich.edu/Record/001073574" class="title clickpostlog">Six duettos pour deux violons, composées par J. A. <span class="highlight">Rosencrantz</span>. Oeuvre III. </a><br>
+<!-- preferred title -->
+</div>
+<div id="resultItemLine2" class="results_author">
+by
+<a class="clickpostlog" ref="realauthlink|001073574||1" href="http://mirlyn.lib.umich.edu/Search/Home?lookfor=%22Rosencrantz,&#32;J.&#32;A.%22&amp;type=author"><span class="highlight">Rosencrantz</span>, J. A.</a>
+</div>
+<div id="resultItemLine3" class="results_published">
+Published 1700          </div>
+<div id="resultItemLine4" class="results_format">
+<span class="iconlabel musicalscore">Musical Score</span>
+</div>
+<table class="holdings" width="100%" id="holdings001073574">
+<tr>
+<th width="55%">Location</th>
+<th width="20%">Status</th>
+<th width="30%">Call Number / Description</th>
+</tr>
+<tr id="0_001073574">
+<td class="holdingLocation">
+Music Rare Book Rm.
+</td>
+<td>Building use only</td>
+<td>
+M 287 .R82 D8
+</td>
+</tr>
+<tr id="1_001073574">
+<td class="holdingLocation">
+</td>
+<td></td>
+<td>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<!--
+<span class="Z3988"
+title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Adc&amp;rfr_id=info%3Asid%2Fvufind.svn.sourceforge.net%3Agenerator&amp;rft.title=Array&amp;rft.creator=Array&amp;rft.date=Array&amp;rft.pub=Array&amp;rft.format=Array">
+-->
+</div>
+<!--     <script type="text/javascript">
+     getStatuses('001073574');
+  </script>
+-->
+<script type="text/javascript">
+         jq(document).ready(function() {
+        getGoogleBookInfo('OCLC:23622883', '001073574', '1');
+      });
+      </script>
+<div id="record_011435460"   class="result alt record2  ">
+<div class="yui-ge">
+<div class="yui-u first">
+<div class="googleCoverColumn">
+<div class="temp" id="temp_011435460" style="float:left; padding-right: 3px">
+<input type="checkbox" id="inSelected_011435460" onclick="selectedToggle(this)" class="selectedCheckbox" value="on">
+</div>
+<div id="GoogleCover_011435460" class="googleCover">
+<img src="http://mirlyn.lib.umich.edu/images/noCover2.gif">
+</div>
+<div class="tempAndFavorites">
+<div class="wsfavorites" id="favorites-011435460">
+<div class="button special-button unstar-icon" style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; "><a
+class="wsfavlogin inner dolightbox" href="Home%3Fcheckspelling=true&amp;inst=all&amp;showsearchonly=false&amp;oft=false&amp;lookfor=rosencrantz&amp;type=all&amp;submit=Find&amp;use_dismax=1.html#loginDialog">Save to<br>Favorites</a></div>
+</div>
+</div>
+</div>
+<div class="resultitem">
+<abbr class="unapi-id" title="urn:bibnum:011435460"></abbr>
+<div id="resultItemLine1" class="results_title">
+<!-- title array -->
+<a ref="recview|011435460||2" href="http://mirlyn.lib.umich.edu/Record/011435460" class="title clickpostlog">The piano; its construction, and relation to tone, pitch and temperament, with directions how to use the "tunella" in conjunction with the piano, to learn the art of piano...</a><br>
+<!-- preferred title -->
+</div>
+<div id="resultItemLine2" class="results_author">
+by
+<a class="clickpostlog" ref="realauthlink|011435460||2" href="http://mirlyn.lib.umich.edu/Search/Home?lookfor=%22Rosencrantz,&#32;Isidor&#32;Bertram.%22&amp;type=author"><span class="highlight">Rosencrantz</span>, Isidor Bertram.</a>
+</div>
+<div id="resultItemLine3" class="results_published">
+Published 1902          </div>
+<div id="resultItemLine4" class="results_format">
+<span class="iconlabel book">Book</span>
+<span class="iconlabel availableonline">Available online</span>
+</div>
+<table class="holdings" width="100%" id="holdings011435460">
+<tr>
+<th width="55%">Location</th>
+<th width="20%">Status</th>
+<th width="30%">Call Number / Description</th>
+</tr>
+<tr id="0_011435460">
+<td class="holdingLocation">
+HathiTrust Digital Library
+</td>
+<td><a class="clickpostlog" ref="hathilink|011435460|hathi|Full text|2" target="link" href="http://hdl.handle.net/2027/chi.087376791">Available Online</a></td>
+<td>
+</td>
+</tr>
+<tr id="1_011435460">
+<td class="holdingLocation">
+</td>
+<td></td>
+<td>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<!--
+<span class="Z3988"
+title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Adc&amp;rfr_id=info%3Asid%2Fvufind.svn.sourceforge.net%3Agenerator&amp;rft.title=Array&amp;rft.creator=Array&amp;rft.date=Array&amp;rft.pub=Array&amp;rft.format=Array">
+-->
+</div>
+<!--     <script type="text/javascript">
+     getStatuses('011435460');
+  </script>
+-->
+<script type="text/javascript">
+         jq(document).ready(function() {
+        getGoogleBookInfo('CHI:087376791,OCLC:21898828', '011435460', '2');
+      });
+      </script>
+<div id="record_002822776"  class="result record3  ">
+<div class="yui-ge">
+<div class="yui-u first">
+<div class="googleCoverColumn">
+<div class="temp" id="temp_002822776" style="float:left; padding-right: 3px">
+<input type="checkbox" id="inSelected_002822776" onclick="selectedToggle(this)" class="selectedCheckbox" value="on">
+</div>
+<div id="GoogleCover_002822776" class="googleCover">
+<img src="http://mirlyn.lib.umich.edu/images/noCover2.gif">
+</div>
+<div class="tempAndFavorites">
+<div class="wsfavorites" id="favorites-002822776">
+<div class="button special-button unstar-icon" style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; "><a
+class="wsfavlogin inner dolightbox" href="Home%3Fcheckspelling=true&amp;inst=all&amp;showsearchonly=false&amp;oft=false&amp;lookfor=rosencrantz&amp;type=all&amp;submit=Find&amp;use_dismax=1.html#loginDialog">Save to<br>Favorites</a></div>
+</div>
+</div>
+</div>
+<div class="resultitem">
+<abbr class="unapi-id" title="urn:bibnum:002822776"></abbr>
+<div id="resultItemLine1" class="results_title">
+<!-- title array -->
+<a ref="recview|002822776||3" href="http://mirlyn.lib.umich.edu/Record/002822776" class="title clickpostlog">The life and confession of Herman <span class="highlight">Rosencrantz</span>; [microform] : executed in the city of Philadelphia, on the 5th day of May, 1770, for counterfeiting and uttering the bills of...</a><br>
+<!-- preferred title -->
+</div>
+<div id="resultItemLine2" class="results_author">
+by
+<a class="clickpostlog" ref="realauthlink|002822776||3" href="http://mirlyn.lib.umich.edu/Search/Home?lookfor=%22Rosencrantz,&#32;Herman,&#32;1716-1770.%22&amp;type=author"><span class="highlight">Rosencrantz</span>, Herman, 1716-1770.</a>
+</div>
+<div id="resultItemLine3" class="results_published">
+Published 1770          </div>
+<div id="resultItemLine4" class="results_format">
+<span class="iconlabel book">Book</span>
+<span class="iconlabel availableonline">Available online</span>
+<span class="iconlabel microform">Microform</span>
+</div>
+<table class="holdings" width="100%" id="holdings002822776">
+<tr>
+<th width="55%">Location</th>
+<th width="20%">Status</th>
+<th width="30%">Call Number / Description</th>
+</tr>
+<tr id="0_002822776">
+<td class="holdingLocation">
+Electronic Resources
+</td>
+<td><a class="clickpostlog" ref="elink|002822776|http://proxy.lib.umich.edu/login?url=http://opac.newsbank.com/select/evans/11839/|3" target="link" href="http://proxy.lib.umich.edu/login?url=http://opac.newsbank.com/select/evans/11839/">Available Online</a></td>
+<td>
+Access to the Early American Imprints version restricted; authentication may be required:
+</td>
+</tr>
+<tr id="1_002822776">
+<td class="holdingLocation">
+Hatcher Graduate Serials and Microforms - 203 N. Hatcher
+</td>
+<td>On shelf</td>
+<td>
+MICRO-F 2112 no. 11839
+</td>
+</tr>
+<tr id="2_002822776">
+<td class="holdingLocation">
+</td>
+<td></td>
+<td>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<!--
+<span class="Z3988"
+title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Adc&amp;rfr_id=info%3Asid%2Fvufind.svn.sourceforge.net%3Agenerator&amp;rft.title=Array&amp;rft.creator=Array&amp;rft.date=Array&amp;rft.pub=Array&amp;rft.format=Array">
+-->
+</div>
+<!--     <script type="text/javascript">
+     getStatuses('002822776');
+  </script>
+-->
+<script type="text/javascript">
+         jq(document).ready(function() {
+        getGoogleBookInfo('OCLC:55836976', '002822776', '3');
+      });
+      </script>
+<div id="record_005957892"   class="result alt record4  ">
+<div class="yui-ge">
+<div class="yui-u first">
+<div class="googleCoverColumn">
+<div class="temp" id="temp_005957892" style="float:left; padding-right: 3px">
+<input type="checkbox" id="inSelected_005957892" onclick="selectedToggle(this)" class="selectedCheckbox" value="on">
+</div>
+<div id="GoogleCover_005957892" class="googleCover">
+<img src="http://mirlyn.lib.umich.edu/images/noCover2.gif">
+</div>
+<div class="tempAndFavorites">
+<div class="wsfavorites" id="favorites-005957892">
+<div class="button special-button unstar-icon" style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; "><a
+class="wsfavlogin inner dolightbox" href="Home%3Fcheckspelling=true&amp;inst=all&amp;showsearchonly=false&amp;oft=false&amp;lookfor=rosencrantz&amp;type=all&amp;submit=Find&amp;use_dismax=1.html#loginDialog">Save to<br>Favorites</a></div>
+</div>
+</div>
+</div>
+<div class="resultitem">
+<abbr class="unapi-id" title="urn:bibnum:005957892"></abbr>
+<div id="resultItemLine1" class="results_title">
+<!-- title array -->
+<a ref="recview|005957892||4" href="http://mirlyn.lib.umich.edu/Record/005957892" class="title clickpostlog"><span class="highlight">Rosencrantz</span> & Guildenstern are dead / by Tom Stoppard ; consulting editor, Henry Popkin. </a><br>
+<!-- preferred title -->
+</div>
+<div id="resultItemLine2" class="results_author">
+by
+<a class="clickpostlog" ref="realauthlink|005957892||4" href="http://mirlyn.lib.umich.edu/Search/Home?lookfor=%22Stoppard,&#32;Tom.%22&amp;type=author">Stoppard, Tom.</a>
+</div>
+<div id="resultItemLine3" class="results_published">
+Published 2002          </div>
+<div id="resultItemLine4" class="results_format">
+<span class="iconlabel book">Book</span>
+</div>
+<table class="holdings" width="100%" id="holdings005957892">
+<tr>
+<th width="55%">Location</th>
+<th width="20%">Status</th>
+<th width="30%">Call Number / Description</th>
+</tr>
+<tr id="0_005957892">
+<td class="holdingLocation">
+Shapiro Undergraduate 1st floor Browsing Collection - Shelved by author
+</td>
+<td>On shelf Fiction</td>
+<td>
+</td>
+</tr>
+<tr id="1_005957892">
+<td class="holdingLocation">
+</td>
+<td></td>
+<td>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<!--
+<span class="Z3988"
+title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Adc&amp;rfr_id=info%3Asid%2Fvufind.svn.sourceforge.net%3Agenerator&amp;rft.title=Array&amp;rft.creator=Array&amp;rft.date=Array&amp;rft.pub=Array&amp;rft.format=Array">
+-->
+</div>
+<!--     <script type="text/javascript">
+     getStatuses('005957892');
+  </script>
+-->
+<script type="text/javascript">
+         jq(document).ready(function() {
+        getGoogleBookInfo('OCLC:50217417,OCLC:50217417,ISBN:0802132758', '005957892', '4');
+      });
+      </script>
+<div id="record_005827656"  class="result record5  ">
+<div class="yui-ge">
+<div class="yui-u first">
+<div class="googleCoverColumn">
+<div class="temp" id="temp_005827656" style="float:left; padding-right: 3px">
+<input type="checkbox" id="inSelected_005827656" onclick="selectedToggle(this)" class="selectedCheckbox" value="on">
+</div>
+<div id="GoogleCover_005827656" class="googleCover">
+<img src="http://mirlyn.lib.umich.edu/images/noCover2.gif">
+</div>
+<div class="tempAndFavorites">
+<div class="wsfavorites" id="favorites-005827656">
+<div class="button special-button unstar-icon" style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; "><a
+class="wsfavlogin inner dolightbox" href="Home%3Fcheckspelling=true&amp;inst=all&amp;showsearchonly=false&amp;oft=false&amp;lookfor=rosencrantz&amp;type=all&amp;submit=Find&amp;use_dismax=1.html#loginDialog">Save to<br>Favorites</a></div>
+</div>
+</div>
+</div>
+<div class="resultitem">
+<abbr class="unapi-id" title="urn:bibnum:005827656"></abbr>
+<div id="resultItemLine1" class="results_title">
+<!-- title array -->
+<a ref="recview|005827656||5" href="http://mirlyn.lib.umich.edu/Record/005827656" class="title clickpostlog"><span class="highlight">Rosencrantz</span> & Guildenstern are dead / by Tom Stoppard ; consulting editor, Henry Popkin. </a><br>
+<!-- preferred title -->
+</div>
+<div id="resultItemLine2" class="results_author">
+by
+<a class="clickpostlog" ref="realauthlink|005827656||5" href="http://mirlyn.lib.umich.edu/Search/Home?lookfor=%22Stoppard,&#32;Tom.%22&amp;type=author">Stoppard, Tom.</a>
+</div>
+<div id="resultItemLine3" class="results_published">
+Published 1991          </div>
+<div id="resultItemLine4" class="results_format">
+<span class="iconlabel book">Book</span>
+</div>
+<table class="holdings" width="100%" id="holdings005827656">
+<tr>
+<th width="55%">Location</th>
+<th width="20%">Status</th>
+<th width="30%">Call Number / Description</th>
+</tr>
+<tr id="1_005827656">
+<td class="holdingLocation">
+Shapiro Undergraduate
+</td>
+<td>Checked out: due Mar 24, 2014 at 11:59 PM</td>
+<td>
+PR 6069 .T6 R6 1991
+</td>
+</tr>
+<tr id="2_005827656">
+<td class="holdingLocation">
+</td>
+<td></td>
+<td>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<!--
+<span class="Z3988"
+title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Adc&amp;rfr_id=info%3Asid%2Fvufind.svn.sourceforge.net%3Agenerator&amp;rft.title=Array&amp;rft.creator=Array&amp;rft.date=Array&amp;rft.pub=Array&amp;rft.format=Array">
+-->
+</div>
+<!--     <script type="text/javascript">
+     getStatuses('005827656');
+  </script>
+-->
+<script type="text/javascript">
+         jq(document).ready(function() {
+        getGoogleBookInfo('UOM:39015076134603,OCLC:40966752,OCLC:40966752,ISBN:080213033X', '005827656', '5');
+      });
+      </script>
+<div id="record_001026133"   class="result alt record6  ">
+<div class="yui-ge">
+<div class="yui-u first">
+<div class="googleCoverColumn">
+<div class="temp" id="temp_001026133" style="float:left; padding-right: 3px">
+<input type="checkbox" id="inSelected_001026133" onclick="selectedToggle(this)" class="selectedCheckbox" value="on">
+</div>
+<div id="GoogleCover_001026133" class="googleCover">
+<img src="http://mirlyn.lib.umich.edu/images/noCover2.gif">
+</div>
+<div class="tempAndFavorites">
+<div class="wsfavorites" id="favorites-001026133">
+<div class="button special-button unstar-icon" style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; "><a
+class="wsfavlogin inner dolightbox" href="Home%3Fcheckspelling=true&amp;inst=all&amp;showsearchonly=false&amp;oft=false&amp;lookfor=rosencrantz&amp;type=all&amp;submit=Find&amp;use_dismax=1.html#loginDialog">Save to<br>Favorites</a></div>
+</div>
+</div>
+</div>
+<div class="resultitem">
+<abbr class="unapi-id" title="urn:bibnum:001026133"></abbr>
+<div id="resultItemLine1" class="results_title">
+<!-- title array -->
+<a ref="recview|001026133||6" href="http://mirlyn.lib.umich.edu/Record/001026133" class="title clickpostlog"><span class="highlight">Rosencrantz</span> & Guildenstern are dead. </a><br>
+<!-- preferred title -->
+</div>
+<div id="resultItemLine2" class="results_author">
+by
+<a class="clickpostlog" ref="realauthlink|001026133||6" href="http://mirlyn.lib.umich.edu/Search/Home?lookfor=%22Stoppard,&#32;Tom.%22&amp;type=author">Stoppard, Tom.</a>
+</div>
+<div id="resultItemLine3" class="results_published">
+Published 1967          </div>
+<div id="resultItemLine4" class="results_format">
+<span class="iconlabel book">Book</span>
+</div>
+<table class="holdings" width="100%" id="holdings001026133">
+<tr>
+<th width="55%">Location</th>
+<th width="20%">Status</th>
+<th width="30%">Call Number / Description</th>
+</tr>
+<tr id="1_001026133">
+<td class="holdingLocation">
+Hatcher Graduate
+</td>
+<td><a class="clickpostlog" ref="llholdings|001026133|6|Hatcher Graduate" href="http://mirlyn.lib.umich.edu/Record/001026133/Holdings#1">
+See holdings
+</a></td>
+<td>
+822.8 S883rn
+</td>
+</tr>
+<tr id="3_001026133">
+<td class="holdingLocation">
+Shapiro Undergraduate
+</td>
+<td><a class="clickpostlog" ref="llholdings|001026133|6|Shapiro Undergraduate" href="http://mirlyn.lib.umich.edu/Record/001026133/Holdings#3">
+See holdings
+</a></td>
+<td>
+PR 6069 .T68 R82
+</td>
+</tr>
+<tr id="5_001026133">
+<td class="holdingLocation">
+</td>
+<td></td>
+<td>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<!--
+<span class="Z3988"
+title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Adc&amp;rfr_id=info%3Asid%2Fvufind.svn.sourceforge.net%3Agenerator&amp;rft.title=Array&amp;rft.creator=Array&amp;rft.date=Array&amp;rft.pub=Array&amp;rft.format=Array">
+-->
+</div>
+<!--     <script type="text/javascript">
+     getStatuses('001026133');
+  </script>
+-->
+<script type="text/javascript">
+         jq(document).ready(function() {
+        getGoogleBookInfo('UOM:39015021567956,OCLC:00365199', '001026133', '6');
+      });
+      </script>
+<div id="record_004453296"  class="result record7  ">
+<div class="yui-ge">
+<div class="yui-u first">
+<div class="googleCoverColumn">
+<div class="temp" id="temp_004453296" style="float:left; padding-right: 3px">
+<input type="checkbox" id="inSelected_004453296" onclick="selectedToggle(this)" class="selectedCheckbox" value="on">
+</div>
+<div id="GoogleCover_004453296" class="googleCover">
+<img src="http://mirlyn.lib.umich.edu/images/noCover2.gif">
+</div>
+<div class="tempAndFavorites">
+<div class="wsfavorites" id="favorites-004453296">
+<div class="button special-button unstar-icon" style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; "><a
+class="wsfavlogin inner dolightbox" href="Home%3Fcheckspelling=true&amp;inst=all&amp;showsearchonly=false&amp;oft=false&amp;lookfor=rosencrantz&amp;type=all&amp;submit=Find&amp;use_dismax=1.html#loginDialog">Save to<br>Favorites</a></div>
+</div>
+</div>
+</div>
+<div class="resultitem">
+<abbr class="unapi-id" title="urn:bibnum:004453296"></abbr>
+<div id="resultItemLine1" class="results_title">
+<!-- title array -->
+<a ref="recview|004453296||7" href="http://mirlyn.lib.umich.edu/Record/004453296" class="title clickpostlog"><span class="highlight">Rosencrantz</span> & Guildenstern are dead / by Tom Stoppard. </a><br>
+<!-- preferred title -->
+</div>
+<div id="resultItemLine2" class="results_author">
+by
+<a class="clickpostlog" ref="realauthlink|004453296||7" href="http://mirlyn.lib.umich.edu/Search/Home?lookfor=%22Stoppard,&#32;Tom.%22&amp;type=author">Stoppard, Tom.</a>
+</div>
+<div id="resultItemLine3" class="results_published">
+Published 1967          </div>
+<div id="resultItemLine4" class="results_format">
+<span class="iconlabel book">Book</span>
+</div>
+<table class="holdings" width="100%" id="holdings004453296">
+<tr>
+<th width="55%">Location</th>
+<th width="20%">Status</th>
+<th width="30%">Call Number / Description</th>
+</tr>
+<tr id="0_004453296">
+<td class="holdingLocation">
+Special Collections General and Rare
+</td>
+<td>Building use only</td>
+<td>
+PR 6069 .T68 R82 1967b
+</td>
+</tr>
+<tr id="1_004453296">
+<td class="holdingLocation">
+</td>
+<td></td>
+<td>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<!--
+<span class="Z3988"
+title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Adc&amp;rfr_id=info%3Asid%2Fvufind.svn.sourceforge.net%3Agenerator&amp;rft.title=Array&amp;rft.creator=Array&amp;rft.date=Array&amp;rft.pub=Array&amp;rft.format=Array">
+-->
+</div>
+<!--     <script type="text/javascript">
+     getStatuses('004453296');
+  </script>
+-->
+<script type="text/javascript">
+         jq(document).ready(function() {
+        getGoogleBookInfo('OCLC:00365199', '004453296', '7');
+      });
+      </script>
+<div id="record_008528085"   class="result alt record8  ">
+<div class="yui-ge">
+<div class="yui-u first">
+<div class="googleCoverColumn">
+<div class="temp" id="temp_008528085" style="float:left; padding-right: 3px">
+<input type="checkbox" id="inSelected_008528085" onclick="selectedToggle(this)" class="selectedCheckbox" value="on">
+</div>
+<div id="GoogleCover_008528085" class="googleCover">
+<img src="http://mirlyn.lib.umich.edu/images/noCover2.gif">
+</div>
+<div class="tempAndFavorites">
+<div class="wsfavorites" id="favorites-008528085">
+<div class="button special-button unstar-icon" style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; "><a
+class="wsfavlogin inner dolightbox" href="Home%3Fcheckspelling=true&amp;inst=all&amp;showsearchonly=false&amp;oft=false&amp;lookfor=rosencrantz&amp;type=all&amp;submit=Find&amp;use_dismax=1.html#loginDialog">Save to<br>Favorites</a></div>
+</div>
+</div>
+</div>
+<div class="resultitem">
+<abbr class="unapi-id" title="urn:bibnum:008528085"></abbr>
+<div id="resultItemLine1" class="results_title">
+<!-- title array -->
+<a ref="recview|008528085||8" href="http://mirlyn.lib.umich.edu/Record/008528085" class="title clickpostlog"><span class="highlight">Rosencrantz</span> & Guildenstern are dead [videorecording]. Cinecom Entertainment presents a Michael Brandmand & Emanuel Azenberg production in association with Thirteen WNET ; a Tom...</a><br>
+<!-- preferred title -->
+</div>
+<div id="resultItemLine2" class="results_author">
+</div>
+<div id="resultItemLine3" class="results_published">
+Published 1991          </div>
+<div id="resultItemLine4" class="results_format">
+<span class="iconlabel visualmaterial">Visual Material</span>
+</div>
+<table class="holdings" width="100%" id="holdings008528085">
+<tr>
+<th width="55%">Location</th>
+<th width="20%">Status</th>
+<th width="30%">Call Number / Description</th>
+</tr>
+<tr id="0_008528085">
+<td class="holdingLocation">
+Donald Hall Collection Laserdiscs
+</td>
+<td>Building use only</td>
+<td>
+DHC Laserdisc
+</td>
+</tr>
+<tr id="1_008528085">
+<td class="holdingLocation">
+</td>
+<td></td>
+<td>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<!--
+<span class="Z3988"
+title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Adc&amp;rfr_id=info%3Asid%2Fvufind.svn.sourceforge.net%3Agenerator&amp;rft.title=Array&amp;rft.creator=&amp;rft.date=Array&amp;rft.pub=Array&amp;rft.format=Array">
+-->
+</div>
+<!--     <script type="text/javascript">
+     getStatuses('008528085');
+  </script>
+-->
+<script type="text/javascript">
+         jq(document).ready(function() {
+        getGoogleBookInfo('OCLC:26227839', '008528085', '8');
+      });
+      </script>
+<div id="record_003179692"  class="result record9  ">
+<div class="yui-ge">
+<div class="yui-u first">
+<div class="googleCoverColumn">
+<div class="temp" id="temp_003179692" style="float:left; padding-right: 3px">
+<input type="checkbox" id="inSelected_003179692" onclick="selectedToggle(this)" class="selectedCheckbox" value="on">
+</div>
+<div id="GoogleCover_003179692" class="googleCover">
+<img src="http://mirlyn.lib.umich.edu/images/noCover2.gif">
+</div>
+<div class="tempAndFavorites">
+<div class="wsfavorites" id="favorites-003179692">
+<div class="button special-button unstar-icon" style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; "><a
+class="wsfavlogin inner dolightbox" href="Home%3Fcheckspelling=true&amp;inst=all&amp;showsearchonly=false&amp;oft=false&amp;lookfor=rosencrantz&amp;type=all&amp;submit=Find&amp;use_dismax=1.html#loginDialog">Save to<br>Favorites</a></div>
+</div>
+</div>
+</div>
+<div class="resultitem">
+<abbr class="unapi-id" title="urn:bibnum:003179692"></abbr>
+<div id="resultItemLine1" class="results_title">
+<!-- title array -->
+<a ref="recview|003179692||9" href="http://mirlyn.lib.umich.edu/Record/003179692" class="title clickpostlog"><span class="highlight">Rosencrantz</span> & Guildenstern are dead [videorecording] / a theatrical production of Michael Brandman & Emanuel Azenberg in association with Thirteen WNET ; written and directed by...</a><br>
+<!-- preferred title -->
+</div>
+<div id="resultItemLine2" class="results_author">
+</div>
+<div id="resultItemLine3" class="results_published">
+Published 1991          </div>
+<div id="resultItemLine4" class="results_format">
+<span class="iconlabel videovhs">Video (VHS)</span>
+</div>
+<table class="holdings" width="100%" id="holdings003179692">
+<tr>
+<th width="55%">Location</th>
+<th width="20%">Status</th>
+<th width="30%">Call Number / Description</th>
+</tr>
+<tr id="0_003179692">
+<td class="holdingLocation">
+Askwith Media Library Room 2002 Shapiro
+<br>(shelved at Askwith Media Library Room 2160b Shapiro)
+</td>
+<td>On shelf</td>
+<td>
+VIDEO 27068-H
+</td>
+</tr>
+<tr id="1_003179692">
+<td class="holdingLocation">
+</td>
+<td></td>
+<td>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<!--
+<span class="Z3988"
+title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Adc&amp;rfr_id=info%3Asid%2Fvufind.svn.sourceforge.net%3Agenerator&amp;rft.title=Array&amp;rft.creator=Array&amp;rft.date=Array&amp;rft.pub=Array&amp;rft.format=Array">
+-->
+</div>
+<!--     <script type="text/javascript">
+     getStatuses('003179692');
+  </script>
+-->
+<script type="text/javascript">
+         jq(document).ready(function() {
+        getGoogleBookInfo('OCLC:28511551,ISBN:1558901183', '003179692', '9');
+      });
+      </script>
+<div id="record_004980968"   class="result alt record10  ">
+<div class="yui-ge">
+<div class="yui-u first">
+<div class="googleCoverColumn">
+<div class="temp" id="temp_004980968" style="float:left; padding-right: 3px">
+<input type="checkbox" id="inSelected_004980968" onclick="selectedToggle(this)" class="selectedCheckbox" value="on">
+</div>
+<div id="GoogleCover_004980968" class="googleCover">
+<img src="http://mirlyn.lib.umich.edu/images/noCover2.gif">
+</div>
+<div class="tempAndFavorites">
+<div class="wsfavorites" id="favorites-004980968">
+<div class="button special-button unstar-icon" style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; "><a
+class="wsfavlogin inner dolightbox" href="Home%3Fcheckspelling=true&amp;inst=all&amp;showsearchonly=false&amp;oft=false&amp;lookfor=rosencrantz&amp;type=all&amp;submit=Find&amp;use_dismax=1.html#loginDialog">Save to<br>Favorites</a></div>
+</div>
+</div>
+</div>
+<div class="resultitem">
+<abbr class="unapi-id" title="urn:bibnum:004980968"></abbr>
+<div id="resultItemLine1" class="results_title">
+<!-- title array -->
+<a ref="recview|004980968||10" href="http://mirlyn.lib.umich.edu/Record/004980968" class="title clickpostlog"><span class="highlight">Rosencrantz</span> & Guildenstern are dead [videorecording] / a theatrical production of Michael Brandman & Emanuel Azenberg in association with Thirteen WNET ; a Tom Stoppard film ;...</a><br>
+<!-- preferred title -->
+</div>
+<div id="resultItemLine2" class="results_author">
+</div>
+<div id="resultItemLine3" class="results_published">
+Published 2005          </div>
+<div id="resultItemLine4" class="results_format">
+<span class="iconlabel videodvd">Video (DVD)</span>
+</div>
+<table class="holdings" width="100%" id="holdings004980968">
+<tr>
+<th width="55%">Location</th>
+<th width="20%">Status</th>
+<th width="30%">Call Number / Description</th>
+</tr>
+<tr id="0_004980968">
+<td class="holdingLocation">
+Askwith Media Library Room 2002 Shapiro
+</td>
+<td>On shelf</td>
+<td>
+VIDEO-D 40251-D
+</td>
+</tr>
+<tr id="1_004980968">
+<td class="holdingLocation">
+Donald Hall Collection DVDs
+</td>
+<td>Building use only</td>
+<td>
+DHC DVD
+</td>
+</tr>
+<tr id="2_004980968">
+<td class="holdingLocation">
+UM-Flint Media Collection (Closed Stacks)
+</td>
+<td>On shelf</td>
+<td>
+DVD IMAG 2562
+</td>
+</tr>
+<tr id="3_004980968">
+<td class="holdingLocation">
+</td>
+<td></td>
+<td>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<!--
+<span class="Z3988"
+title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Adc&amp;rfr_id=info%3Asid%2Fvufind.svn.sourceforge.net%3Agenerator&amp;rft.title=Array&amp;rft.creator=Array&amp;rft.date=Array&amp;rft.pub=Array&amp;rft.format=Array">
+-->
+</div>
+<!--     <script type="text/javascript">
+     getStatuses('004980968');
+  </script>
+-->
+<script type="text/javascript">
+         jq(document).ready(function() {
+        getGoogleBookInfo('OCLC:58567184', '004980968', '10');
+      });
+      </script>
+<div id="record_001822229"  class="result record11  ">
+<div class="yui-ge">
+<div class="yui-u first">
+<div class="googleCoverColumn">
+<div class="temp" id="temp_001822229" style="float:left; padding-right: 3px">
+<input type="checkbox" id="inSelected_001822229" onclick="selectedToggle(this)" class="selectedCheckbox" value="on">
+</div>
+<div id="GoogleCover_001822229" class="googleCover">
+<img src="http://mirlyn.lib.umich.edu/images/noCover2.gif">
+</div>
+<div class="tempAndFavorites">
+<div class="wsfavorites" id="favorites-001822229">
+<div class="button special-button unstar-icon" style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; "><a
+class="wsfavlogin inner dolightbox" href="Home%3Fcheckspelling=true&amp;inst=all&amp;showsearchonly=false&amp;oft=false&amp;lookfor=rosencrantz&amp;type=all&amp;submit=Find&amp;use_dismax=1.html#loginDialog">Save to<br>Favorites</a></div>
+</div>
+</div>
+</div>
+<div class="resultitem">
+<abbr class="unapi-id" title="urn:bibnum:001822229"></abbr>
+<div id="resultItemLine1" class="results_title">
+<!-- title array -->
+<a ref="recview|001822229||11" href="http://mirlyn.lib.umich.edu/Record/001822229" class="title clickpostlog"><span class="highlight">Rosencrantz</span> and Guildenstern are dead / Roger Sales. </a><br>
+<!-- preferred title -->
+</div>
+<div id="resultItemLine2" class="results_author">
+by
+<a class="clickpostlog" ref="realauthlink|001822229||11" href="http://mirlyn.lib.umich.edu/Search/Home?lookfor=%22Sales,&#32;Roger.%22&amp;type=author">Sales, Roger.</a>
+</div>
+<div id="resultItemLine3" class="results_published">
+Published 1988          </div>
+<div id="resultItemLine4" class="results_format">
+<span class="iconlabel book">Book</span>
+</div>
+<table class="holdings" width="100%" id="holdings001822229">
+<tr>
+<th width="55%">Location</th>
+<th width="20%">Status</th>
+<th width="30%">Call Number / Description</th>
+</tr>
+<tr id="1_001822229">
+<td class="holdingLocation">
+Hatcher Graduate
+</td>
+<td>On shelf</td>
+<td>
+822.8 S883rnO S16
+</td>
+</tr>
+<tr id="2_001822229">
+<td class="holdingLocation">
+</td>
+<td></td>
+<td>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<!--
+<span class="Z3988"
+title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Adc&amp;rfr_id=info%3Asid%2Fvufind.svn.sourceforge.net%3Agenerator&amp;rft.title=Array&amp;rft.creator=Array&amp;rft.date=Array&amp;rft.pub=Array&amp;rft.format=Array">
+-->
+</div>
+<!--     <script type="text/javascript">
+     getStatuses('001822229');
+  </script>
+-->
+<script type="text/javascript">
+         jq(document).ready(function() {
+        getGoogleBookInfo('UOM:39015015302246,OCLC:24750512,ISBN:0140771646', '001822229', '11');
+      });
+      </script>
+<div id="record_004681672"   class="result alt record12  ">
+<div class="yui-ge">
+<div class="yui-u first">
+<div class="googleCoverColumn">
+<div class="temp" id="temp_004681672" style="float:left; padding-right: 3px">
+<input type="checkbox" id="inSelected_004681672" onclick="selectedToggle(this)" class="selectedCheckbox" value="on">
+</div>
+<div id="GoogleCover_004681672" class="googleCover">
+<img src="http://mirlyn.lib.umich.edu/images/noCover2.gif">
+</div>
+<div class="tempAndFavorites">
+<div class="wsfavorites" id="favorites-004681672">
+<div class="button special-button unstar-icon" style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; "><a
+class="wsfavlogin inner dolightbox" href="Home%3Fcheckspelling=true&amp;inst=all&amp;showsearchonly=false&amp;oft=false&amp;lookfor=rosencrantz&amp;type=all&amp;submit=Find&amp;use_dismax=1.html#loginDialog">Save to<br>Favorites</a></div>
+</div>
+</div>
+</div>
+<div class="resultitem">
+<abbr class="unapi-id" title="urn:bibnum:004681672"></abbr>
+<div id="resultItemLine1" class="results_title">
+<!-- title array -->
+<a ref="recview|004681672||12" href="http://mirlyn.lib.umich.edu/Record/004681672" class="title clickpostlog"><span class="highlight">Rosencrantz</span> and Guildenstern are dead </a><br>
+<!-- preferred title -->
+</div>
+<div id="resultItemLine2" class="results_author">
+by
+<a class="clickpostlog" ref="realauthlink|004681672||12" href="http://mirlyn.lib.umich.edu/Search/Home?lookfor=%22Stoppard,&#32;Tom.%22&amp;type=author">Stoppard, Tom.</a>
+</div>
+<div id="resultItemLine3" class="results_published">
+</div>
+<div id="resultItemLine4" class="results_format">
+<span class="iconlabel book">Book</span>
+</div>
+<table class="holdings" width="100%" id="holdings004681672">
+<tr>
+<th width="55%">Location</th>
+<th width="20%">Status</th>
+<th width="30%">Call Number / Description</th>
+</tr>
+<tr id="0_004681672">
+<td class="holdingLocation">
+Hatcher Graduate
+</td>
+<td>Missing</td>
+<td>
+822.8 S883rn 1967
+</td>
+</tr>
+<tr id="1_004681672">
+<td class="holdingLocation">
+</td>
+<td></td>
+<td>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<!--
+<span class="Z3988"
+title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Adc&amp;rfr_id=info%3Asid%2Fvufind.svn.sourceforge.net%3Agenerator&amp;rft.title=Array&amp;rft.creator=Array&amp;rft.date=&amp;rft.pub=&amp;rft.format=Array">
+-->
+</div>
+<!--     <script type="text/javascript">
+     getStatuses('004681672');
+  </script>
+-->
+<script type="text/javascript">
+     </script>
+<div id="record_007221194"  class="result record13  ">
+<div class="yui-ge">
+<div class="yui-u first">
+<div class="googleCoverColumn">
+<div class="temp" id="temp_007221194" style="float:left; padding-right: 3px">
+<input type="checkbox" id="inSelected_007221194" onclick="selectedToggle(this)" class="selectedCheckbox" value="on">
+</div>
+<div id="GoogleCover_007221194" class="googleCover">
+<img src="http://mirlyn.lib.umich.edu/images/noCover2.gif">
+</div>
+<div class="tempAndFavorites">
+<div class="wsfavorites" id="favorites-007221194">
+<div class="button special-button unstar-icon" style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; "><a
+class="wsfavlogin inner dolightbox" href="Home%3Fcheckspelling=true&amp;inst=all&amp;showsearchonly=false&amp;oft=false&amp;lookfor=rosencrantz&amp;type=all&amp;submit=Find&amp;use_dismax=1.html#loginDialog">Save to<br>Favorites</a></div>
+</div>
+</div>
+</div>
+<div class="resultitem">
+<abbr class="unapi-id" title="urn:bibnum:007221194"></abbr>
+<div id="resultItemLine1" class="results_title">
+<!-- title array -->
+<a ref="recview|007221194||13" href="http://mirlyn.lib.umich.edu/Record/007221194" class="title clickpostlog">Ocean surface effects generated by a nearby underground explosion at the Amchitka test / prepared for U. S. Atomic Energy Commission, Nevada Operations Office by R. C. Y. Koh...</a><br>
+<!-- preferred title -->
+</div>
+<div id="resultItemLine2" class="results_author">
+by
+<a class="clickpostlog" ref="realauthlink|007221194||13" href="http://mirlyn.lib.umich.edu/Search/Home?lookfor=%22Koh,&#32;R.&#32;C.&#32;Y%22&amp;type=author">Koh, R. C. Y</a>
+</div>
+<div id="resultItemLine3" class="results_published">
+Published 1970          </div>
+<div id="resultItemLine4" class="results_format">
+<span class="iconlabel book">Book</span>
+<span class="iconlabel availableonline">Available online</span>
+</div>
+<table class="holdings" width="100%" id="holdings007221194">
+<tr>
+<th width="55%">Location</th>
+<th width="20%">Status</th>
+<th width="30%">Call Number / Description</th>
+</tr>
+<tr id="0_007221194">
+<td class="holdingLocation">
+HathiTrust Digital Library
+</td>
+<td><a class="clickpostlog" ref="hathilink|007221194|hathi|Full text|13" target="link" href="http://hdl.handle.net/2027/uc1.31822023872112">Available Online</a></td>
+<td>
+</td>
+</tr>
+<tr id="1_007221194">
+<td class="holdingLocation">
+</td>
+<td></td>
+<td>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<!--
+<span class="Z3988"
+title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Adc&amp;rfr_id=info%3Asid%2Fvufind.svn.sourceforge.net%3Agenerator&amp;rft.title=Array&amp;rft.creator=Array&amp;rft.date=Array&amp;rft.pub=Array&amp;rft.format=Array">
+-->
+</div>
+<!--     <script type="text/javascript">
+     getStatuses('007221194');
+  </script>
+-->
+<script type="text/javascript">
+         jq(document).ready(function() {
+        getGoogleBookInfo('UCSD:31822023872112,OCLC:31102601', '007221194', '13');
+      });
+      </script>
+<div id="record_002448473"   class="result alt record14  ">
+<div class="yui-ge">
+<div class="yui-u first">
+<div class="googleCoverColumn">
+<div class="temp" id="temp_002448473" style="float:left; padding-right: 3px">
+<input type="checkbox" id="inSelected_002448473" onclick="selectedToggle(this)" class="selectedCheckbox" value="on">
+</div>
+<div id="GoogleCover_002448473" class="googleCover">
+<img src="http://mirlyn.lib.umich.edu/images/noCover2.gif">
+</div>
+<div class="tempAndFavorites">
+<div class="wsfavorites" id="favorites-002448473">
+<div class="button special-button unstar-icon" style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; "><a
+class="wsfavlogin inner dolightbox" href="Home%3Fcheckspelling=true&amp;inst=all&amp;showsearchonly=false&amp;oft=false&amp;lookfor=rosencrantz&amp;type=all&amp;submit=Find&amp;use_dismax=1.html#loginDialog">Save to<br>Favorites</a></div>
+</div>
+</div>
+</div>
+<div class="resultitem">
+<abbr class="unapi-id" title="urn:bibnum:002448473"></abbr>
+<div id="resultItemLine1" class="results_title">
+<!-- title array -->
+<a ref="recview|002448473||14" href="http://mirlyn.lib.umich.edu/Record/002448473" class="title clickpostlog"><span class="highlight">Rosencrantz</span> and Guildenstern are dead : the film / Tom Stoppard. </a><br>
+<!-- preferred title -->
+</div>
+<div id="resultItemLine2" class="results_author">
+by
+<a class="clickpostlog" ref="realauthlink|002448473||14" href="http://mirlyn.lib.umich.edu/Search/Home?lookfor=%22Stoppard,&#32;Tom.%22&amp;type=author">Stoppard, Tom.</a>
+</div>
+<div id="resultItemLine3" class="results_published">
+Published 1991          </div>
+<div id="resultItemLine4" class="results_format">
+<span class="iconlabel book">Book</span>
+</div>
+<table class="holdings" width="100%" id="holdings002448473">
+<tr>
+<th width="55%">Location</th>
+<th width="20%">Status</th>
+<th width="30%">Call Number / Description</th>
+</tr>
+<tr id="0_002448473">
+<td class="holdingLocation">
+Hatcher Graduate
+</td>
+<td>On shelf</td>
+<td>
+808.29 S883rn
+</td>
+</tr>
+<tr id="1_002448473">
+<td class="holdingLocation">
+</td>
+<td></td>
+<td>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<!--
+<span class="Z3988"
+title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Adc&amp;rfr_id=info%3Asid%2Fvufind.svn.sourceforge.net%3Agenerator&amp;rft.title=Array&amp;rft.creator=Array&amp;rft.date=Array&amp;rft.pub=Array&amp;rft.format=Array">
+-->
+</div>
+<!--     <script type="text/javascript">
+     getStatuses('002448473');
+  </script>
+-->
+<script type="text/javascript">
+         jq(document).ready(function() {
+        getGoogleBookInfo('OCLC:23534229,ISBN:0571152465', '002448473', '14');
+      });
+      </script>
+<div id="record_004550988"  class="result record15  ">
+<div class="yui-ge">
+<div class="yui-u first">
+<div class="googleCoverColumn">
+<div class="temp" id="temp_004550988" style="float:left; padding-right: 3px">
+<input type="checkbox" id="inSelected_004550988" onclick="selectedToggle(this)" class="selectedCheckbox" value="on">
+</div>
+<div id="GoogleCover_004550988" class="googleCover">
+<img src="http://mirlyn.lib.umich.edu/images/noCover2.gif">
+</div>
+<div class="tempAndFavorites">
+<div class="wsfavorites" id="favorites-004550988">
+<div class="button special-button unstar-icon" style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; "><a
+class="wsfavlogin inner dolightbox" href="Home%3Fcheckspelling=true&amp;inst=all&amp;showsearchonly=false&amp;oft=false&amp;lookfor=rosencrantz&amp;type=all&amp;submit=Find&amp;use_dismax=1.html#loginDialog">Save to<br>Favorites</a></div>
+</div>
+</div>
+</div>
+<div class="resultitem">
+<abbr class="unapi-id" title="urn:bibnum:004550988"></abbr>
+<div id="resultItemLine1" class="results_title">
+<!-- title array -->
+<a ref="recview|004550988||15" href="http://mirlyn.lib.umich.edu/Record/004550988" class="title clickpostlog"><span class="highlight">Rosencrantz</span> and Guildenstern are dead : the film / Tom Stoppard. </a><br>
+<!-- preferred title -->
+</div>
+<div id="resultItemLine2" class="results_author">
+by
+<a class="clickpostlog" ref="realauthlink|004550988||15" href="http://mirlyn.lib.umich.edu/Search/Home?lookfor=%22Stoppard,&#32;Tom.%22&amp;type=author">Stoppard, Tom.</a>
+</div>
+<div id="resultItemLine3" class="results_published">
+Published 1991          </div>
+<div id="resultItemLine4" class="results_format">
+<span class="iconlabel book">Book</span>
+</div>
+<table class="holdings" width="100%" id="holdings004550988">
+<tr>
+<th width="55%">Location</th>
+<th width="20%">Status</th>
+<th width="30%">Call Number / Description</th>
+</tr>
+<tr id="0_004550988">
+<td class="holdingLocation">
+UM-Flint Main Collection
+</td>
+<td>On shelf</td>
+<td>
+PR 6069 .T6 R62 1991
+</td>
+</tr>
+<tr id="1_004550988">
+<td class="holdingLocation">
+</td>
+<td></td>
+<td>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<!--
+<span class="Z3988"
+title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Adc&amp;rfr_id=info%3Asid%2Fvufind.svn.sourceforge.net%3Agenerator&amp;rft.title=Array&amp;rft.creator=Array&amp;rft.date=Array&amp;rft.pub=Array&amp;rft.format=Array">
+-->
+</div>
+<!--     <script type="text/javascript">
+     getStatuses('004550988');
+  </script>
+-->
+<script type="text/javascript">
+         jq(document).ready(function() {
+        getGoogleBookInfo('OCLC:23534229,ISBN:0571152465', '004550988', '15');
+      });
+      </script>
+<div id="record_003864530"   class="result alt record16  ">
+<div class="yui-ge">
+<div class="yui-u first">
+<div class="googleCoverColumn">
+<div class="temp" id="temp_003864530" style="float:left; padding-right: 3px">
+<input type="checkbox" id="inSelected_003864530" onclick="selectedToggle(this)" class="selectedCheckbox" value="on">
+</div>
+<div id="GoogleCover_003864530" class="googleCover">
+<img src="http://mirlyn.lib.umich.edu/images/noCover2.gif">
+</div>
+<div class="tempAndFavorites">
+<div class="wsfavorites" id="favorites-003864530">
+<div class="button special-button unstar-icon" style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; "><a
+class="wsfavlogin inner dolightbox" href="Home%3Fcheckspelling=true&amp;inst=all&amp;showsearchonly=false&amp;oft=false&amp;lookfor=rosencrantz&amp;type=all&amp;submit=Find&amp;use_dismax=1.html#loginDialog">Save to<br>Favorites</a></div>
+</div>
+</div>
+</div>
+<div class="resultitem">
+<abbr class="unapi-id" title="urn:bibnum:003864530"></abbr>
+<div id="resultItemLine1" class="results_title">
+<!-- title array -->
+<a ref="recview|003864530||16" href="http://mirlyn.lib.umich.edu/Record/003864530" class="title clickpostlog"><span class="highlight">Rosencrantz</span> & Guildenstern are dead : a play in three acts / by Tom Stoppard. </a><br>
+<!-- preferred title -->
+</div>
+<div id="resultItemLine2" class="results_author">
+by
+<a class="clickpostlog" ref="realauthlink|003864530||16" href="http://mirlyn.lib.umich.edu/Search/Home?lookfor=%22Stoppard,&#32;Tom.%22&amp;type=author">Stoppard, Tom.</a>
+</div>
+<div id="resultItemLine3" class="results_published">
+Published 1967          </div>
+<div id="resultItemLine4" class="results_format">
+<span class="iconlabel book">Book</span>
+</div>
+<table class="holdings" width="100%" id="holdings003864530">
+<tr>
+<th width="55%">Location</th>
+<th width="20%">Status</th>
+<th width="30%">Call Number / Description</th>
+</tr>
+<tr id="0_003864530">
+<td class="holdingLocation">
+Art Architecture & Engineering Book Collection
+<br>(shelved at Art Architecture & Engineering)
+</td>
+<td>On shelf</td>
+<td>
+PR 6069 .T68 R82 1967
+</td>
+</tr>
+<tr id="1_003864530">
+<td class="holdingLocation">
+</td>
+<td></td>
+<td>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<!--
+<span class="Z3988"
+title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Adc&amp;rfr_id=info%3Asid%2Fvufind.svn.sourceforge.net%3Agenerator&amp;rft.title=Array&amp;rft.creator=Array&amp;rft.date=Array&amp;rft.pub=Array&amp;rft.format=Array">
+-->
+</div>
+<!--     <script type="text/javascript">
+     getStatuses('003864530');
+  </script>
+-->
+<script type="text/javascript">
+         jq(document).ready(function() {
+        getGoogleBookInfo('OCLC:00367784,ISBN:057361492X', '003864530', '16');
+      });
+      </script>
+<div id="record_004574165"  class="result record17  ">
+<div class="yui-ge">
+<div class="yui-u first">
+<div class="googleCoverColumn">
+<div class="temp" id="temp_004574165" style="float:left; padding-right: 3px">
+<input type="checkbox" id="inSelected_004574165" onclick="selectedToggle(this)" class="selectedCheckbox" value="on">
+</div>
+<div id="GoogleCover_004574165" class="googleCover">
+<img src="http://mirlyn.lib.umich.edu/images/noCover2.gif">
+</div>
+<div class="tempAndFavorites">
+<div class="wsfavorites" id="favorites-004574165">
+<div class="button special-button unstar-icon" style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; "><a
+class="wsfavlogin inner dolightbox" href="Home%3Fcheckspelling=true&amp;inst=all&amp;showsearchonly=false&amp;oft=false&amp;lookfor=rosencrantz&amp;type=all&amp;submit=Find&amp;use_dismax=1.html#loginDialog">Save to<br>Favorites</a></div>
+</div>
+</div>
+</div>
+<div class="resultitem">
+<abbr class="unapi-id" title="urn:bibnum:004574165"></abbr>
+<div id="resultItemLine1" class="results_title">
+<!-- title array -->
+<a ref="recview|004574165||17" href="http://mirlyn.lib.umich.edu/Record/004574165" class="title clickpostlog"><span class="highlight">Rosencrantz</span> & Guildenstern are dead : a play in three acts / by Tom Stoppard. </a><br>
+<!-- preferred title -->
+</div>
+<div id="resultItemLine2" class="results_author">
+by
+<a class="clickpostlog" ref="realauthlink|004574165||17" href="http://mirlyn.lib.umich.edu/Search/Home?lookfor=%22Stoppard,&#32;Tom.%22&amp;type=author">Stoppard, Tom.</a>
+</div>
+<div id="resultItemLine3" class="results_published">
+Published 1995          </div>
+<div id="resultItemLine4" class="results_format">
+<span class="iconlabel book">Book</span>
+</div>
+<table class="holdings" width="100%" id="holdings004574165">
+<tr>
+<th width="55%">Location</th>
+<th width="20%">Status</th>
+<th width="30%">Call Number / Description</th>
+</tr>
+<tr id="0_004574165">
+<td class="holdingLocation">
+UM-Flint Main Collection
+</td>
+<td><a class="clickpostlog" ref="llholdings|004574165|17|UM-Flint Main Collection" href="http://mirlyn.lib.umich.edu/Record/004574165/Holdings#0">
+See holdings
+</a></td>
+<td>
+PR 6069 .T6 R6 1995
+</td>
+</tr>
+<tr id="2_004574165">
+<td class="holdingLocation">
+</td>
+<td></td>
+<td>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<!--
+<span class="Z3988"
+title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Adc&amp;rfr_id=info%3Asid%2Fvufind.svn.sourceforge.net%3Agenerator&amp;rft.title=Array&amp;rft.creator=Array&amp;rft.date=Array&amp;rft.pub=Array&amp;rft.format=Array">
+-->
+</div>
+<!--     <script type="text/javascript">
+     getStatuses('004574165');
+  </script>
+-->
+<script type="text/javascript">
+         jq(document).ready(function() {
+        getGoogleBookInfo('OCLC:40751095,ISBN:057361492X', '004574165', '17');
+      });
+      </script>
+<div id="record_002461022"   class="result alt record18  ">
+<div class="yui-ge">
+<div class="yui-u first">
+<div class="googleCoverColumn">
+<div class="temp" id="temp_002461022" style="float:left; padding-right: 3px">
+<input type="checkbox" id="inSelected_002461022" onclick="selectedToggle(this)" class="selectedCheckbox" value="on">
+</div>
+<div id="GoogleCover_002461022" class="googleCover">
+<img src="http://mirlyn.lib.umich.edu/images/noCover2.gif">
+</div>
+<div class="tempAndFavorites">
+<div class="wsfavorites" id="favorites-002461022">
+<div class="button special-button unstar-icon" style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; "><a
+class="wsfavlogin inner dolightbox" href="Home%3Fcheckspelling=true&amp;inst=all&amp;showsearchonly=false&amp;oft=false&amp;lookfor=rosencrantz&amp;type=all&amp;submit=Find&amp;use_dismax=1.html#loginDialog">Save to<br>Favorites</a></div>
+</div>
+</div>
+</div>
+<div class="resultitem">
+<abbr class="unapi-id" title="urn:bibnum:002461022"></abbr>
+<div id="resultItemLine1" class="results_title">
+<!-- title array -->
+<a ref="recview|002461022||18" href="http://mirlyn.lib.umich.edu/Record/002461022" class="title clickpostlog"><span class="highlight">Rosencrantz</span> and Guildenstern are dead, Jumpers and The real thing / Robert Gordon. </a><br>
+<!-- preferred title -->
+</div>
+<div id="resultItemLine2" class="results_author">
+by
+<a class="clickpostlog" ref="realauthlink|002461022||18" href="http://mirlyn.lib.umich.edu/Search/Home?lookfor=%22Gordon,&#32;Robert.%22&amp;type=author">Gordon, Robert.</a>
+</div>
+<div id="resultItemLine3" class="results_published">
+Published 1991          </div>
+<div id="resultItemLine4" class="results_format">
+<span class="iconlabel book">Book</span>
+</div>
+<table class="holdings" width="100%" id="holdings002461022">
+<tr>
+<th width="55%">Location</th>
+<th width="20%">Status</th>
+<th width="30%">Call Number / Description</th>
+</tr>
+<tr id="1_002461022">
+<td class="holdingLocation">
+Hatcher Graduate
+</td>
+<td>On shelf</td>
+<td>
+822.8 S883O G66
+</td>
+</tr>
+<tr id="2_002461022">
+<td class="holdingLocation">
+</td>
+<td></td>
+<td>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<!--
+<span class="Z3988"
+title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Adc&amp;rfr_id=info%3Asid%2Fvufind.svn.sourceforge.net%3Agenerator&amp;rft.title=Array&amp;rft.creator=Array&amp;rft.date=Array&amp;rft.pub=Array&amp;rft.format=Array">
+-->
+</div>
+<!--     <script type="text/javascript">
+     getStatuses('002461022');
+  </script>
+-->
+<script type="text/javascript">
+         jq(document).ready(function() {
+        getGoogleBookInfo('UOM:39015019478935,OCLC:22117750,OCLC:27147113,ISBN:0333437772', '002461022', '18');
+      });
+      </script>
+<div id="record_004382681"  class="result record19  ">
+<div class="yui-ge">
+<div class="yui-u first">
+<div class="googleCoverColumn">
+<div class="temp" id="temp_004382681" style="float:left; padding-right: 3px">
+<input type="checkbox" id="inSelected_004382681" onclick="selectedToggle(this)" class="selectedCheckbox" value="on">
+</div>
+<div id="GoogleCover_004382681" class="googleCover">
+<img src="http://mirlyn.lib.umich.edu/images/noCover2.gif">
+</div>
+<div class="tempAndFavorites">
+<div class="wsfavorites" id="favorites-004382681">
+<div class="button special-button unstar-icon" style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; "><a
+class="wsfavlogin inner dolightbox" href="Home%3Fcheckspelling=true&amp;inst=all&amp;showsearchonly=false&amp;oft=false&amp;lookfor=rosencrantz&amp;type=all&amp;submit=Find&amp;use_dismax=1.html#loginDialog">Save to<br>Favorites</a></div>
+</div>
+</div>
+</div>
+<div class="resultitem">
+<abbr class="unapi-id" title="urn:bibnum:004382681"></abbr>
+<div id="resultItemLine1" class="results_title">
+<!-- title array -->
+<a ref="recview|004382681||19" href="http://mirlyn.lib.umich.edu/Record/004382681" class="title clickpostlog"><span class="highlight">Rosencrantz</span> and Guildenstern are dead [sound recording] / Tom Stoppard. </a><br>
+<!-- preferred title -->
+</div>
+<div id="resultItemLine2" class="results_author">
+by
+<a class="clickpostlog" ref="realauthlink|004382681||19" href="http://mirlyn.lib.umich.edu/Search/Home?lookfor=%22Stoppard,&#32;Tom.%22&amp;type=author">Stoppard, Tom.</a>
+</div>
+<div id="resultItemLine3" class="results_published">
+Published 1980          </div>
+<div id="resultItemLine4" class="results_format">
+<span class="iconlabel audiospokenword">Audio (spoken word)</span>
+<span class="iconlabel audio">Audio</span>
+</div>
+<table class="holdings" width="100%" id="holdings004382681">
+<tr>
+<th width="55%">Location</th>
+<th width="20%">Status</th>
+<th width="30%">Call Number / Description</th>
+</tr>
+<tr id="0_004382681">
+<td class="holdingLocation">
+UM-Flint Media Collection (Closed Stacks)
+</td>
+<td>On shelf</td>
+<td>
+Phono Tape BBC ECN 124
+</td>
+</tr>
+<tr id="1_004382681">
+<td class="holdingLocation">
+</td>
+<td></td>
+<td>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<!--
+<span class="Z3988"
+title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Adc&amp;rfr_id=info%3Asid%2Fvufind.svn.sourceforge.net%3Agenerator&amp;rft.title=Array&amp;rft.creator=Array&amp;rft.date=Array&amp;rft.pub=Array&amp;rft.format=Array">
+-->
+</div>
+<!--     <script type="text/javascript">
+     getStatuses('004382681');
+  </script>
+-->
+<script type="text/javascript">
+         jq(document).ready(function() {
+        getGoogleBookInfo('OCLC:15101709', '004382681', '19');
+      });
+      </script>
+<div id="record_004258354"   class="result alt record20  ">
+<div class="yui-ge">
+<div class="yui-u first">
+<div class="googleCoverColumn">
+<div class="temp" id="temp_004258354" style="float:left; padding-right: 3px">
+<input type="checkbox" id="inSelected_004258354" onclick="selectedToggle(this)" class="selectedCheckbox" value="on">
+</div>
+<div id="GoogleCover_004258354" class="googleCover">
+<img src="http://mirlyn.lib.umich.edu/images/noCover2.gif">
+</div>
+<div class="tempAndFavorites">
+<div class="wsfavorites" id="favorites-004258354">
+<div class="button special-button unstar-icon" style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; "><a
+class="wsfavlogin inner dolightbox" href="Home%3Fcheckspelling=true&amp;inst=all&amp;showsearchonly=false&amp;oft=false&amp;lookfor=rosencrantz&amp;type=all&amp;submit=Find&amp;use_dismax=1.html#loginDialog">Save to<br>Favorites</a></div>
+</div>
+</div>
+</div>
+<div class="resultitem">
+<abbr class="unapi-id" title="urn:bibnum:004258354"></abbr>
+<div id="resultItemLine1" class="results_title">
+<!-- title array -->
+<a ref="recview|004258354||20" href="http://mirlyn.lib.umich.edu/Record/004258354" class="title clickpostlog">[<span class="highlight">Rosencrantz</span> and Guildenstern, in] Original plays: third series [electronic resource] </a><br>
+<!-- preferred title -->
+</div>
+<div id="resultItemLine2" class="results_author">
+by
+<a class="clickpostlog" ref="realauthlink|004258354||20" href="http://mirlyn.lib.umich.edu/Search/Home?lookfor=%22Gilbert,&#32;W.&#32;S.&#32;1836-1911.%22&amp;type=author">Gilbert, W. S. 1836-1911.</a>
+</div>
+<div id="resultItemLine3" class="results_published">
+Published 1995          </div>
+<div id="resultItemLine4" class="results_format">
+<span class="iconlabel book">Book</span>
+<span class="iconlabel availableonline">Available online</span>
+</div>
+<table class="holdings" width="100%" id="holdings004258354">
+<tr>
+<th width="55%">Location</th>
+<th width="20%">Status</th>
+<th width="30%">Call Number / Description</th>
+</tr>
+<tr id="0_004258354">
+<td class="holdingLocation">
+Electronic Resources
+</td>
+<td><a class="clickpostlog" ref="elink|004258354|http://proxy.lib.umich.edu/login?url=http://ets.umdl.umich.edu/cgi/s/shakeEd/shakeEd-idx?type=header&id=S38500|20" target="link" href="http://proxy.lib.umich.edu/login?url=http://ets.umdl.umich.edu/cgi/s/shakeEd/shakeEd-idx?type=header&id=S38500">Available Online</a></td>
+<td>
+Access restricted; authentication may be required:
+</td>
+</tr>
+<tr id="1_004258354">
+<td class="holdingLocation">
+</td>
+<td></td>
+<td>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<!--
+<span class="Z3988"
+title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Adc&amp;rfr_id=info%3Asid%2Fvufind.svn.sourceforge.net%3Agenerator&amp;rft.title=Array&amp;rft.creator=Array&amp;rft.date=Array&amp;rft.pub=Array&amp;rft.format=Array">
+-->
+</div>
+<!--     <script type="text/javascript">
+     getStatuses('004258354');
+  </script>
+-->
+<script type="text/javascript">
+     </script>
+</div>
+<div class="pagination"><span>1</span><a class="clickpostlog" ref="pickpage|2" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=rosencrantz&amp;page=1&amp;page=2" title="page 2">2</a><a class="clickpostlog" ref="pickpage|3" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=rosencrantz&amp;page=1&amp;page=3" title="page 3">3</a><a class="clickpostlog" ref="pickpage|4" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=rosencrantz&amp;page=1&amp;page=4" title="page 4">4</a><a class="clickpostlog" ref="pickpage|2" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=rosencrantz&amp;page=1&amp;page=2" title="next page">Next &raquo;</a></div>
+<div class="searchtools">
+<a class="feed" style="margin-left: 2em;" href="http://mirlyn.lib.umich.edu/Search/SearchExport?type%5B%5D=all&amp;lookfor%5B%5D=rosencrantz&amp;page=1&amp;method=atom" id="Feed">Get Feed</a>
+<a href="Home%3Fcheckspelling=true&amp;inst=all&amp;showsearchonly=false&amp;oft=false&amp;lookfor=rosencrantz&amp;type=all&amp;submit=Find&amp;use_dismax=1.html#login_to_email" class="mail dolightbox">Email this Search</a> 
+</div>
+</div>
+<!-- End Main Listing -->
+</div>
+<!-- List of current filters with delete button -->
+<div id="listleftcol" class="yui-b"><div class="box submenu narrow">
+<h4>Refine Search</h4>
+<ul>
+</ul>
+<div class="narrowList navmenu" id="narrowList">
+<dl class="narrowList navmenu narrow_begin" id="facet_begin_">
+<dt>Subject</dt>
+<dd><a class="clickpostlog" ref="addfacet|topicStr|English drama|1" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=topicStr%3AEnglish%20drama">English drama</a> (33)</dd>
+<dd><a class="clickpostlog" ref="addfacet|topicStr|English drama Databases|2" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=topicStr%3AEnglish%20drama%20Databases">English drama Databases</a> (24)</dd>
+<dd><a class="clickpostlog" ref="addfacet|topicStr|Verse drama, English|3" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=topicStr%3AVerse%20drama%2C%20English">Verse drama, English</a> (24)</dd>
+<dd><a class="clickpostlog" ref="addfacet|topicStr|Verse drama, English Databases|4" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=topicStr%3AVerse%20drama%2C%20English%20Databases">Verse drama, English Databases</a> (24)</dd>
+<dd><a class="clickpostlog" ref="addfacet|topicStr|Shakespeare, William|5" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=topicStr%3AShakespeare%2C%20William">Shakespeare, William</a> (7)</dd>
+<dd id="more_topicStr"><a href="Home%3Fcheckspelling=true&amp;inst=all&amp;showsearchonly=false&amp;oft=false&amp;lookfor=rosencrantz&amp;type=all&amp;submit=Find&amp;use_dismax=1.html" onclick="showThese('topicStr'); return false;"><i>more...</i></a></dd>
+</dl>
+<dl class="narrowList navmenu narrow_end" id="facet_end_topicStr">
+<dd><a class="clickpostlog" ref="addfacet|topicStr|Drama|6" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=topicStr%3ADrama">Drama</a> (4)</dd>
+<dd><a class="clickpostlog" ref="addfacet|topicStr|Stoppard, Tom|7" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=topicStr%3AStoppard%2C%20Tom">Stoppard, Tom</a> (4)</dd>
+<dd><a class="clickpostlog" ref="addfacet|topicStr|English drama 20th century|8" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=topicStr%3AEnglish%20drama%2020th%20century">English drama 20th century</a> (3)</dd>
+<dd><a class="clickpostlog" ref="addfacet|topicStr|English drama 20th century History and criticism|9" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=topicStr%3AEnglish%20drama%2020th%20century%20History%20and%20criticism">English drama 20th century History and criticism</a> (3)</dd>
+<dd><a class="clickpostlog" ref="addfacet|topicStr|Stoppard, Tom. Rosencrantz and Guildenstern are dead|10" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=topicStr%3AStoppard%2C%20Tom.%20Rosencrantz%20and%20Guildenstern%20are%20dead">Stoppard, Tom. Rosencrantz and Guildenstern are dead</a> (3)</dd>
+<dd><a class="clickpostlog" ref="addfacet|topicStr|Comedy films|11" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=topicStr%3AComedy%20films">Comedy films</a> (2)</dd>
+<dd><a class="clickpostlog" ref="addfacet|topicStr|Drama Technique|12" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=topicStr%3ADrama%20Technique">Drama Technique</a> (2)</dd>
+<dd><a class="clickpostlog" ref="addfacet|topicStr|Feature films|13" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=topicStr%3AFeature%20films">Feature films</a> (2)</dd>
+<dd><a class="clickpostlog" ref="addfacet|topicStr|Film adaptations|14" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=topicStr%3AFilm%20adaptations">Film adaptations</a> (2)</dd>
+<dd><a class="clickpostlog" ref="addfacet|topicStr|Hamlet (Legendary character)|15" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=topicStr%3AHamlet%20%28Legendary%20character%29">Hamlet (Legendary character)</a> (2)</dd>
+<dd><a class="clickpostlog" ref="addfacet|topicStr|Hamlet (Legendary character) Drama|16" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=topicStr%3AHamlet%20%28Legendary%20character%29%20Drama">Hamlet (Legendary character) Drama</a> (2)</dd>
+<dd><a class="clickpostlog" ref="addfacet|topicStr|Rosencrantz and Guildenstern are dead (Motion picture)|17" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=topicStr%3ARosencrantz%20and%20Guildenstern%20are%20dead%20%28Motion%20picture%29">Rosencrantz and Guildenstern are dead (Motion picture)</a> (2)</dd>
+<dd><a class="clickpostlog" ref="addfacet|topicStr|Acting|18" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=topicStr%3AActing">Acting</a> (1)</dd>
+<dd><a class="clickpostlog" ref="addfacet|topicStr|Acting Auditions|19" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=topicStr%3AActing%20Auditions">Acting Auditions</a> (1)</dd>
+<dd><a class="clickpostlog" ref="addfacet|topicStr|American drama|20" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=topicStr%3AAmerican%20drama">American drama</a> (1)</dd>
+<dd><a class="clickpostlog" ref="addfacet|topicStr|American drama History and criticism Theory, etc|21" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=topicStr%3AAmerican%20drama%20History%20and%20criticism%20Theory%2C%20etc">American drama History and criticism Theory, etc</a> (1)</dd>
+<dd><a class="clickpostlog" ref="addfacet|topicStr|Artists' books|22" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=topicStr%3AArtists%27%20books">Artists' books</a> (1)</dd>
+<dd><a class="clickpostlog" ref="addfacet|topicStr|Artists' books California|23" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=topicStr%3AArtists%27%20books%20California">Artists' books California</a> (1)</dd>
+<dd><a class="clickpostlog" ref="addfacet|topicStr|Bills, Private|24" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=topicStr%3ABills%2C%20Private">Bills, Private</a> (1)</dd>
+<dd><a class="clickpostlog" ref="addfacet|topicStr|Bills, Private United States|25" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=topicStr%3ABills%2C%20Private%20United%20States">Bills, Private United States</a> (1)</dd>
+<dd><a class="clickpostlog" ref="addfacet|topicStr|British films|26" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=topicStr%3ABritish%20films">British films</a> (1)</dd>
+<dd><a class="clickpostlog" ref="addfacet|topicStr|Brodsky, Joseph|27" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=topicStr%3ABrodsky%2C%20Joseph">Brodsky, Joseph</a> (1)</dd>
+<dd><a class="clickpostlog" ref="addfacet|topicStr|Brodsky, Joseph, 1940-1996 Translations into Russian|28" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=topicStr%3ABrodsky%2C%20Joseph%2C%201940-1996%20Translations%20into%20Russian">Brodsky, Joseph, 1940-1996 Translations into Russian</a> (1)</dd>
+<dd><a class="clickpostlog" ref="addfacet|topicStr|Burlesques|29" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=topicStr%3ABurlesques">Burlesques</a> (1)</dd>
+<dd><a class="clickpostlog" ref="addfacet|topicStr|California|30" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=topicStr%3ACalifornia">California</a> (1)</dd>
+<dd><a href="Home%3Fcheckspelling=true&amp;inst=all&amp;showsearchonly=false&amp;oft=false&amp;lookfor=rosencrantz&amp;type=all&amp;submit=Find&amp;use_dismax=1.html#" onclick="hideThese('topicStr'); return false;"><i>less...</i></a></dd>
+</dl>
+<dl class="narrowList navmenu narrow_begin" id="facet_begin_">
+<dt>Academic Discipline</dt>
+<dd><a class="clickpostlog" ref="addfacet|hlb3Str|Humanities|1" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=hlb3Str%3AHumanities">Humanities</a> (52)</dd>
+<dd><a class="clickpostlog" ref="addfacet|hlb3Str|General and Comparative Literature|2" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=hlb3Str%3AGeneral%20and%20Comparative%20Literature">General and Comparative Literature</a> (50)</dd>
+<dd><a class="clickpostlog" ref="addfacet|hlb3Str|English Language and Literature|3" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=hlb3Str%3AEnglish%20Language%20and%20Literature">English Language and Literature</a> (44)</dd>
+<dd><a class="clickpostlog" ref="addfacet|hlb3Str|Arts|4" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=hlb3Str%3AArts">Arts</a> (38)</dd>
+<dd><a class="clickpostlog" ref="addfacet|hlb3Str|Theatre and Drama|5" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=hlb3Str%3ATheatre%20and%20Drama">Theatre and Drama</a> (35)</dd>
+<dd id="more_hlb3Str"><a href="Home%3Fcheckspelling=true&amp;inst=all&amp;showsearchonly=false&amp;oft=false&amp;lookfor=rosencrantz&amp;type=all&amp;submit=Find&amp;use_dismax=1.html" onclick="showThese('hlb3Str'); return false;"><i>more...</i></a></dd>
+</dl>
+<dl class="narrowList navmenu narrow_end" id="facet_end_hlb3Str">
+<dd><a class="clickpostlog" ref="addfacet|hlb3Str|American Culture|6" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=hlb3Str%3AAmerican%20Culture">American Culture</a> (2)</dd>
+<dd><a class="clickpostlog" ref="addfacet|hlb3Str|Music|7" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=hlb3Str%3AMusic">Music</a> (2)</dd>
+<dd><a class="clickpostlog" ref="addfacet|hlb3Str|Film and Video Studies|8" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=hlb3Str%3AFilm%20and%20Video%20Studies">Film and Video Studies</a> (1)</dd>
+<dd><a class="clickpostlog" ref="addfacet|hlb3Str|Information Science|9" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=hlb3Str%3AInformation%20Science">Information Science</a> (1)</dd>
+<dd><a class="clickpostlog" ref="addfacet|hlb3Str|Library Science|10" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=hlb3Str%3ALibrary%20Science">Library Science</a> (1)</dd>
+<dd><a class="clickpostlog" ref="addfacet|hlb3Str|Philosophy|11" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=hlb3Str%3APhilosophy">Philosophy</a> (1)</dd>
+<dd><a class="clickpostlog" ref="addfacet|hlb3Str|Slavic Languages and Literatures|12" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=hlb3Str%3ASlavic%20Languages%20and%20Literatures">Slavic Languages and Literatures</a> (1)</dd>
+<dd><a class="clickpostlog" ref="addfacet|hlb3Str|Social Sciences|13" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=hlb3Str%3ASocial%20Sciences">Social Sciences</a> (1)</dd>
+<dd><a href="Home%3Fcheckspelling=true&amp;inst=all&amp;showsearchonly=false&amp;oft=false&amp;lookfor=rosencrantz&amp;type=all&amp;submit=Find&amp;use_dismax=1.html#" onclick="hideThese('hlb3Str'); return false;"><i>less...</i></a></dd>
+</dl>
+<dl class="narrowList navmenu narrow_begin" id="facet_begin_">
+<dt>Format</dt>
+<dd><a class="clickpostlog" ref="addfacet|format|Book|1" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=format%3ABook">Book</a> (62)</dd>
+<dd><a class="clickpostlog" ref="addfacet|format|Visual Material|2" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=format%3AVisual%20Material">Visual Material</a> (4)</dd>
+<dd><a class="clickpostlog" ref="addfacet|format|Microform|3" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=format%3AMicroform">Microform</a> (2)</dd>
+<dd><a class="clickpostlog" ref="addfacet|format|Music|4" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=format%3AMusic">Music</a> (2)</dd>
+<dd><a class="clickpostlog" ref="addfacet|format|Audio|5" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=format%3AAudio">Audio</a> (1)</dd>
+<dd id="more_format"><a href="Home%3Fcheckspelling=true&amp;inst=all&amp;showsearchonly=false&amp;oft=false&amp;lookfor=rosencrantz&amp;type=all&amp;submit=Find&amp;use_dismax=1.html" onclick="showThese('format'); return false;"><i>more...</i></a></dd>
+</dl>
+<dl class="narrowList navmenu narrow_end" id="facet_end_format">
+<dd><a class="clickpostlog" ref="addfacet|format|Audio (spoken word)|6" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=format%3AAudio%20%28spoken%20word%29">Audio (spoken word)</a> (1)</dd>
+<dd><a class="clickpostlog" ref="addfacet|format|Biography|7" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=format%3ABiography">Biography</a> (1)</dd>
+<dd><a class="clickpostlog" ref="addfacet|format|Musical Score|8" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=format%3AMusical%20Score">Musical Score</a> (1)</dd>
+<dd><a class="clickpostlog" ref="addfacet|format|Video (DVD)|9" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=format%3AVideo%20%28DVD%29">Video (DVD)</a> (1)</dd>
+<dd><a class="clickpostlog" ref="addfacet|format|Video (VHS)|10" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=format%3AVideo%20%28VHS%29">Video (VHS)</a> (1)</dd>
+<dd><a href="Home%3Fcheckspelling=true&amp;inst=all&amp;showsearchonly=false&amp;oft=false&amp;lookfor=rosencrantz&amp;type=all&amp;submit=Find&amp;use_dismax=1.html#" onclick="hideThese('format'); return false;"><i>less...</i></a></dd>
+</dl>
+<dl class="narrowList navmenu narrow_begin" id="facet_begin_">
+<dt>Language</dt>
+<dd><a class="clickpostlog" ref="addfacet|language|English|1" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=language%3AEnglish">English</a> (63)</dd>
+<dd><a class="clickpostlog" ref="addfacet|language|German|2" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=language%3AGerman">German</a> (2)</dd>
+<dd><a class="clickpostlog" ref="addfacet|language|Unknown|3" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=language%3AUnknown">Unknown</a> (2)</dd>
+<dd><a class="clickpostlog" ref="addfacet|language|Russian|4" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=language%3ARussian">Russian</a> (1)</dd>
+</dl>
+<dl class="narrowList navmenu narrow_begin" id="facet_begin_">
+<dt>Place of Publication</dt>
+<dd><a class="clickpostlog" ref="addfacet|countryOfPubStr|England|1" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=countryOfPubStr%3AEngland">England</a> (35)</dd>
+<dd><a class="clickpostlog" ref="addfacet|countryOfPubStr|United Kingdom|2" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=countryOfPubStr%3AUnited%20Kingdom">United Kingdom</a> (35)</dd>
+<dd><a class="clickpostlog" ref="addfacet|countryOfPubStr|United States|3" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=countryOfPubStr%3AUnited%20States">United States</a> (25)</dd>
+<dd><a class="clickpostlog" ref="addfacet|countryOfPubStr|Germany|4" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=countryOfPubStr%3AGermany">Germany</a> (2)</dd>
+<dd><a class="clickpostlog" ref="addfacet|countryOfPubStr|Netherlands|5" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=countryOfPubStr%3ANetherlands">Netherlands</a> (2)</dd>
+<dd id="more_countryOfPubStr"><a href="Home%3Fcheckspelling=true&amp;inst=all&amp;showsearchonly=false&amp;oft=false&amp;lookfor=rosencrantz&amp;type=all&amp;submit=Find&amp;use_dismax=1.html" onclick="showThese('countryOfPubStr'); return false;"><i>more...</i></a></dd>
+</dl>
+<dl class="narrowList navmenu narrow_end" id="facet_end_countryOfPubStr">
+<dd><a class="clickpostlog" ref="addfacet|countryOfPubStr|Canada|6" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=countryOfPubStr%3ACanada">Canada</a> (1)</dd>
+<dd><a class="clickpostlog" ref="addfacet|countryOfPubStr|Russia (Federation)|7" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=countryOfPubStr%3ARussia%20%28Federation%29">Russia (Federation)</a> (1)</dd>
+<dd><a class="clickpostlog" ref="addfacet|countryOfPubStr|United States Pennsylvania|8" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=countryOfPubStr%3AUnited%20States%20Pennsylvania">United States Pennsylvania</a> (1)</dd>
+<dd><a href="Home%3Fcheckspelling=true&amp;inst=all&amp;showsearchonly=false&amp;oft=false&amp;lookfor=rosencrantz&amp;type=all&amp;submit=Find&amp;use_dismax=1.html#" onclick="hideThese('countryOfPubStr'); return false;"><i>less...</i></a></dd>
+</dl>
+<dl class="narrowList navmenu narrow_begin" id="facet_begin_">
+<dt>Date of Publication</dt>
+<dd><a class="clickpostlog" ref="addfacet|publishDateRange|1990-1999|1" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=publishDateRange%3A1990-1999">1990-1999</a> (33)</dd>
+<dd><a class="clickpostlog" ref="addfacet|publishDateRange|1995|2" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=publishDateRange%3A1995">1995</a> (27)</dd>
+<dd><a class="clickpostlog" ref="addfacet|publishDateRange|2000-2009|3" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=publishDateRange%3A2000-2009">2000-2009</a> (9)</dd>
+<dd><a class="clickpostlog" ref="addfacet|publishDateRange|1980-1989|4" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=publishDateRange%3A1980-1989">1980-1989</a> (6)</dd>
+<dd><a class="clickpostlog" ref="addfacet|publishDateRange|1991|5" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=publishDateRange%3A1991">1991</a> (6)</dd>
+<dd id="more_publishDateRange"><a href="Home%3Fcheckspelling=true&amp;inst=all&amp;showsearchonly=false&amp;oft=false&amp;lookfor=rosencrantz&amp;type=all&amp;submit=Find&amp;use_dismax=1.html" onclick="showThese('publishDateRange'); return false;"><i>more...</i></a></dd>
+</dl>
+<dl class="narrowList navmenu narrow_end" id="facet_end_publishDateRange">
+<dd><a class="clickpostlog" ref="addfacet|publishDateRange|1970-1979|6" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=publishDateRange%3A1970-1979">1970-1979</a> (4)</dd>
+<dd><a class="clickpostlog" ref="addfacet|publishDateRange|1700-1799|7" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=publishDateRange%3A1700-1799">1700-1799</a> (3)</dd>
+<dd><a class="clickpostlog" ref="addfacet|publishDateRange|1960-1969|8" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=publishDateRange%3A1960-1969">1960-1969</a> (3)</dd>
+<dd><a class="clickpostlog" ref="addfacet|publishDateRange|1967|9" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=publishDateRange%3A1967">1967</a> (3)</dd>
+<dd><a class="clickpostlog" ref="addfacet|publishDateRange|2010-2019|10" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=publishDateRange%3A2010-2019">2010-2019</a> (3)</dd>
+<dd><a class="clickpostlog" ref="addfacet|publishDateRange|2004|11" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=publishDateRange%3A2004">2004</a> (2)</dd>
+<dd><a class="clickpostlog" ref="addfacet|publishDateRange|2005|12" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=publishDateRange%3A2005">2005</a> (2)</dd>
+<dd><a class="clickpostlog" ref="addfacet|publishDateRange|2009|13" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=publishDateRange%3A2009">2009</a> (2)</dd>
+<dd><a class="clickpostlog" ref="addfacet|publishDateRange|2013|14" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=publishDateRange%3A2013">2013</a> (2)</dd>
+<dd><a class="clickpostlog" ref="addfacet|publishDateRange|1700|15" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=publishDateRange%3A1700">1700</a> (1)</dd>
+<dd><a class="clickpostlog" ref="addfacet|publishDateRange|1721|16" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=publishDateRange%3A1721">1721</a> (1)</dd>
+<dd><a class="clickpostlog" ref="addfacet|publishDateRange|1770|17" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=publishDateRange%3A1770">1770</a> (1)</dd>
+<dd><a class="clickpostlog" ref="addfacet|publishDateRange|1850-1859|18" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=publishDateRange%3A1850-1859">1850-1859</a> (1)</dd>
+<dd><a class="clickpostlog" ref="addfacet|publishDateRange|1856|19" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=publishDateRange%3A1856">1856</a> (1)</dd>
+<dd><a class="clickpostlog" ref="addfacet|publishDateRange|1890-1899|20" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=publishDateRange%3A1890-1899">1890-1899</a> (1)</dd>
+<dd><a class="clickpostlog" ref="addfacet|publishDateRange|1895|21" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=publishDateRange%3A1895">1895</a> (1)</dd>
+<dd><a class="clickpostlog" ref="addfacet|publishDateRange|1900-1909|22" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=publishDateRange%3A1900-1909">1900-1909</a> (1)</dd>
+<dd><a class="clickpostlog" ref="addfacet|publishDateRange|1902|23" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=publishDateRange%3A1902">1902</a> (1)</dd>
+<dd><a class="clickpostlog" ref="addfacet|publishDateRange|1910|24" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=publishDateRange%3A1910">1910</a> (1)</dd>
+<dd><a class="clickpostlog" ref="addfacet|publishDateRange|1910-1919|25" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=publishDateRange%3A1910-1919">1910-1919</a> (1)</dd>
+<dd><a class="clickpostlog" ref="addfacet|publishDateRange|1920-1929|26" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=publishDateRange%3A1920-1929">1920-1929</a> (1)</dd>
+<dd><a class="clickpostlog" ref="addfacet|publishDateRange|1922|27" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=publishDateRange%3A1922">1922</a> (1)</dd>
+<dd><a class="clickpostlog" ref="addfacet|publishDateRange|1940-1949|28" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=publishDateRange%3A1940-1949">1940-1949</a> (1)</dd>
+<dd><a class="clickpostlog" ref="addfacet|publishDateRange|1944|29" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=publishDateRange%3A1944">1944</a> (1)</dd>
+<dd><a class="clickpostlog" ref="addfacet|publishDateRange|1970|30" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=publishDateRange%3A1970">1970</a> (1)</dd>
+<dd><a href="Home%3Fcheckspelling=true&amp;inst=all&amp;showsearchonly=false&amp;oft=false&amp;lookfor=rosencrantz&amp;type=all&amp;submit=Find&amp;use_dismax=1.html#" onclick="hideThese('publishDateRange'); return false;"><i>less...</i></a></dd>
+</dl>
+<dl class="narrowList navmenu narrow_begin" id="facet_begin_">
+<dt>Region</dt>
+<dd><a class="clickpostlog" ref="addfacet|geographicStr|Great Britain|1" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=geographicStr%3AGreat%20Britain">Great Britain</a> (3)</dd>
+<dd><a class="clickpostlog" ref="addfacet|geographicStr|Alaska|2" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=geographicStr%3AAlaska">Alaska</a> (1)</dd>
+<dd><a class="clickpostlog" ref="addfacet|geographicStr|California|3" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=geographicStr%3ACalifornia">California</a> (1)</dd>
+<dd><a class="clickpostlog" ref="addfacet|geographicStr|Ireland|4" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=geographicStr%3AIreland">Ireland</a> (1)</dd>
+<dd><a class="clickpostlog" ref="addfacet|geographicStr|United States|5" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=geographicStr%3AUnited%20States">United States</a> (1)</dd>
+</dl>
+<dl class="narrowList navmenu narrow_begin" id="facet_begin_">
+<dt>Library</dt>
+<dd><a class="clickpostlog" ref="addfacet|building|Hatcher Graduate|1" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=building%3AHatcher%20Graduate">Hatcher Graduate</a> (16)</dd>
+<dd><a class="clickpostlog" ref="addfacet|building|Art Architecture & Engineering|2" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=building%3AArt%20Architecture%20%26%20Engineering">Art Architecture & Engineering</a> (5)</dd>
+<dd><a class="clickpostlog" ref="addfacet|building|Flint Thompson Library|3" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=building%3AFlint%20Thompson%20Library">Flint Thompson Library</a> (4)</dd>
+<dd><a class="clickpostlog" ref="addfacet|building|Buhr Shelving Facility|4" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=building%3ABuhr%20Shelving%20Facility">Buhr Shelving Facility</a> (3)</dd>
+<dd><a class="clickpostlog" ref="addfacet|building|Shapiro Undergraduate|5" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=building%3AShapiro%20Undergraduate">Shapiro Undergraduate</a> (3)</dd>
+<dd id="more_building"><a href="Home%3Fcheckspelling=true&amp;inst=all&amp;showsearchonly=false&amp;oft=false&amp;lookfor=rosencrantz&amp;type=all&amp;submit=Find&amp;use_dismax=1.html" onclick="showThese('building'); return false;"><i>more...</i></a></dd>
+</dl>
+<dl class="narrowList navmenu narrow_end" id="facet_end_building">
+<dd><a class="clickpostlog" ref="addfacet|building|Askwith Media Library|6" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=building%3AAskwith%20Media%20Library">Askwith Media Library</a> (2)</dd>
+<dd><a class="clickpostlog" ref="addfacet|building|Donald Hall Collection|7" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=building%3ADonald%20Hall%20Collection">Donald Hall Collection</a> (2)</dd>
+<dd><a class="clickpostlog" ref="addfacet|building|Special Collections|8" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=building%3ASpecial%20Collections">Special Collections</a> (2)</dd>
+<dd><a class="clickpostlog" ref="addfacet|building|Music|9" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=building%3AMusic">Music</a> (1)</dd>
+<dd><a href="Home%3Fcheckspelling=true&amp;inst=all&amp;showsearchonly=false&amp;oft=false&amp;lookfor=rosencrantz&amp;type=all&amp;submit=Find&amp;use_dismax=1.html#" onclick="hideThese('building'); return false;"><i>less...</i></a></dd>
+</dl>
+<dl class="narrowList navmenu narrow_begin" id="facet_begin_">
+<dt>Author</dt>
+<dd><a class="clickpostlog" ref="addfacet|authorStr|Gilbert, W. S. 1836-1911|1" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=authorStr%3AGilbert%2C%20W.%20S.%201836-1911">Gilbert, W. S. 1836-1911</a> (29)</dd>
+<dd><a class="clickpostlog" ref="addfacet|authorStr|Stoppard, Tom|2" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=authorStr%3AStoppard%2C%20Tom">Stoppard, Tom</a> (13)</dd>
+<dd><a class="clickpostlog" ref="addfacet|authorStr|Shakespeare, William, 1564-1616|3" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=authorStr%3AShakespeare%2C%20William%2C%201564-1616">Shakespeare, William, 1564-1616</a> (3)</dd>
+<dd><a class="clickpostlog" ref="addfacet|authorStr|Dreyfuss, Richard|4" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=authorStr%3ADreyfuss%2C%20Richard">Dreyfuss, Richard</a> (2)</dd>
+<dd><a class="clickpostlog" ref="addfacet|authorStr|Oldman, Gary|5" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=authorStr%3AOldman%2C%20Gary">Oldman, Gary</a> (2)</dd>
+<dd id="more_authorStr"><a href="Home%3Fcheckspelling=true&amp;inst=all&amp;showsearchonly=false&amp;oft=false&amp;lookfor=rosencrantz&amp;type=all&amp;submit=Find&amp;use_dismax=1.html" onclick="showThese('authorStr'); return false;"><i>more...</i></a></dd>
+</dl>
+<dl class="narrowList navmenu narrow_end" id="facet_end_authorStr">
+<dd><a class="clickpostlog" ref="addfacet|authorStr|Popkin, Henry|6" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=authorStr%3APopkin%2C%20Henry">Popkin, Henry</a> (2)</dd>
+<dd><a class="clickpostlog" ref="addfacet|authorStr|Roth, Tim|7" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=authorStr%3ARoth%2C%20Tim">Roth, Tim</a> (2)</dd>
+<dd><a class="clickpostlog" ref="addfacet|authorStr|Allen, Patrick, 1927-2006|8" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=authorStr%3AAllen%2C%20Patrick%2C%201927-2006">Allen, Patrick, 1927-2006</a> (1)</dd>
+<dd><a class="clickpostlog" ref="addfacet|authorStr|Ambrose Video Publishing|9" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=authorStr%3AAmbrose%20Video%20Publishing">Ambrose Video Publishing</a> (1)</dd>
+<dd><a class="clickpostlog" ref="addfacet|authorStr|Anthony, Chick|10" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=authorStr%3AAnthony%2C%20Chick">Anthony, Chick</a> (1)</dd>
+<dd><a class="clickpostlog" ref="addfacet|authorStr|Azenberg, Emanuel|11" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=authorStr%3AAzenberg%2C%20Emanuel">Azenberg, Emanuel</a> (1)</dd>
+<dd><a class="clickpostlog" ref="addfacet|authorStr|Baines, Christopher|12" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=authorStr%3ABaines%2C%20Christopher">Baines, Christopher</a> (1)</dd>
+<dd><a class="clickpostlog" ref="addfacet|authorStr|Barry, B. H|13" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=authorStr%3ABarry%2C%20B.%20H">Barry, B. H</a> (1)</dd>
+<dd><a class="clickpostlog" ref="addfacet|authorStr|Bateman, Geoffrey|14" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=authorStr%3ABateman%2C%20Geoffrey">Bateman, Geoffrey</a> (1)</dd>
+<dd><a class="clickpostlog" ref="addfacet|authorStr|Beevers, Geoffrey|15" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=authorStr%3ABeevers%2C%20Geoffrey">Beevers, Geoffrey</a> (1)</dd>
+<dd><a class="clickpostlog" ref="addfacet|authorStr|Behan, Brendan|16" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=authorStr%3ABehan%2C%20Brendan">Behan, Brendan</a> (1)</dd>
+<dd><a class="clickpostlog" ref="addfacet|authorStr|Bennett, Rodney|17" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=authorStr%3ABennett%2C%20Rodney">Bennett, Rodney</a> (1)</dd>
+<dd><a class="clickpostlog" ref="addfacet|authorStr|Benson, Peter|18" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=authorStr%3ABenson%2C%20Peter">Benson, Peter</a> (1)</dd>
+<dd><a class="clickpostlog" ref="addfacet|authorStr|Blair, Iain|19" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=authorStr%3ABlair%2C%20Iain">Blair, Iain</a> (1)</dd>
+<dd><a class="clickpostlog" ref="addfacet|authorStr|Bloom, Claire, 1931-|20" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=authorStr%3ABloom%2C%20Claire%2C%201931-">Bloom, Claire, 1931-</a> (1)</dd>
+<dd><a class="clickpostlog" ref="addfacet|authorStr|Boas, Guy, 1896-|21" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=authorStr%3ABoas%2C%20Guy%2C%201896-">Boas, Guy, 1896-</a> (1)</dd>
+<dd><a class="clickpostlog" ref="addfacet|authorStr|Brandman, Michael|22" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=authorStr%3ABrandman%2C%20Michael">Brandman, Michael</a> (1)</dd>
+<dd><a class="clickpostlog" ref="addfacet|authorStr|British Broadcasting Corporation|23" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=authorStr%3ABritish%20Broadcasting%20Corporation">British Broadcasting Corporation</a> (1)</dd>
+<dd><a class="clickpostlog" ref="addfacet|authorStr|British Broadcasting Corporation. Television Service|24" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=authorStr%3ABritish%20Broadcasting%20Corporation.%20Television%20Service">British Broadcasting Corporation. Television Service</a> (1)</dd>
+<dd><a class="clickpostlog" ref="addfacet|authorStr|Brodsky, Joseph, 1940-1996|25" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=authorStr%3ABrodsky%2C%20Joseph%2C%201940-1996">Brodsky, Joseph, 1940-1996</a> (1)</dd>
+<dd><a class="clickpostlog" ref="addfacet|authorStr|Buena Vista Home Video (Firm)|26" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=authorStr%3ABuena%20Vista%20Home%20Video%20%28Firm%29">Buena Vista Home Video (Firm)</a> (1)</dd>
+<dd><a class="clickpostlog" ref="addfacet|authorStr|Burroughs, Peter, 1947-|27" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=authorStr%3ABurroughs%2C%20Peter%2C%201947-">Burroughs, Peter, 1947-</a> (1)</dd>
+<dd><a class="clickpostlog" ref="addfacet|authorStr|Chadwyck-Healey Ltd|28" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=authorStr%3AChadwyck-Healey%20Ltd">Chadwyck-Healey Ltd</a> (1)</dd>
+<dd><a class="clickpostlog" ref="addfacet|authorStr|Charleson, Ian|29" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=authorStr%3ACharleson%2C%20Ian">Charleson, Ian</a> (1)</dd>
+<dd><a class="clickpostlog" ref="addfacet|authorStr|Cinecom Entertainment Group|30" href="http://mirlyn.lib.umich.edu/Search/Home?type%5B%5D=all&lookfor%5B%5D=rosencrantz&filter%5B%5D=authorStr%3ACinecom%20Entertainment%20Group">Cinecom Entertainment Group</a> (1)</dd>
+<dd><a href="Home%3Fcheckspelling=true&amp;inst=all&amp;showsearchonly=false&amp;oft=false&amp;lookfor=rosencrantz&amp;type=all&amp;submit=Find&amp;use_dismax=1.html#" onclick="hideThese('authorStr'); return false;"><i>less...</i></a></dd>
+</dl>
+</div>
+</div>
+</div>
+<!-- End Narrow Search Options -->
+<div id="emailSearch" style="background-color: #fff; display: none">
+<div style=" padding:3em; ">
+<p><strong>Email this search</strong></p>    
+<p>By filling out the form below, you can email a link to this search (and the first few results) to yourself or someone else.</p>
+<p>Please make sure the "To" address is a complete, valid email address (e.g., user@umich.edu).</p>
+<form type="GET" action="http://mirlyn.lib.umich.edu/Search/SearchExport">
+<input type="hidden" name="method" value="emailRecords">
+<input type="hidden" name="tag" value="168.1435326342460ea53.67847116">
+<table style="margin:0; padding: 0; width: auto;">
+<tbody>
+<tr>
+<td>To:</td><td><input name="to" type="text" size="20"></td>
+</tr>
+<tr>
+<td>From:</td><td></td>
+</tr>
+<tr>
+<td>Message:</td><td><textarea  name="message"></textarea></td></tr>
+</tr>
+</tbody>
+</table>
+<input type="button" value="Send email" onclick="emailSearch(this); return false;">
+</form>
+<div class="erError"></div>
+</div>
+</div> 
+</div>
+<div class="footer-wrapper">
+<!-- MLibrary Footer for rest of site -->
+<a href="http://mirlyn-classic.lib.umich.edu/" class="searchbox-button classic-link">Mirlyn Classic</a>
+<a href="http://m.mirlyn.lib.umich.edu/" class="searchbox-button mobile-link">Mirlyn Mobile</a>
+<div class="mlfooter-container not-homepage-footer">
+<nav id="footercol1">
+<h2>Make the Most of Mirlyn</h2>
+<a href="http://guides.lib.umich.edu/content.php?pid=271097&amp;sid=2518765">Tips</a>
+<a href="http://www.lib.umich.edu/newbooks/">Browse New Items</a>
+</nav>
+<nav id="footercol2">
+<h2>Course Reserves</h2>
+<a href="http://mirlyn-classic.lib.umich.edu/F/?local_base=u-miu30">Search Course Reserves</a>
+<a href="http://www.lib.umich.edu/course-reserves">About Course Reserves</a>
+</nav>
+<nav id="footercol3">
+<h2>Other Resources</h2>
+<a href="http://www.lib.umich.edu/searchtools#articlesplus/search">ArticlesPlus</a>
+<a href="http://www.lib.umich.edu/searchtools">Search Tools</a>
+<a href="https://ill.lib.umich.edu/illiad/illiad.dll?">Interlibrary Loan</a>
+<a href="http://www.lib.umich.edu/library-catalogs">Other Library Catalogs</a>
+<a href="http://www.lib.umich.edu/ask-librarian">Ask a Librarian</a>
+</nav>
+</div>
+<div id="regents">
+<p >&copy;2014, Regents of the University of Michigan</p>
+</div>
+</div>
+<script type="text/javascript">
+
+
+
+
+
+// Add login link to .wsfavlogin
+
+// jq('.wsfavlogin').attr('href', loginLink());
+
+// Add rounded corners
+  if('corner' in $.fn) {
+    jq(document).ready(function() {
+      x = jQuery('.wsfavorites');
+      jQuery('.special-button', x).corner('8px');
+      jQuery('.actual', x).corner('left 3px');
+      jQuery('.remove-tag', x).corner('right 3px');
+    });
+  }
+
+
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-1341620-9");
+pageTracker._trackPageview();
+} catch(err) {}
+
+</script>
+</div>
+</body>
+</html>

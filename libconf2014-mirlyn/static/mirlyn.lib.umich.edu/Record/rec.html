@@ -1,0 +1,1076 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<!-- Working from 141.211.168.143 on path /www/vufind/web/mirlyn/web -->
+<title>Mirlyn: Holdings: Rosencrantz & Guildenstern are dead.</title>
+<script type="text/javascript">
+    //<![CDATA[
+    var is_ie6 = ('ActiveXObject' in window && !('XMLHttpRequest' in window));
+    //]]>
+    </script>
+<link rel="canonical" href="001026133.html">
+<link rel="alternate" type="application/marc" href="http://mirlyn.lib.umich.edu/Record/001026133.mrc" >
+<link rel="alternate" type="application/x-Research-Info-Systems" href="http://mirlyn.lib.umich.edu/Record/001026133.ris" >
+<link rel="alternate" type="application/x-endnote-refer" href="http://mirlyn.lib.umich.edu/Record/001026133.endnote" >
+<link rel="alternate" type="application/marc+xml" href="http://mirlyn.lib.umich.edu/Record/001026133.xml" >
+<link rel="alternate" href="http://mirlyn.lib.umich.edu/Record/001026133.rdf" type="application/rdf+xml" />
+<link rel="unapi-server" type="application/xml" title="unAPI" href="http://mirlyn.lib.umich.edu/unapi">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="../../ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+<!-- corners -->
+<script src="http://www.lib.umich.edu/sites/www.lib.umich.edu/modules/mlibrary/favorites/jquery.corner.js" type="text/javascript" charset="utf-8"></script>
+<!-- Fancybox -->
+<script src="http://mirlyn.lib.umich.edu/static/jquery.fancybox/jquery.fancybox-1.2.1.js" type="text/javascript" charset="utf-8"></script>
+<link rel="stylesheet" type="text/css" media="screen" href="http://mirlyn.lib.umich.edu/static/jquery.fancybox/jquery.fancybox.css">
+<!--    <link rel="stylesheet" type="text/css" media="screen" href="/interface/themes/um/css/jquery.fancybox.css"> -->
+<script type="text/javascript" charset="utf-8">
+   var jq = jQuery.noConflict();
+   $ = jq;
+
+   var tempAddLink = "Select";
+   var tempRemoveLink = "Unselect";
+   var tempset = "Selected items";
+   var jssearchcomps = "";
+   var username = "";
+  </script>
+<script src="http://mirlyn.lib.umich.edu/js/favorites.js" type="text/javascript" charset="utf-8"></script>
+<script language="JavaScript" type="text/javascript">
+    path = 'http://mirlyn.lib.umich.edu';
+
+    
+
+
+String.prototype.trim = function() {
+	return this.replace(/^\s+|\s+$/g,"");
+}
+
+function trimForm(infrm) {
+  infrm.value = infrm.value.trim()
+ }
+
+function fixform(f) {
+  // jq('#lookfor').value = jq('#lookfor').value.trim();
+
+  if (jq('#searchtype').val() == 'journaltitle') {
+    // jq('#searchtype').val('title');
+    jq(f).append('<input type="hidden" name="filter[]" value=\'format:Serial\'>');
+  }
+
+  if (jq('#lookfor', f).val() == 'enter search terms') {
+    jq('#lookfor', f).val('');
+  }
+
+}
+
+function loginLink() {
+  
+  login = 'https://www.lib.umich.edu/vf/vflogin_dbsess.php?returnto=';
+  
+  loc = window.location.href;
+  return login + escape(loc);
+}
+
+
+
+jq.fn.clearForm = function(exceptions) {
+  return this.each(function() {
+    if (jq(this).hasClass('stickyform')) {
+      return;
+    }
+    var type = this.type, tag = this.tagName.toLowerCase();
+    if (tag == 'form')
+      return jq(':input',this).clearForm();
+    if (type == 'text' || type == 'password' || tag == 'textarea')
+      this.value = '';
+    else if (type == 'checkbox' || type == 'radio')
+      this.checked = false;
+    else if (tag == 'select')
+      this.selectedIndex = 0;
+  });
+};
+
+function pausecomp(millis)
+{
+  var date = new Date();
+  var curDate = null;
+
+  do { curDate = new Date(); }
+  while(curDate-date < millis);
+}
+
+// function submitFeedback()
+// {
+//   document.getElementById('popupbox').innerHTML +=  document.getElementById('feedback_thanks').innerHTML;
+//   setTimeout("hideLightbox()", 1500);
+//   return true;
+// }
+
+function hideMenu(elemId)
+{
+    document.getElementById(elemId).style.display='none';
+}
+
+
+/* Set up fancybox for dolightbox class */
+
+jq(function(){
+  jq('.dolightbox').fancybox({
+    hideOnContentClick: false,
+    overlayShow: true,
+    frameHeight: 410
+  });
+
+});
+
+
+
+  </script>
+<script type="text/javascript" charset="utf-8">
+  var isSelectedItemsPage = false;
+  var isFavoritesPage     = false;
+</script>
+<script src="http://www.lib.umich.edu/sites/www.lib.umich.edu/modules/mlibrary/favorites/export.js" type="text/javascript" charset="utf-8"></script>
+<link rel="stylesheet" type="text/css" media="screen" href="http://www.lib.umich.edu/sites/www.lib.umich.edu/modules/mlibrary/favorites/export.css">
+<!-- Our CSS -->
+<!-- <link rel="search" type="application/opensearchdescription+xml" title="Library Catalog Search" href="http://mirlyn.lib.umich.edu/Search/OpenSearch?method=describe"> -->
+<link rel="stylesheet" type="text/css" media="screen" href="http://mirlyn.lib.umich.edu/interface/themes/um/css/normalize.css">
+<link rel="stylesheet" type="text/css" media="screen" href="http://mirlyn.lib.umich.edu/interface/themes/um/css/styles.css">
+<link rel="stylesheet" type="text/css" media="screen" href="http://mirlyn.lib.umich.edu/interface/themes/um/css/wrapper.css">
+<link rel="stylesheet" type="text/css" media="screen" href="http://mirlyn.lib.umich.edu/interface/themes/um/css/mlibrary_header.css">
+<link rel="stylesheet" type="text/css" media="screen" href="http://mirlyn.lib.umich.edu/interface/themes/um/css/mlibrary_footer.css">
+<link rel="stylesheet" type="text/css" media="print" href="http://mirlyn.lib.umich.edu/interface/themes/um/css/print.css">
+<!--[if lt IE 8]> <link rel="stylesheet" type="text/css" media="screen" href="/interface/themes/um/css/pre-ie8.css"> <![endif]-->
+<style type="text/css">
+.my-tags.tag-icon .inner:hover {
+border: none;
+}
+</style>
+</head>
+<body>
+<!--
+###################### BEGIN POPOUT DISPLAY TEXT########################
+-->
+<div id="searchhistory_help" style="display:none;" >
+<h2>Search History</h2>
+<p>We’re still working on Search History.  We hope to have it available soon. Once it’s here, it will provide a list of your recent searches and allow you to revisit them within a browser session.</p>
+</div>
+<div  class="overlay" style="display:none; text-align: left" id="searchtips_text">
+<div style="padding: 3em;">
+<div style="text-align: left">
+<h2>Search Tips</h2>
+<h3>Phrase Searching</h3>
+<p>Use quotes to search an exact phrase: e.g. "occult fiction"</p>
+<h3>Boolean Searching</h3> 
+<p>Use AND, OR, and NOT between words to combine them with Boolean logic: e.g. <i>(heart OR cardiac) AND surgery NOT procedures</i> will find items about heart surgery or cardiac surgery but not about surgery procedures. Boolean terms must be in uppercase </p>
+<h3>Plus (+) and Minus (-) Operators</h3>
+Use '+' (plus) immediately before a word to make that word required --  items must contain that word in order to  match your search. Use '-' (minus) immediately before a word to exclude that word  -- items must not contain that word in order to match your search. <i>+cat -dog</i> would match all items that contain the word cat but not the word dog.
+</div>  </div>
+</div>
+<div  class="overlay" style="display:none; text-align: left" id="loginDialog">
+<div style="padding: 3em;">
+<div>
+<h2>Not logged in</h2>
+You need to
+<a href="https://www.lib.umich.edu/vf/vflogin_dbsess.php?returnto=http%3A%2F%2Fmirlyn.lib.umich.edu%2FRecord%2F001026133">log in</a>
+to access that functionality.
+</div>  </div>
+</div>
+<div  id="login_to_text" style="display:none;" >
+<h3>Send record via text message</h3>
+<p>Texting is only available to logged-in users. Please <a id="text_login_link" href="001026133.html">log in</a>.
+</p>
+<script language="JavaScript" type="text/javascript">
+    jq('#text_login_link').attr('href', loginLink());
+  </script>
+</div>
+<div  id="login_to_email" style="display:none;" >
+<h3>Email</h3>
+<p>Email is only available to logged-in users. Please <a id="email_login_link" href="001026133.html">log in</a>.
+</p>
+<script language="JavaScript" type="text/javascript">
+    jq('#email_login_link').attr('href', loginLink());
+  </script>
+</div>
+<div class="overlay" style="display:none; text-align: left" id="htso">
+<div style="padding: 3em;">
+<h3>Search only (no full text)</h3>
+<p>There are some items in Mirlyn that have a status of "Search only (no full text)."
+These are items that have been digitized, but due to copyright restrictions, are not actually viewable.
+The contents of these items are searchable within the HathiTrust Digital Library interface.
+This ability to search within materials may be useful to help you determine whether a volume is relevant to
+your needs/interests so you can decide whether to obtain a physical copy.
+</p>
+<p>"Search only (no full text)" items are not included in default search results.  Check this box if
+you want to include them.   The box will remain checked and will apply to all searches in your
+session until you uncheck it.
+</p>
+</div>
+</div>
+<div class="overlay" style="display:none; text-align: left" id="fulltextonly">
+<div style="padding: 3em;">
+<h3>Available online</h3>
+<p>Titles are identified in Mirlyn as being “Available online” when at least one complete volume,
+issue, or part of the primary content is accessible online to all current U-M students, faculty and staff.</p>
+<p>Check this box to restrict search results to "Available online" titles.
+The box will remain checked and will apply to all searches in your session until you uncheck it.</p>
+</div>
+</div>
+<div class="overlay" style="display:none; text-align: left" id="section108">
+<div style="padding: 3em;">
+<p>Section 108 of United States copyright law allows full view access to this item in limited circumstances (listed below).
+In all other cases, access will be search only.
+<ul>
+<li>Full view is available to <b>authenticated University of Michigan users</b>
+(limited to one user at a time).
+<li>Full view is available from <b>public in-library workstations</b> in the following UM libraries:
+<ul>
+<li><a href="http://www.lib.umich.edu/art-architecture-engineering-library">Art, Architecture, and Engineering Library</a>
+<li><a href="http://www.lib.umich.edu/buhr-remote-shelving-facility">Buhr Remote Shelving Facility</a>
+<li><a href="http://www.lib.umich.edu/hatcher-graduate-library">Hatcher Graduate Library</a>
+<li><a href="http://www.lib.umich.edu/health-sciences-libraries">Health Sciences Libraries</a>
+<li><a href="http://www.lib.umich.edu/music-library">Music Library</a>
+<li><a href="http://www.lib.umich.edu/shapiro-undergraduate-library">Shapiro Undergraduate Library</a>
+<li><a href="http://www.lib.umich.edu/shapiro-science-library">Shapiro Science Library</a>
+</ul>
+</ul>
+<p style="margin-top: 1em; font-size: 80%">Notice Concerning Copyright Restrictions:  Access to this digital reproduction is governed by the copyright law of the United States [Title 17, United States Code].  Libraries and archives are authorized to provide access to a digitized reproduction under certain conditions.  No further reproduction and distribution of this digitized material is permitted by transmission or any other means. A user who reproduces or transmits this material may be liable for copyright infringement.</p>
+</div>
+</div>
+<!--
+###################### END POPOUT DISPLAY TEXT########################
+-->
+<nav id="header-links">
+<div id="home-links">
+<a href="http://mirlyn.lib.umich.edu/" id="mirlyn_logo"><img alt="Mirlyn Catalog" src="http://mirlyn.lib.umich.edu/images/mirlyn_catalog_on_white_cropped.jpg"></a>
+<a href="http://www.lib.umich.edu/" id="mlib_logo"><img src="http://mirlyn.lib.umich.edu/images/mlibrary.png" width="82" height="23" alt="Mlibrary Homepage"></a>
+</div>
+<div id="external-nav">
+<h2 class="hiddentext">Related Sites</h2>
+<a href="http://www.lib.umich.edu/searchtools">Search Tools</a>
+<a href="http://www.lib.umich.edu/searchtools#articlesplus/search">ArticlesPlus</a>
+<a href="http://mgetit.lib.umich.edu.proxy.lib.umich.edu/?SS_Page=refiner&amp;SS_RefinerEditable=yes">MGet It</a>
+<a href="https://ill.lib.umich.edu/illiad/illiad.dll?" title="Interlibrary Loans">I.L.L.</a>
+<a href="http://www.lib.umich.edu/ask-librarian" target="ask" class="last">Ask a Librarian</a>
+</div>
+<div id="login-nav">
+<h2 class="hiddentext">Account</h2>
+<a class="clickpostlog" ref="topaccountNLI" href="https://www.lib.umich.edu/my-account" title="Log in and view your account information">My Account</a>
+<a class="clickpostlog" ref="topfavorites" href="https://www.lib.umich.edu/my-account/favorites" title="Favorites"><span class="favorites">Favorites</span></a>
+<a href="https://www.lib.umich.edu/vf/vflogin_dbsess.php?returnto=http%3A%2F%2Fmirlyn.lib.umich.edu%2FRecord%2F001026133" class="last">Login</a>
+</div>
+</nav>
+<div id="doc3" class="yui-t8"> <!-- Change id for page width, class for menu layout. -->
+<!-- Searchbox -->
+<div id="bd">
+<div id="yui-main" style="*margin-left: 0em;">
+<form method="GET" id="searchForm" action="http://mirlyn.lib.umich.edu/Search/Home" name="searchForm" onsubmit="fixform(this)" class="search searchbox">
+<h2 class="hiddentext">Search</h2>
+<input type="hidden" name="checkspelling" value="true" />
+<div class="search-location-select">
+<label for="inst">Search in: </label>
+<div class="clean-select">
+<select name="inst" id="inst" class="stickyform" >
+<option value="all" selected>All Libraries</option>
+<option value="aa">UM Ann Arbor Libraries</option>
+<option value="flint">Flint Thompson Library</option>
+<option value="umtri">Transportation Research Institute Library (UMTRI)</option>
+<option value="bentley">Bentley Historical Library</option>
+<option value="clements">William L. Clements Library</option>
+</select>
+</div>
+</div>
+<div class="search-query-block">
+<input type="button" value="Clear" onclick="jq('#searchForm').clearForm(['inst']);" id="clear_searchbox" class="searchbox-button">
+<p class="hiddentext">The "Clear" button resets all the search form elements.</p>
+<script type="text/javascript" charset="utf-8">
+  function logcheckbox(type, status) {
+    clickpostlog(this, [type, status])
+    return true
+  }
+</script>
+<input id='sso' type="hidden" name="showsearchonly" value="false"/>
+<input id='oft' type='hidden' name='oft' value="false"/>
+<div class="secondRowOfTheSearchBox">
+<input id="onlyfulltext"  type="checkbox" value="true"
+onclick="if (jq(this).is(':checked')) {logcheckbox('fulltextcheckbox', 'on'); jq('#oft').val('true')} 
+else {logcheckbox('fulltextcheckbox', 'off'); jq('#oft').val('false')}"
+>
+<label for="onlyfulltext">Limit to <strong>Available online</strong> <a href="001026133.html#fulltextonly" class="dolightbox"><img  style="vertical-align: middle;" alt="" src="http://mirlyn.lib.umich.edu/images/silk/help.png"></a></label>
+<input  style="margin-left: 2em" id="showsearchonly" type="checkbox" value="true"
+onclick="if (jq(this).is(':checked')) {logcheckbox('htsocheckbox', 'on'); jq('#sso').val('true')} else {logcheckbox('htsocheckbox', 'off'); jq('#sso').val('false')}"
+>
+<label for="showsearchonly">Include <strong>Search only</strong> (no full text) <a href="001026133.html#htso" class="dolightbox"><img  style="vertical-align: middle;" alt="" src="http://mirlyn.lib.umich.edu/images/silk/help.png"></a></label>
+</div>
+<label for="lookfor" class="hiddentext">Search terms: </label>
+<input type="text" name="lookfor" id="lookfor" size="30" value="">
+<label for="searchtype" class="hiddentext">Search type: </label>
+<div class="clean-select">
+<select name="type" id="searchtype">
+<option value="all">All Fields</option>
+<option value="title">Title</option>
+<option value="author">Author</option>
+<option value="subject">Subject</option>
+<option value="hlb">Academic Discipline</option>
+<option value="callnumber">Call Number starts with</option>
+<option value="isn">ISBN / ISSN / etc.</option>
+<option value="serialtitle">Journal/Serial name</option>
+</select>
+</div>
+<input  type="submit" name="submit" value="Find" class="searchbox-button">
+<input type="hidden" name="use_dismax" value="1">
+</div>
+<span class="search-extras">
+<a href="001026133.html#searchtips_text" class="dolightbox searchbox-button">Search Tips</a>
+<div  class="overlay" style="display:none; text-align: left" id="searchtips_text">
+<div style="padding: 3em;">
+<div style="text-align: left">
+<h2>Search Tips</h2>
+<h3>Phrase Searching</h3>
+<p>Use quotes to search an exact phrase: e.g. "occult fiction"</p>
+<h3>Boolean Searching</h3> 
+<p>Use AND, OR, and NOT between words to combine them with Boolean logic: e.g. <i>(heart OR cardiac) AND surgery NOT procedures</i> will find items about heart surgery or cardiac surgery but not about surgery procedures. Boolean terms must be in uppercase </p>
+<h3>Plus (+) and Minus (-) Operators</h3>
+Use '+' (plus) immediately before a word to make that word required --  items must contain that word in order to  match your search. Use '-' (minus) immediately before a word to exclude that word  -- items must not contain that word in order to match your search. <i>+cat -dog</i> would match all items that contain the word cat but not the word dog.
+</div>          </div>
+</div>
+<a href="http://mirlyn.lib.umich.edu/Search/Advanced" class="small searchbox-button">Advanced<span class="hiddentext"> Search</span></a>
+</span>
+</form>
+</div>
+</div>
+<!-- Content -->
+<link rel="stylesheet" type="text/css" media="screen" href="http://mirlyn.lib.umich.edu/static/MTagger/mtagger.css">
+<script language="JavaScript" type="text/javascript" src="http://mirlyn.lib.umich.edu/services/Record/ajax.js"></script>
+<script language="JavaScript" type="text/javascript" src="http://mirlyn.lib.umich.edu/js/googleLinks.js"></script>
+<script language="JavaScript" type="text/javascript" src="../../www.lib.umich.edu/mtagger/js/jquery.mtagger.js"></script>
+<script language="Javascript" type="text/javascript"> jQuery.mtagger.base +=  '/static/MTagger';</script>
+<div id="record_single_view">
+<div id="record_nav_and_tools" style="margin-left: 26px; margin-right: 20em; padding-bottom: 1em;">
+<div id="recordheader">
+</div> <!-- end of recordheader -->  </div>
+<div style="margin-left: 26px">
+<div style="float: left; width: 45em; margin-bottom: 1.5em">
+<div id="recordTools">
+<ul class="tools">
+<li><a href="http://mirlyn.lib.umich.edu/Record/001026133/Cite" class="cite" onClick="getLightbox('Record', 'Cite', '001026133', null, 'Cite this'); return false;">Cite this</a></li>
+<!-- text message only if we have a user -->
+<li>
+<a href="001026133.html#login_to_text" class="sms dolightbox">Text this</a>
+</li>
+<li><a href="001026133.html#login_to_email" class="mail dolightbox">Email</a></li>
+<li><a href="001026133.html#exportRefworksSingle" class="refworkslink dolightbox" target="refworks">Export to refworks</a>
+<li><a class="endnotelink" href="http://mirlyn.lib.umich.edu/Search/SearchExport?handpicked=001026133&amp;method=ris">Export to Endnote</a></li>
+</ul>
+</div> <!-- end of recordTools -->      </div> 
+<div style="float: left">
+<style type="text/css" media="screen">
+button.tempSelected {
+color: red;
+}
+button.tempUnselected {
+color: green;
+}
+.tools button.temptoggle {
+margin-top: -.5em;
+}
+.erError {
+padding-top: 1em;
+}
+</style>
+<div id="smsSingle"   style="background-color: #fff; display: none">
+<div class="fancyboxInner">
+<h2>Send record via SMS</h2>
+<form method="post" action="http://mirlyn.lib.umich.edu/Record/null"
+onSubmit="sendSMS('001026133', jq(this)); return false;">
+<table>
+<tr>
+<td>Number: </td>
+<td><input type="text" name="to" value="10-Digit Phone Number" onfocus="if(this.value=='10-Digit Phone Number'){this.value=''}" onblur = "if(this.value==''){this.value='10-Digit Phone Number'}"></td>
+</tr>
+<tr>
+<td>Provider: </td>
+<td>
+<select name="provider">
+<option selected=true value="">Select your carrier</option>
+<option value="att">AT&amp;T</option>
+<option value="verizon">Verizon</option>
+<option value="tmobile">T Mobile</option>
+<option value="sprint">Sprint</option>
+<option value="nextel">Nextel</option>
+<option value="vmobile">Virgin Mobile</option>
+<option value="alltel">Alltel</option>
+<option value="cricket">Cricket</option>
+</select>
+</td>
+</tr>
+<tr>
+<td></td>
+<td><button onclick="sendSMS('001026133'); return false;">Send</button></td>
+</tr>
+</table>
+</form>
+<div class="erError"></div>
+</div>
+</div>
+<div id="emailSingle"   style="background-color: #fff; display: none">
+<div class="fancyboxInner">
+<p><strong>Email this item</strong></p>    
+<p>By filling out the form below, you can email this item to yourself or someone else.</p>
+<p>Please make sure the "To" address is a complete, valid email address (e.g., user@umich.edu).</p>
+<form action="http://mirlyn.lib.umich.edu/Record/GET" action="/Search/SearchExport">
+<input type="hidden" name="method" value="emailRecords">
+<input type="hidden" name="id" value="001026133">
+<table style="margin:0; padding: 0; width: auto;">
+<tbody>
+<tr>
+<td>To:</td><td><input name="to" type="text" size="20"></td>
+</tr>
+<tr>
+<td>From:</td><td></td>
+</tr>
+<tr>
+<td>Message:</td><td><textarea  name="message"></textarea></td>
+</tr>
+</tbody>
+</table>
+<input type="button" value="Send email" onclick="emailSelectedRecords({'handpicked': '001026133'}); return false;">
+</form>
+<div class="erError"></div>
+</div>
+</div>
+<div id="emailRecords" style="background-color: #fff; display: none">
+<div class="fancyboxInner">
+<p><strong>Email <span class="tempcount">0</span>  selected <span class="tempdenom">items</span></strong></p>    
+<p>Email the selected <span class="tempcount">0</span> <span class="tempdenom">items</span> to the address given below. </p>
+<p>Please make sure the "To" address is a complete, valid email address (e.g., user@umich.edu).</p>
+<form type="GET" action="http://mirlyn.lib.umich.edu/Search/SearchExport">
+<input type="hidden" name="method" value="emailRecords">
+<input type="hidden" name="tag" value="168.1435326349ce17a62.66398788">
+<table style="margin:0; padding: 0; width: auto;">
+<tbody>
+<tr>
+<td>To:</td><td><input name="to" type="text" size="20"></td>
+</tr>
+<tr>
+<td>From:</td><td></td>
+</tr>
+<tr>
+<td>Message:</td><td><textarea  name="message"></textarea></td>
+</tr>
+</tbody>
+</table>
+<input type="button" value="Send email" onclick="emailSelectedRecords({'tempset': 1}); return false;">
+</form>
+<div class="erError" style="padding-top: 1em;"></div>
+<p style="text-align: right"><a href="001026133.html#" onclick="replaceLightbox('exportMenu'); return false">(back)</a></p>
+</div>
+</div>
+<div id="exportRecords" style="background-color: #fff; display: none">
+<div style=" padding:3em;">
+<p><strong>Export or Save <span class="tempcount">0</span> 
+<span class="tempdenom">items</span>
+</strong></p>
+<p>Clicking on the link below will download the records in "RIS" format, which can be read by Endnote, Procite, Zotero, etc. </p>
+<p>You may either open the file in Endnote (or other program) directly, or save it and subsequently import it into your program.
+Saving and then importing will usually correct any foreign-language characters that import incorrectly with a direct import.]</p>
+<p style="text-align: center">
+<a href="http://mirlyn.lib.umich.edu/Search/SearchExport?method=ris&amp;tag=168.1435326349ce17a62.66398788" onclick="setTimeout('jq.fn.fancybox.close()', 2500); return true;">Export the selected 
+<span class="tempcount">0</span> <span class="tempdenom">items</span> in RIS Format</a>
+</p>
+<p style="text-align: right">
+<a href="001026133.html#" onclick="replaceLightbox('exportMenu'); return false">(back)</a>
+</p>
+</div>
+</div>
+<div id="exportMenu" style="background-color: #fff; display: none">
+<div class="fancyboxInner">
+<p><strong>Export <span class="tempcount">0</span> selected <span class="tempdenom">items</span></strong></p>
+<p>You have selected <span class="tempcount">0</span> <span class="tempdenom">items</span>. You may:</p>
+<ul>
+<li><a href="001026133.html#" onclick="replaceLightbox('exportRefworks'); return false;">send the selected <span class="tempdenom">items</span> to Refworks</a></li>
+<li><a href="001026133.html#" onclick="replaceLightbox('exportRecords'); return false;">export the selected <span class="tempdenom">items</span> to a text file or a  program like Endnote, Procite, or Zotero</a></li>
+</ul>
+</div>
+</div>
+<div id="exportRefworks" style="background-color: #fff; display: none">
+<div class="fancyboxInner">
+<p><strong>Export to Refworks</strong></p>
+<p>Clicking on the button below will send the <span class="tempcount">0</span> selected 
+<span class="tempdenom">items</span> to Refworks.</p>
+<p>A new window will open, and you may be asked to log into Refworks to continue.[Refworks is allowed access for about ten minutes. If you wait longer than that, you'll need to do the export again.]</p>
+<p>Choose the campus through which you use RefWorks:</p>
+<form>
+<input type="radio" name="campus" value="aa"> Ann Arbor<br/>
+<input type="radio" name="campus" value="flint"> Flint<br/>
+<div  style="padding-top: 1em;"><button onclick="exportTempToRefworks('tempset=1'); return false">Export to RefWorks</button></div>
+</form>
+<p style="text-align: right">
+<a href="001026133.html#" onclick="replaceLightbox('exportMenu'); return false">(back)</a>
+</p>  
+</div>
+</div>
+<div id="exportRefworksSingle" style="background-color: #fff; display: none">
+<div class="fancyboxInner">
+<p><strong>Export to Refworks</strong></p>
+<p>Clicking on the button below will send this item, <i>Rosencrantz & Guildenstern are dead</i>, to Refworks.</p>
+<p>A new window will open, and you may be asked to log into Refworks to continue.[Refworks is allowed access for about ten minutes. If you wait longer than that, you'll need to do the export again.]</p>
+<p>Choose the campus through which you use RefWorks:</p>
+<form>
+<input type="radio" name="campus" value="aa"> Ann Arbor<br/>
+<input type="radio" name="campus" value="flint"> Flint<br/>
+<div  style="padding-top: 1em;"><button style="padding-top: 1em;" onclick="exportTempToRefworks('handpicked=001026133'); return false">Export to RefWorks</button></div>
+</form>
+</div>
+</div>
+<div id="clearSelected" style="background-color: #fff; display: none">
+<div class="fancyboxInner">
+<p><strong>Clear selected <span class="tempdenom">items</span> </strong></p>
+<p> By clicking the below button, you will remove the "selected" status from the  <span class="tempcount">0</span> 
+currently selected <span class="tempdenom">items</span>. Are you sure?</p>
+<p><button onclick="clearTempItems();">Clear selected items</button></p>
+<div class="erError" style="padding-top: 1em;"></div>
+</div>
+</div>
+<div id="deleteFavorite" style="background-color: #fff; display: none">
+<div class="fancyboxInner">
+<h2>Remove Favorite</h2>
+<p>Are you sure you want to remove:</p>
+<div style="padding-left: 1.5em;"><i><span class="favFormTitle"></span></i></div>
+<p>...from your list of favorites?</p>
+<p><button class="deleteButton">Remove from Favorites</button>
+<button onclick="jq.fn.fancybox.close()">Cancel</button></p>
+</div>
+</div>
+<a id="openEditFavorite" class="dolightbox" href="001026133.html#editFavorite" style="display:none"></a>
+<div id="editFavorite" style="background-color: #fff; display: none">
+<div class="fancyboxInner">
+<h2><span class="favFormTitle"></span></h2>
+<input type="hidden" name="id">
+<div class="currentFavorites">
+<h3>Choose which tags to keep or remove</h3>
+<table class="currentFavorites">
+<thead><tr><th style="width: 10%">Keep?</th><th>Tag</th></tr></thead>
+<tbody class="currentFavoritesCheckboxes">
+</tbody>
+</table>
+</div>
+<p><label for="newtags">Add new tags (separate with commas)</label><br>
+<input id="newtags" name="newtags" size="45"></p>
+<div class="buttonlist">
+<!-- this.parent.parent to get to the whole div with all the data in it -->
+<button onclick="editFavorite(jq(this).parent().parent())">Submit</button>
+<button onclick="jq.fn.fancybox.close();return false">Cancel</button>
+<button onclick="openDeleteFavorite(jq(this).parent().parent());return false;" 
+href="#deleteFavorite" class="deleteButton">Remove from Favorites</button>
+</div>
+</div>
+</div>
+<div id="saveToFavorites" style="background-color: #fff; display: none">
+<div class="fancyboxInner">
+<p><strong>Saving to <span class="favorites">Favorites</span></strong></p>
+<p>...requires you to first <a href="https://www.lib.umich.edu/vf/vflogin_dbsess.php?returnto=http%3A%2F%2Fmirlyn.lib.umich.edu%2FRecord%2F001026133">Login</a></p>
+</div>
+</div>
+<div id="tempBoxes">
+<a id="saveToFavoritesLink" class="dolightbox" href="001026133.html#saveToFavorites" style="display:none"></a>
+<div id="tempFolder"  style="display:none">
+<span class="templine" id="tempFolder"><strong>For Selected  <span class="tempdenom">Items</span></strong> (<span class="tempcount">0</span>)</span>:
+<ul id="tempbox">
+<li class="first list"><a title="List selected items for viewing or printing" href="http://mirlyn.lib.umich.edu/Tags/SelectedItems">List</a></li>
+<li><a href="001026133.html#login_to_email" class="mail dolightbox">Email</a></li>
+<li><a class="dolightbox" title="Export selected items" href="001026133.html#exportMenu">Export</a></li>
+<li><a class="dolightbox" title="Remove all items from Selected Items list" href="001026133.html#clearSelected">Clear</a></li>
+<li><a id="inFavorites_tempset" class="dolightbox" title="Save all selected items to Favorites" href="001026133.html#loginDialog"><img class="stof" alt="Save selected items to favorites" src="http://mirlyn.lib.umich.edu/images/saveselected-enabled.png">
+</a></li>
+</ul>
+</div>
+<div id="tempFolderEmpty">
+<span class="templine" id="tempFolder"><strong>For Selected  <span class="tempdenom">Items</span></strong> (<span class="tempcount">0</span>):</span>
+<ul id="tempboxEmpty">
+<li class="first list">List</li>
+<li style="padding-left: 20px">Email</li>
+<li>Export</li>
+<li>Clear</li>
+<li><img class="stof" src="http://mirlyn.lib.umich.edu/images/saveselected-disabled.png" alt="Disabled: would save selected items to favorites if any items were selected"></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="record_single_view_content" style="clear:both">
+<div id="recordextras">
+<div id="similar_records" class="box submenu">
+<h4>View Similar Items</h4>
+<ul class="similar">
+<li >
+<a class="clickpostlog" ref="recsimilarLeft|001026133|004453296|1" href="http://mirlyn.lib.umich.edu/Record/004453296">Rosencrantz & Guildenstern are dead /</a>
+<span style="font-size: .8em">
+<br>By: Stoppard, Tom.; Crickmay, Anthony,                 <br>Published: 1967                 <br>Format: Book                 </span>
+</li>
+<li >
+<a class="clickpostlog" ref="recsimilarLeft|001026133|003864530|2" href="http://mirlyn.lib.umich.edu/Record/003864530">Rosencrantz & Guildenstern are dead : a play in three acts /</a>
+<span style="font-size: .8em">
+<br>By: Stoppard, Tom.                 <br>Published: 1967                 <br>Format: Book                 </span>
+</li>
+<li class="initially_hidden_more">
+<a class="clickpostlog" ref="recsimilarLeft|001026133|005827656|3" href="http://mirlyn.lib.umich.edu/Record/005827656">Rosencrantz & Guildenstern are dead /</a>
+<span style="font-size: .8em">
+<br>By: Stoppard, Tom.; Popkin, Henry.                 <br>Published: 1991                 <br>Format: Book                 </span>
+</li>
+<li class="initially_hidden_more">
+<a class="clickpostlog" ref="recsimilarLeft|001026133|005957892|4" href="http://mirlyn.lib.umich.edu/Record/005957892">Rosencrantz & Guildenstern are dead /</a>
+<span style="font-size: .8em">
+<br>By: Stoppard, Tom.; Popkin, Henry.                 <br>Published: 2002                 <br>Format: Book                 </span>
+</li>
+<li class="initially_hidden_more">
+<a class="clickpostlog" ref="recsimilarLeft|001026133|002448473|5" href="http://mirlyn.lib.umich.edu/Record/002448473">Rosencrantz and Guildenstern are dead : the film /</a>
+<span style="font-size: .8em">
+<br>By: Stoppard, Tom.                 <br>Published: 1991                 <br>Format: Book                 </span>
+</li>
+<li class="initially_hidden_more">
+<a class="clickpostlog" ref="recsimilarLeft|001026133|004550988|6" href="http://mirlyn.lib.umich.edu/Record/004550988">Rosencrantz and Guildenstern are dead : the film /</a>
+<span style="font-size: .8em">
+<br>By: Stoppard, Tom.                 <br>Published: 1991                 <br>Format: Book                 </span>
+</li>
+<li class="initially_hidden_more">
+<a class="clickpostlog" ref="recsimilarLeft|001026133|004382681|7" href="http://mirlyn.lib.umich.edu/Record/004382681">Rosencrantz and Guildenstern are dead [sound recording] / Tom Stoppard.</a>
+<span style="font-size: .8em">
+<br>By: Stoppard, Tom.                 <br>Published: 1980                 <br>Format: Audio (spoken word), Audio                 </span>
+</li>
+<li class="initially_hidden_more">
+<a class="clickpostlog" ref="recsimilarLeft|001026133|004574165|8" href="http://mirlyn.lib.umich.edu/Record/004574165">Rosencrantz & Guildenstern are dead : a play in three acts /</a>
+<span style="font-size: .8em">
+<br>By: Stoppard, Tom.                 <br>Published: 1995                 <br>Format: Book                 </span>
+</li>
+<li class="initially_hidden_more">
+<a class="clickpostlog" ref="recsimilarLeft|001026133|004980968|9" href="http://mirlyn.lib.umich.edu/Record/004980968">Rosencrantz & Guildenstern are dead [videorecording] /</a>
+<span style="font-size: .8em">
+<br>By: Stoppard, Tom.; Roth, Tim.; Dreyfuss, Richard.; Oldman, Gary.; Image Entertainment (Firm); Cinecom Entertainment Group.                 <br>Published: 2005                 <br>Format: Video (DVD)                 </span>
+</li>
+<li class="initially_hidden_more">
+<a class="clickpostlog" ref="recsimilarLeft|001026133|004681672|10" href="http://mirlyn.lib.umich.edu/Record/004681672">Rosencrantz and Guildenstern are dead</a>
+<span style="font-size: .8em">
+<br>By: Stoppard, Tom.                                  <br>Format: Book                 </span>
+</li>
+</ul>
+<div class="list_more_less"><a href="001026133.html#" onclick="jq('#similar_records .initially_hidden_more,#similar_records .list_more_less').toggle()">More...</a></div>
+<div class="list_more_less initially_hidden_more"><a href="001026133.html#" onclick="jq('#similar_records .initially_hidden_more,#similar_records .list_more_less').toggle()">Less...</a></div>
+</div>
+</div> <!-- end of recordleftcol -->
+<div id="record_maincontainer"  style="margin-left: 2em; margin-right: 20em;">
+<div class="googleCoverColumn"> <!-- floats left -->
+<input type="checkbox" class="selected_item_checkbox" id="inSelected_001026133" onclick="selectedToggle(this)" class="selectedCheckbox" value="on">
+<div id="GoogleCover_001026133" class="googleCover">
+<img src="http://mirlyn.lib.umich.edu/images/noCover2.gif">
+</div>
+<div class="wsfavorites" id="favorites-001026133">
+<div class="button special-button unstar-icon" style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; "><a
+class="wsfavlogin inner dolightbox" href="001026133.html#loginDialog">Save to<br>Favorites</a></div>
+</div>
+</div>
+<div style="margin-left: 110px;  margin-top: 1.5em"> <!-- title(s) -->
+<h1><abbr class="unapi-id" title="urn:bibnum:001026133">
+Rosencrantz & Guildenstern are dead.
+</abbr>
+</h1>
+<table class="citation" style="margin: 0px; margin-top: 2em; padding: 0px; *width=auto">
+<tr valign="top">
+<th>Main Author: </th>
+<td>
+<a class="clickpostlog" ref="recmainauthor" href="http://mirlyn.lib.umich.edu/Search/Home?lookfor=%22Stoppard%2C%20Tom.%22&amp;type=author">Stoppard, Tom.</a>
+<br>
+</td>
+</tr>
+<tr valign="top">
+<th>Format: </th>
+<td>
+<span class="iconlabel book">Book</span>
+</td>
+</tr>
+<tr valign="top">
+<th>Language: </th>
+<td>
+English
+</td>
+</tr>
+<tr valign="top">
+<th>Published: </th>
+<td>
+New York,
+Grove Press
+[1967]
+<br>
+</td>  </tr>
+<tr valign="top">
+<th>Series Statement: </th>
+<td>
+Evergreen book, E455
+</td>
+</tr>
+</table>
+<!-- Display Tab Navigation -->
+<a name="tabs"></a>
+<div id="tabnav">
+<ul>
+<li class="active">
+<a class="clickpostlog" ref="recholdingstab" href="http://mirlyn.lib.umich.edu/Record/001026133/Holdings#tabs" class="first"><span></span>Holdings</a>
+</li>
+<li>
+<a class="clickpostlog" ref="recdescriptiontab" href="http://mirlyn.lib.umich.edu/Record/001026133/Description#tabs" class="first"><span></span>Description</a>
+</li>
+<li>
+<a class="clickpostlog" ref="recmarctab" href="http://mirlyn.lib.umich.edu/Record/001026133/Details#tabs" class="first"><span></span>MARC View</a>
+</li>
+</ul>
+</div> <!-- End id=tabnav -->      <div class="details">
+<style type="text/css" media="screen">
+.htsohide { display: none}
+</style>
+<script language="JavaScript" type="text/javascript">
+
+var showHTSO = false;
+
+
+
+suffixes = ['holdings', 'on', 'off'];
+
+/* 
+ * Set the intitial state of each library (ELEC or the index 0,1,etc.)
+ * 
+ * We hide the more/less for small tables, and only show the first three
+ * rows of larger tables
+*/
+
+function holdings_set_initial_state(prefix) 
+{
+  
+  table = jq('#' + prefix + '_holdings');
+  
+  
+  if (prefix == 'ELEC') {
+    table.show();
+  }
+  
+  
+  size = jq('tr:visible', table).not('.htsotoggle').size()
+  
+  /* Hide collapsed items */
+  jq('.' + prefix + '_collapse').hide();
+  
+  
+  /* If we have a direct link, show the items */
+
+  if (document.location.hash == '#' + prefix) {
+    holdings_toggle(prefix);
+  }
+
+  /* If the number of rows is low
+     dispense with the more/less 
+  */
+  if (size <= 3 ) {
+    idstring = ['#' + prefix + '_on', '#' + prefix + '_off'].join(', ');
+    jq(idstring).hide();
+  }
+
+}
+
+/*
+ * More/Less button to toggle the state of the extended holdings (i.e., rows after #3).
+ *
+*/
+
+function holdings_toggle(prefix)
+{
+  idstring = ['#' + prefix + '_on', '#' + prefix + '_off', '.' + prefix + '_collapse'].join(', ');
+  if (showHTSO) {
+    jq(idstring).toggle();
+  } else {
+    jq(idstring).not('.htsohide').toggle();
+  }
+  return false;
+}
+
+
+/*
+ * Toggle the searchonly HT items
+ *
+*/
+
+function toggle_ht_so(loc)
+{
+  
+  table = jq('#' + loc + '_holdings');
+
+  /* Show all the items regardless */
+  jq('.' + loc + '_collapse').not('.htsohide').show();
+  
+  
+  /* Toggle the SO */
+  if (showHTSO) {
+    showHTSO = false;
+    jq('.htsohide, #htso_hidelabel').hide();
+    jq('#htso_showlabel').show();
+  } else {
+    showHTSO = true;
+    jq('.htsohide, #htso_hidelabel').show();
+    jq('#htso_showlabel').hide();
+    
+  }
+  
+
+  /* Toggle the less/more if the table is big enough; otherwise, hide both */
+  size = jq('tr:visible', table).not('.htsotoggle').size()
+    
+  if  (size > 3 ) {
+    jq('#' + loc + '_on').hide();
+    jq('#' + loc + '_off').show();
+  } else {
+    jq('#' + loc + '_on, #' + loc + '_off').hide();
+  }
+  return false;
+
+}
+
+
+
+</script>
+<style type="text/css" media="screen">
+.htsohide {display: none}
+</style>
+<a name="holdings"></a>
+<div id="all_holdings">
+<div id="dummyElec" style="display:none">
+<h3 class="holdings_header">Electronic Resources</h3>
+<table style="width: auto; display:none" id="ELEC_holdings" cellpadding="2" cellspacing="0" border="0" class="citation">
+</table>
+</div>
+<div class="toggle">
+<a href="001026133.html#" onclick="holdings_toggle('ELEC')" title="Toggle display of individual items">
+<span id="ELEC_on"><i>more...</i></span>
+<span id="ELEC_off" style="display:none"><i>less...</i></span>
+</a>
+</div>
+<script language="JavaScript" type="text/javascript">
+  holdings_set_initial_state('ELEC');
+</script>
+<a name="0"></a>
+<h3 class="holdings_header">HathiTrust Digital Library 
+</h3>
+<table id="0_holdings" style="*width: auto; margin-top: 0; margin-bottom: 0;" class="citation" cellpadding="2" cellspacing="0" border="0">
+<tr style="border-bottom: 1px solid #cccccc;" 
+class=" htsohide ic">
+<td style="width: 20%;">
+</td>
+<td style="width: 30%;"><a class="clickpostlog" ref="rechathi|mdp.39015021567956|hathi|Search only (no full text)" target="link" href="http://hdl.handle.net/2027/mdp.39015021567956">Search only (no full text)</a></td>
+<td style="width: 30%;">(original from University of Michigan)</td>
+<td style="width: 20%;"></td>
+</tr>
+<tr class="htsotoggle"><td>
+<a href="001026133.html#" style="font-size: 80%" onclick="toggle_ht_so(0);return false"><button><span id="htso_showlabel" style="display:inline">Show</span><span id="htso_hidelabel" style="display:none">Hide</span> 1 Search Only items</button></a>
+</td></tr>
+</table>
+<div class="toggle" id="#0_onoff">
+<a href="001026133.html#0" onclick="holdings_toggle(0)" title="Toggle display of individual items">
+<span id="0_on"><i>more...</i><hr></span>
+<span id="0_off" style="display:none"><i>less...</i><hr></span>
+</a>
+</div>
+<script language="JavaScript" type="text/javascript">
+    holdings_set_initial_state('0');
+  </script>
+<a name="1"></a>
+<h3 class="holdings_header">Hatcher Graduate 
+<a href=http://www.lib.umich.edu/location/hatcher-graduate-library/unit/25 target="new"><img src="http://mirlyn.lib.umich.edu/images/info.gif" alt="Library information"></a>
+</h3>
+<table id="1_holdings" style="*width: auto; margin-top: 0; margin-bottom: 0;" class="citation" cellpadding="2" cellspacing="0" border="0">
+<tr style="border-bottom: 1px solid #cccccc;" 
+class=" ">
+<td style="width: 20%;">
+</td>
+<td style="width: 30%;">
+822.8 S883rn            </td>
+<td style="width: 30%;">Checked out: due Mar 29, 2014 at 11:59 PM</td>
+<td style="width: 20%;">
+<form method="get" action="http://mirlyn.lib.umich.edu/Record/001026133/Hold">
+<input type="hidden" name="barcode" value="39015064906889">
+<input type="submit" name="getthis" value="Get this">
+</form>
+</td>
+</tr>
+</table>
+<div class="toggle" id="#1_onoff">
+<a href="001026133.html#1" onclick="holdings_toggle(1)" title="Toggle display of individual items">
+<span id="1_on"><i>more...</i><hr></span>
+<span id="1_off" style="display:none"><i>less...</i><hr></span>
+</a>
+</div>
+<script language="JavaScript" type="text/javascript">
+    holdings_set_initial_state('1');
+  </script>
+<a name="2"></a>
+<table id="2_holdings" style="*width: auto; margin-top: 0; margin-bottom: 0;" class="citation" cellpadding="2" cellspacing="0" border="0">
+<tr style="border-bottom: 1px solid #cccccc;" 
+class=" ">
+<td style="width: 20%;">
+</td>
+<td style="width: 30%;">
+822.8 S883rn            </td>
+<td style="width: 30%;"> Missing</td>
+<td style="width: 20%;">
+</td>
+</tr>
+</table>
+<div class="toggle" id="#2_onoff">
+<a href="001026133.html#2" onclick="holdings_toggle(2)" title="Toggle display of individual items">
+<span id="2_on"><i>more...</i><hr></span>
+<span id="2_off" style="display:none"><i>less...</i><hr></span>
+</a>
+</div>
+<script language="JavaScript" type="text/javascript">
+    holdings_set_initial_state('2');
+  </script>
+<a name="3"></a>
+<h3 class="holdings_header">Shapiro Undergraduate 
+<a href=http://www.lib.umich.edu/location/shapiro-undergraduate-library/unit/35 target="new"><img src="http://mirlyn.lib.umich.edu/images/info.gif" alt="Library information"></a>
+</h3>
+<table id="3_holdings" style="*width: auto; margin-top: 0; margin-bottom: 0;" class="citation" cellpadding="2" cellspacing="0" border="0">
+<tr style="border-bottom: 1px solid #cccccc;" 
+class=" ">
+<td style="width: 20%;">
+</td>
+<td style="width: 30%;">
+PR 6069 .T68 R82            </td>
+<td style="width: 30%;">Missing</td>
+<td style="width: 20%;">
+</td>
+</tr>
+</table>
+<div class="toggle" id="#3_onoff">
+<a href="001026133.html#3" onclick="holdings_toggle(3)" title="Toggle display of individual items">
+<span id="3_on"><i>more...</i><hr></span>
+<span id="3_off" style="display:none"><i>less...</i><hr></span>
+</a>
+</div>
+<script language="JavaScript" type="text/javascript">
+    holdings_set_initial_state('3');
+  </script>
+<a name="4"></a>
+<table id="4_holdings" style="*width: auto; margin-top: 0; margin-bottom: 0;" class="citation" cellpadding="2" cellspacing="0" border="0">
+<tr style="border-bottom: 1px solid #cccccc;" 
+class=" ">
+<td style="width: 20%;">
+</td>
+<td style="width: 30%;">
+PR 6069 .T68 R82            </td>
+<td style="width: 30%;">On shelf</td>
+<td style="width: 20%;">
+<form method="get" action="http://mirlyn.lib.umich.edu/Record/001026133/Hold">
+<input type="hidden" name="barcode" value="39015021567956">
+<input type="submit" name="getthis" value="Get this">
+</form>
+</td>
+</tr>
+</table>
+<div class="toggle" id="#4_onoff">
+<a href="001026133.html#4" onclick="holdings_toggle(4)" title="Toggle display of individual items">
+<span id="4_on"><i>more...</i><hr></span>
+<span id="4_off" style="display:none"><i>less...</i><hr></span>
+</a>
+</div>
+<script language="JavaScript" type="text/javascript">
+    holdings_set_initial_state('4');
+  </script>
+<a name="5"></a>
+<h3 class="holdings_header"> 
+</h3>
+<table id="5_holdings" style="*width: auto; margin-top: 0; margin-bottom: 0;" class="citation" cellpadding="2" cellspacing="0" border="0">
+</table>
+<div class="toggle" id="#5_onoff">
+<a href="001026133.html#5" onclick="holdings_toggle(5)" title="Toggle display of individual items">
+<span id="5_on"><i>more...</i><hr></span>
+<span id="5_off" style="display:none"><i>less...</i><hr></span>
+</a>
+</div>
+<script language="JavaScript" type="text/javascript">
+    holdings_set_initial_state('5');
+  </script>
+<div id="dummyGoogle" style="display:none">
+<h3 class="holdings_header">Google Online</h3>
+<table style="width: auto; display:none" id="Google_holdings" cellpadding="2" cellspacing="0" border="0" class="citation">
+</table>
+</div>
+</div> <!-- all_holdings -->
+</div>
+</div>
+</div>
+</div>
+</div> 
+<script>
+     //getGoogleBookInfo('UOM:39015021567956,OCLC:00365199');
+    getGoogleBookInfo('UOM:39015021567956,OCLC:00365199', '001026133');
+  </script>
+<div style="clear:both;"></div>
+<br>
+<div class="footer-wrapper">
+<!-- MLibrary Footer for rest of site -->
+<a href="http://mirlyn-classic.lib.umich.edu/" class="searchbox-button classic-link">Mirlyn Classic</a>
+<a href="http://m.mirlyn.lib.umich.edu/" class="searchbox-button mobile-link">Mirlyn Mobile</a>
+<div class="mlfooter-container not-homepage-footer">
+<nav id="footercol1">
+<h2>Make the Most of Mirlyn</h2>
+<a href="http://guides.lib.umich.edu/content.php?pid=271097&amp;sid=2518765">Tips</a>
+<a href="http://www.lib.umich.edu/newbooks/">Browse New Items</a>
+</nav>
+<nav id="footercol2">
+<h2>Course Reserves</h2>
+<a href="http://mirlyn-classic.lib.umich.edu/F/?local_base=u-miu30">Search Course Reserves</a>
+<a href="http://www.lib.umich.edu/course-reserves">About Course Reserves</a>
+</nav>
+<nav id="footercol3">
+<h2>Other Resources</h2>
+<a href="http://www.lib.umich.edu/searchtools#articlesplus/search">ArticlesPlus</a>
+<a href="http://www.lib.umich.edu/searchtools">Search Tools</a>
+<a href="https://ill.lib.umich.edu/illiad/illiad.dll?">Interlibrary Loan</a>
+<a href="http://www.lib.umich.edu/library-catalogs">Other Library Catalogs</a>
+<a href="http://www.lib.umich.edu/ask-librarian">Ask a Librarian</a>
+</nav>
+</div>
+<div id="regents">
+<p >&copy;2014, Regents of the University of Michigan</p>
+</div>
+</div>
+<script type="text/javascript">
+
+
+
+
+
+// Add login link to .wsfavlogin
+
+// jq('.wsfavlogin').attr('href', loginLink());
+
+// Add rounded corners
+  if('corner' in $.fn) {
+    jq(document).ready(function() {
+      x = jQuery('.wsfavorites');
+      jQuery('.special-button', x).corner('8px');
+      jQuery('.actual', x).corner('left 3px');
+      jQuery('.remove-tag', x).corner('right 3px');
+    });
+  }
+
+
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-1341620-9");
+pageTracker._trackPageview();
+} catch(err) {}
+
+</script>
+</div>
+</body>
+</html>
