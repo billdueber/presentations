@@ -145,6 +145,7 @@
 %section
   %h2 But....why???
   %p.fragment Because I know how to push around a relational database
+  %p.fragment Because I can write scripts to muck with structured data
 
 %section
   %h2 Overview
@@ -212,7 +213,12 @@
   %ul        
     %li.fragment
       That leaves about 100K sessions that include a search plus something else
-    %li.fragment ...14K of which look like a librarian (ISXN search or view raw MARC)
+
+%section
+  %h2 Further whittle it down
+  %ul        
+    %li.fragment Eliminate 14K or so with an ISXN search or view of raw MARC
+    %li.fragment.red Damn librarians are in my catalog, messin' with my stats
     %li.fragment ...so we're down to about 87K sessions (out of 260K)
     
     
@@ -292,6 +298,9 @@
       %span.fragment.red 2%
     %li
       Search -> facet
+      %span.fragment.red 2%
+    %li
+      Search -> "Get This"
       %span.fragment.red 2%
 
 
