@@ -35,8 +35,6 @@
     = "<span class='red'>U</span>nder"
     = "<span class='red'>G</span>raduates"
 
-%section
-  %h2 Does that get us most of what we need?      
 
 %section
   %h2 Data-driven decisions?
@@ -48,6 +46,20 @@
   %aside.notes But you know it's true
 
 %section
+  %img{:src=>"images/hm2.png"}
+
+%section
+  %h2 (now)
+  %a{:href=>"../static/www.lib.umich.edu/index.html"}Current home page
+
+
+%section
+  %h2 The hard truth
+  %p All the really hard problems are political
+  %p Data inform the argument
+
+
+%section
   %h2 What percentage of your patrons
   %ul
     %li.fragment ...get personalized help from a librarian at a reference desk?
@@ -55,6 +67,9 @@
     %li.fragment ...use chat/email reference?
     %li.fragment ...look at instructional posters/screens/whatever?
     %li.fragment.strong ...ever even enter the building?
+
+
+
 
    
 %section
@@ -66,6 +81,7 @@
     %li.fragment ...whose intentions are totally opaque
     %li.fragment ...that reveal no personally-identifying information
     %li.fragment ...and are periodically scrubbed and destroyed
+  %img.fragment{:src=>'images/despair.jpg'}
 
 
 %section
@@ -86,6 +102,7 @@
     %li Gets you a looooooong way there
     %li More sophisticated every release
     %li Answers all the easy questions and more
+
 
 %section
   %h2 Slightly harder questions:
@@ -349,7 +366,13 @@
   %h2 How to move in this direction
   %ul
     %li Log from within the application!
-    %li Structured logging
+    %li 
+      Structured logging!
+      %ul
+        %li Graylog2
+        %li Logstash
+        %li Apache Flume
+    
       
   
 
