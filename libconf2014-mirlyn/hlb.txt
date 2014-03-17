@@ -1,0 +1,43 @@
+
+# HLB -- record 
+Engineering 6465 6.50%
+Science 7609 7.65%
+Business 3583 3.60%
+Humanities 24784 24.92%
+Government, Politics and Law 2944 2.96%
+Social Sciences 20093 20.20%
+International Studies 14233 14.31%
+Health Sciences 8452 8.50%
+Arts 11292 11.35%
+
+utotal = 100291 
+
+
+
+
+
+Engineering 406334 5.12%
+Science 486758 6.14%
+Business 376475 4.75%
+Humanities 2345413 29.57%
+Government, Politics and Law 315922 3.98%
+Social Sciences 1337885 16.87%
+International Studies 1767086 22.28%
+Health Sciences 374895 4.73%
+Arts 520581 6.56%
+
+atotal = 7931349
+
+# HLB -- ELINK
+
+etotal = 153213
+
+Social Sciences 32880 21.46%
+Humanities 23443 15.30%
+Science 21205 13.84%
+Health Sciences 25938 16.93%
+Engineering 18375 11.99%
+Business 6546 4.27%
+Arts 6425 4.19%
+Government, Politics and Law 4719 3.08%
+International Studies 11316 7.39%
