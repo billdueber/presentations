@@ -35,7 +35,7 @@
     %h2 "It's too complex for my librarians!"
     %ul
       %li.fragment No, it's not
-      %li.fragment ...and your job is to make it easier
+      %li.fragment ...and your (somebody's) job is to make it easier
 
 %section
   %h2 Three Virtues of the programmer
@@ -50,6 +50,16 @@
       %strong Hubris
       %span "I bet I can build something..."
 
+%section
+  %h2
+    I
+    %em have
+    to do this
+  %p.em I need a list of all records published any UK country that do have an OCLC number but don't have an ISBN, restricted to those that have at least one item attached to it that has been checked out in the last five years and have been rebound. Exclude serials but include monograph series.
+
+%section
+  %h2 Should I really have to do this?
+  %p.em I need a shelf list of all items in AAEL purchased during calendar 2011 whose call numbers start with QA. Include the title, barcode, and record number.
 
 
 %section
@@ -61,7 +71,8 @@
       %ul
         %li.fragment ...err, an intelligent query stytem that...err...
         %li.fragment Well, really, an interactive website with a window onto...
-        %li.fragment Yeah. It builds spreadsheets.
+        %li.fragment Yeah...ummm...it builds spreadsheets.
+    %li.fragment Now you have two problems.
 
 %section
   %section
@@ -77,7 +88,8 @@
       %li.fragment 
         The data themselves are terrible
         %span.fragment
-          %em Catalogers are the most anal people on the planet. This is the best humans can do.
+          %em Catalogers are among the most anal people on the planet. This is the best humans can do.
+      %li.fragment.red Any system that relies on MacroExpress is contributing to the downfall of civilization
       
   %section
     %h2 Like what? (examples from Aleph)
@@ -85,6 +97,7 @@
       %li.fragment Dates and times are stored as 12-character strings (YYYYMMDDHHSS)
       %li.fragment Many numbers are stored in CHAR fields
       %li.fragment The invoice number is in characters 21-35 of field z30_rec_key_3 in the z30 table
+      %li.fragment.red It's not a relational database. It's an expensive COBOL store.
       
   %section
     %h2 E & T (Extract and Transform)

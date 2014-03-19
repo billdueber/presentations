@@ -7,7 +7,10 @@
   %h2 Who uses your library, and what do they do?
 
 %section
-  %h2 Who uses your library, and what are they trying to do?
+  %h2 
+    Who uses your library, and what are they 
+    %span.red trying to 
+    do?
   %ul
     %li.fragment
       Need to define
@@ -38,9 +41,9 @@
 %section
   %h2 Data-driven decisions?
   %div{:style=>"padding: 2em 2em"}
-    %div{:style=>"float:left; width: 40%"}
+    %div.fragment{:style=>"float:left; width: 40%"}
       %img{:src=>'images/ape.jpg'}
-    %div{:style=>"margin-left: 60%"}
+    %div.fragment{:style=>"margin-left: 60%"}
       %img{:src=>"images/pug.jpg"}
   %div.fragment{:style=>"float:left; width: 40%"}
     = "<span class='red'>A</span>ngry"
@@ -235,33 +238,31 @@
     %li How many without any searches?
     %li.fragment
       %ul
-        %li 72K (just over a quarter)
-        %li 50% are clicks on e-links; did their search elsewhere
-        %li 25% people logging in to renew/check their accounts
-        %li Others include are ILL, bookmarks, etc.
+        %li.fragment 72K (just over a quarter)
+        %li.fragment 50% are clicks on e-links; did their search elsewhere
+        %li.fragment 25% people logging in to renew/check their accounts
+        %li.fragment Others are ILL, bookmarks, etc.
 
 %section
   %h2 Search sessions
   %ul    
-    %li.fragment
+    %li
       188K sessions with searches
       %ul
-        %li 60K have nothing but a single search
-        %li Another 23K have nothing but multiple searches
-        %li So about half of all sessions that have a search have nothing but a searches
+        %li.fragment 60K have nothing but a single search
+        %li.fragment Another 23K have nothing but multiple searches
+        %li.fragment.red So about half of all sessions that have a search have nothing but a searches
         
 %section
-  %h2 Search-plus-other sessions
-  %ul        
-    %li.fragment
-      That leaves about 100K sessions that include a search plus something else
+  %h2 Sessions with both search and non-search actions
+  %p That leaves about 100K sessions that include a search plus something else
 
 %section
   %h2 Further whittle it down
   %ul        
     %li.fragment Eliminate 14K or so with an ISXN search or view of raw MARC
     %li.fragment.red Damn librarians are in my catalog, messin' with my stats
-    %li.fragment ...so we're down to about 87K sessions (out of 260K)
+    %li.fragment ...so we're down to about 87K sessions (out of original 260K)
     
     
 
@@ -271,6 +272,8 @@
   %p.fragment ...is the useful search-results page
   %p.fragment Efforts to make it worse have met with resistance 
  
+%section
+  %h2 Let's look at some numbers
 
 %section
   %h2 What about those 87K sessions?
@@ -281,37 +284,37 @@
 %section
   %h2 What percentage of those 87K sessions saw a user:
   %ul
-    %li
+    %li.fragment
       Click on a link to an electronic resource
       %span.fragment.red 49%
-    %li
+    %li.fragment
       Log in
       %span.fragment.red 33%
-    %li
+    %li.fragment
       Go to record page from search results
       %span.fragment.red 36%
-    %li
-      Go to a page other than 1
+    %li.fragment
+      Go to a search results page other than the first
       %span.fragment.red 7.5%
-    %li 
+    %li.fragment 
       Save to temporary list
       %span.fragment.red 3%
-    %li
+    %li.fragment
       Add a facet
       %span.fragment.red 10% (< 1% if you include "librarians")
-    %li
+    %li.fragment
       Click on suggested/related stuff on the record page
       %span.fragment.red 1.6%
-    %li
+    %li.fragment
       Prev/Next/Back to search buttons
       %span.fragment.red 0.9%
-    %li
+    %li.fragment
       Export record/search to email/text/RIS/refworks
       %span.fragment.red 2.3%
-    %li
+    %li.fragment
       Display the "Get this" (ILL/delivery) screen
       %span.fragment.red 23.7%
-    %li
+    %li.fragment
       Actualy submit a "Get this" request
       %span.fragment.red 16%
     
@@ -388,7 +391,17 @@
       %td 12%
 
 %section
-  %h2 How to move in this direction
+  %h2 Takeaways
+  %ul
+    %li Logging URLs doesn't get you very far
+    %li Logs can help you decide how to spend developer time
+    %li Be an advocate for the invisible patrons via data!
+
+%section
+  %h2
+    The way we
+    %em should
+    be doing it
   %ul
     %li Log from within the application!
     %li 
@@ -397,11 +410,10 @@
         %li Graylog2
         %li Logstash
         %li Apache Flume
+    %li Unified logging
     
       
   
-
-
 
 %section
   %h2 Credits
@@ -412,3 +424,13 @@
     %li
       Pug photo:
       %a{:href=>"https://secure.flickr.com/photos/dunechaser/244926568/"}Andrew Becraft
+      
+%section
+  %h2 Discussion
+  %p Bill Dueber
+  %p bill@dueber.com
+  %p University of Michigan
+  %p 
+    Twitter / Github:
+    %em billdueber
+    
