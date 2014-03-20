@@ -1,15 +1,17 @@
 %section
   %h1 Datamart
   %h3 Bill Dueber, University of Michigan
-  %p bill@dueber.com
   %p @billdueber / Twitter
   %p github.com/billdueber
+  %p bill@dueber.com
   
 
 %section
-  %h2 Premise
+  %h2 Axioms
   %p.fragment Decisions should be informed by data
-  %p.fragment Data that's hard to get to aren't used to inform decisions
+  %p.fragment 
+    Data that are hard to get to 
+    %strong aren't used to inform decisions
 
 %section
   %p 
@@ -43,13 +45,13 @@
   %h2 Three Virtues of the programmer
   %ul
     %li.fragment
-      %strong Laziness
-      %span.fragment I'm sick of adding functionality to the catalog just because the client stinks
+      %strong.red Laziness
+      %span.fragment I'm sick of adding functionality to the catalog just because the official client stinks
     %li.fragment
-      %strong Impatience
-      %span No one should have to wait two days for a shelf list
+      %strong.red Impatience
+      %span Oh my god, do I have better things to do than run these simple reports
     %li.fragment
-      %strong Hubris
+      %strong.red Hubris
       %span "I bet I can build something..."
 
 %section
@@ -57,7 +59,7 @@
     I
     %em have
     to do this
-  %p.em I need a list of all records published any UK country that do have an OCLC number but don't have an ISBN, restricted to those that have at least one item attached to it that has been checked out in the last five years and have been rebound. Exclude serials but include monograph series.
+  %p.em I need a list of all records published any UK country that do have an OCLC number but don't have an ISBN, restricted to those that have at least one item attached to it that has been checked out in the last five years. Exclude serials but include monograph series.
   %p.fragment.red That's made up, but not too far off
 
 %section
@@ -69,9 +71,16 @@
   %h2 A solution in two parts:
   %ol
     %li ETL (Extract, Transform, Load)
-    %li 
-      Build a Data Warehouse Front End!
-    %li.fragment Now you have two problems.
+    %li Build a Data Warehouse Front End!
+    %li.fragment Now you have two more problems.
+
+
+%section 
+  %h2 Started with some ideas from Notre Dame
+  %p The call their system Datamart
+  %p We do, too
+  %p
+    %img.fragment{:src=>"images/dmgoogle.jpg", :style=>"width: 150%; height: 150%"}
 
 %section
   %h2 Extract, Transform, Load
@@ -82,12 +91,12 @@
     %li.fragment 
       The data we have are, at the edges, terrible
       %span.fragment
-        %em Catalogers are among the most anal people on the planet. This is the best humans can       %li.fragment 
+        %em.red Catalogers are among the most anal people on the planet. This is the best humans can do  
+    %li.fragment 
       My ILS stores data in useless/crazy ways
       %span.fragment 
-        %em Let go of your anger. Assume they were drunk!
-do.
-    %li.fragment.red Any system that relies on MacroExpress is contributing to the downfall of civilization
+        %em.red Let go of your anger. Assume they were drunk!
+    %li.fragment Any system that relies on MacroExpress is contributing to the downfall of civilization
   
 %section
   %h2 What do I mean by bad data?
@@ -100,7 +109,7 @@ do.
         %li.fragment "United States."
     %li.fragment About 120 records with the title 'test'
     %li.fragment Over 1000 records with a 245 of '#'
-    $li.fragment Unable to test spelling suggestions
+    %li.fragment Unable to test spelling suggestions
 
 %section
   %h2 Some data is inherently...unweildy
@@ -108,7 +117,10 @@ do.
   %p.fragment https://lccparser.herokuapp.com/    
       
 %section
-  %h2 Isn't that just at UMich?
+  %h2 
+    "Wow, your UMich data is 
+    %em awful
+    !"
   %p
     Not saying we're any 
     %em better
@@ -122,11 +134,12 @@ do.
     %li Two-byte characters in the fixed fields
     %li 23 of the 26 letters of the alphabet as indicators (plus #_-/\&^$)
     %li.fragment Ask me about encodings. Go ahead. Ask me.
-    %li.fragment Please please please don't ask me
+    %li.fragment.red Please please please don't ask me
   
 %section
-  %h2 What do I mean by bad ILS storage?
+  %h2 What do I mean by bad ILS storage (Aleph)?
   %ul
+    %li.fragment Insane. Crazy, batcrap insane.
     %li.fragment Dates and times are stored as 12-character strings (YYYYMMDDHHSS)
     %li.fragment Many numbers are stored in CHAR fields
     %li.fragment The invoice number is in characters 21-35 of field z30_rec_key_3 in the z30 table
@@ -137,7 +150,11 @@ do.
   %p Fix your data as best you can on a copy
   %ul
     %li.fragment Not hard, just slow
-    %li.fragment First system based on Talend; Rewriting to use traject
+    %li.fragment 
+      First system based on 
+      %emTalend; 
+      Rewriting to use 
+      %em traject
     %li.fragment Use numeric/date types, varchars, normalize case, etc.
     %li.fragment Constant arms race with MacroExpress
     
@@ -161,6 +178,7 @@ do.
 %section 
   %h2 Development strategy
   %ul
+    %li.fragment Legacy development stack from hell with lipstick
     %li.fragment Mine ticket system for past report requests
     %li.fragment Build them
     %li.fragment People ask for more/different
@@ -187,15 +205,15 @@ do.
 
 %section
   %h2 Demo
-    %p
-      %a{:href=>"https://datamart.lib.umich.edu/"} Live
-      %a{:href=>"static/index.html"} Local      
+  %p
+    %a{:href=>"https://datamart.lib.umich.edu/"} Live
+    %a{:href=>"static/index.html"} Local      
 
 
 %section
   %h2 Before
   %ul
-    %li 3-4 report requests a week
+    %li 3-4 report requests a week, plus some canned stuff in ARC
     %li Mostly pretty simple
     %li One day turnaround time for the easy stuff
 
@@ -204,5 +222,17 @@ do.
   %ul
     %li 3-4 report request a week
     %li Mostly more complex
-    %li Feb. 2014: 38 users generated 283 reports
-  
+    %li.fragment Feb. 2014: 38 users generated 283 reports
+    %li.fragment ...80 of which are by one user
+
+%section
+  %h2 The lesson
+  %p If you build it, they might make better decisions
+
+
+
+
+
+
+
+
