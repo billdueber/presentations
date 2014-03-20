@@ -1,41 +1,43 @@
 %section
   %h1 Datamart
   %h3 Bill Dueber, University of Michigan
-
-%section
-  %section
-    %h2 Premise
-    %p.fragment Decisions should be informed by data
-    %p.fragment Data that's hard to get to aren't used to inform decisions
+  %p bill@dueber.com
+  %p @billdueber / Twitter
+  %p github.com/billdueber
   
-  %section
-    %p 
-      %em Evidence Based Library and Information Practice
-    %p.fragment
-      %strong 
-        What is everyone 
-        %em else
-        doing?
 
 %section
-  %section
-    %h2 How to get people what they need to know?
-    %ul
-      %li 
-        Make decisions without data
-        %span.fragment.red BAD
-      %li.fragment
-        Ask me to get the data for them
-        %span.fragment.red Better
-      %li.fragment
-        Let them ask the data themselves
-        %span.fragment.red Best
+  %h2 Premise
+  %p.fragment Decisions should be informed by data
+  %p.fragment Data that's hard to get to aren't used to inform decisions
 
-  %section
-    %h2 "It's too complex for my librarians!"
-    %ul
-      %li.fragment No, it's not
-      %li.fragment ...and your (somebody's) job is to make it easier
+%section
+  %p 
+    %em Evidence Based Library and Information Practice
+  %p.fragment
+    %strong 
+      What is everyone 
+      %em else
+      doing?
+
+%section
+  %h2 How to get librarians what they need to know?
+  %ul
+    %li 
+      Make decisions without data
+      %span.fragment.red BAD
+    %li.fragment
+      Ask me to get the data for them
+      %span.fragment.red Better
+    %li.fragment
+      Let them ask the data themselves
+      %span.fragment.red Best
+
+%section
+  %h2 "It's too complex for (some segment of) librarians!"
+  %ul
+    %li.fragment No, it's not
+    %li.fragment ...and your (somebody's) job is to make it easier
 
 %section
   %h2 Three Virtues of the programmer
@@ -56,10 +58,11 @@
     %em have
     to do this
   %p.em I need a list of all records published any UK country that do have an OCLC number but don't have an ISBN, restricted to those that have at least one item attached to it that has been checked out in the last five years and have been rebound. Exclude serials but include monograph series.
+  %p.fragment.red That's made up, but not too far off
 
 %section
   %h2 Should I really have to do this?
-  %p.em I need a shelf list of all items in AAEL purchased during calendar 2011 whose call numbers start with QA. Include the title, barcode, and record number.
+  %p.em I need a shelf list of all items in AAEL purchased during calendar 2011 whose call numbers start with QA. Include the title, barcode, record number, and a sortable call number
 
 
 %section
@@ -68,51 +71,83 @@
     %li ETL (Extract, Transform, Load)
     %li 
       Build a Data Warehouse Front End!
-      %ul
-        %li.fragment ...err, an intelligent query stytem that...err...
-        %li.fragment Well, really, an interactive website with a window onto...
-        %li.fragment Yeah...ummm...it builds spreadsheets.
     %li.fragment Now you have two problems.
 
 %section
-  %section
-    %h2 Extract, Transform, Load
+  %h2 Extract, Transform, Load
+
+%section
+  %h2 Two (plus one) things Systems Librarians must accept
+  %ul
+    %li.fragment 
+      The data we have are, at the edges, terrible
+      %span.fragment
+        %em Catalogers are among the most anal people on the planet. This is the best humans can       %li.fragment 
+      My ILS stores data in useless/crazy ways
+      %span.fragment 
+        %em Let go of your anger. Assume they were drunk!
+do.
+    %li.fragment.red Any system that relies on MacroExpress is contributing to the downfall of civilization
   
-  %section
-    %h2 Two things Systems Librarians must accept
-    %ul
-      %li.fragment 
-        My ILS stores data in useless/crazy ways
-        %span.fragment 
-          %em Let go of your anger. Assume they were drunk!
-      %li.fragment 
-        The data themselves are terrible
-        %span.fragment
-          %em Catalogers are among the most anal people on the planet. This is the best humans can do.
-      %li.fragment.red Any system that relies on MacroExpress is contributing to the downfall of civilization
+%section
+  %h2 What do I mean by bad data?
+  %p.fragment There's nothing like a faceting catalog to expose bad data
+  %ul
+    %li.fragment 
+      Top two LC Subject headings:
+      %ol
+        %li.fragment "United States"
+        %li.fragment "United States."
+    %li.fragment About 120 records with the title 'test'
+    %li.fragment Over 1000 records with a 245 of '#'
+    $li.fragment Unable to test spelling suggestions
+
+%section
+  %h2 Some data is inherently...unweildy
+  %p.fragment Call numbers
+  %p.fragment https://lccparser.herokuapp.com/    
       
-  %section
-    %h2 Like what? (examples from Aleph)
-    %ul
-      %li.fragment Dates and times are stored as 12-character strings (YYYYMMDDHHSS)
-      %li.fragment Many numbers are stored in CHAR fields
-      %li.fragment The invoice number is in characters 21-35 of field z30_rec_key_3 in the z30 table
-      %li.fragment.red It's not a relational database. It's an expensive COBOL store.
-      
-  %section
-    %h2 E & T (Extract and Transform)
-    %ul
-      %li.fragment Not hard, just slow
-      %li.fragment First system based on Talend; Rewriting to use traject
-      %li.fragment Use numeric/date types, varchars, normalize case, etc.
-      %li.fragment Constant arms race with MacroExpress
-      
-  %section
-    %h2 L (Load)
-    %ul
-      %li Totally separate database
-      %li Table structure, normalization, foreign keys, indexes all for querying
-      %li Fill it up anew every night
+%section
+  %h2 Isn't that just at UMich?
+  %p
+    Not saying we're any 
+    %em better
+    than anyone else...
+
+%section
+  %h2 Examples from HathiTrust catalog
+  %ul
+    %li Tens of thousands of records with no title
+    %li Missing/short/long/multiple 008s
+    %li Two-byte characters in the fixed fields
+    %li 23 of the 26 letters of the alphabet as indicators (plus #_-/\&^$)
+    %li.fragment Ask me about encodings. Go ahead. Ask me.
+    %li.fragment Please please please don't ask me
+  
+%section
+  %h2 What do I mean by bad ILS storage?
+  %ul
+    %li.fragment Dates and times are stored as 12-character strings (YYYYMMDDHHSS)
+    %li.fragment Many numbers are stored in CHAR fields
+    %li.fragment The invoice number is in characters 21-35 of field z30_rec_key_3 in the z30 table
+    %li.fragment.red It's not a relational database. It's an expensive COBOL store.
+    
+%section
+  %h2 E & T (Extract and Transform)
+  %p Fix your data as best you can on a copy
+  %ul
+    %li.fragment Not hard, just slow
+    %li.fragment First system based on Talend; Rewriting to use traject
+    %li.fragment Use numeric/date types, varchars, normalize case, etc.
+    %li.fragment Constant arms race with MacroExpress
+    
+%section
+  %h2 L (Load)
+  %ul
+    %li Totally separate database
+    %li Only take what we need
+    %li Table structure, normalization, foreign keys, indexes all for querying
+    %li Fill it up anew every night
 
 %section
   %h2 The Front End: Two ways to go
@@ -121,16 +156,19 @@
     %li.fragment 
       Query builder
       %span.fragment.red √
+    %li.fragment I give The People what they want, and what they want is spreadsheets
 
 %section 
   %h2 Development strategy
   %ul
     %li.fragment Mine ticket system for past report requests
     %li.fragment Build them
-    %li.fragment Ask people what they want
+    %li.fragment People ask for more/different
     %li.fragment Build it
     %li.fragment Ask people to complain
-    %li.fragment Fix stuff
+    %li.fragment 
+      Fix stuff
+      %span.fragment.red ...in realtime!
     %li.fragment
       %bold.red Need to fight a culture that assumes things can't be changed
 
@@ -138,13 +176,14 @@
   %h2 Security....schecurity
   %ul
     %li Query built up based on names of form elements
-    %li Ridiculously insecure
-    %li
+    %li.fragment tablename-_-columnname[-_-range/date/whatever]
+    %li.fragment Ridiculously insecure
+    %li.fragment
       BUT
       %ul
-        %li.fragment Access is restricted
-        %li.fragment DB is read only
-        %li.fragment Data renewed nightly    
+        %li Access is restricted
+        %li DB is read only
+        %li Data renewed nightly    
 
 %section
   %h2 Demo
