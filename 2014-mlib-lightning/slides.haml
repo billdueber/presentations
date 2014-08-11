@@ -1,0 +1,219 @@
+%section
+  %h1 Your data are bad, and you should feel bad
+  %h3 Bill Dueber, Library Systems
+  %p dueberb@umich.edu
+  %p @billdueber / Twitter
+  %p github.com/billdueber
+
+%section
+  %h2 Let's walk that back a bit
+  %ul
+    %li.fragment The data aren't all that bad.
+    %li.fragment You should probably still feel a little bad.
+
+%section
+  %h2 Where I'm coming from
+  %ul
+    %li.fragment MS's in Computer Science and Instructional Technology
+    %li.fragment No MLS
+    %li.fragment "Bad" metadata makes search hard, has huge opportunity cost
+
+%section
+  %h2 Two guiding principles
+  %ul
+    %li.fragment I care about metadata insofar as it makes things discoverable.
+    %li.fragment Common things should be easy; hard things should be possible.
+
+%section
+  %h2 What we'll cover in the next four minutes
+  %ol
+    %li.fragment
+      The data are bad
+    %li.fragment The MARC format is dumb
+    %li.fragment The cataloging rules are insane
+  %p.fragment Warning: I'm rather excitable. There may be some yelling
+
+
+
+%section
+  %h2 1. The data are bad
+  %ul
+    %li.fragment
+      %strong bad
+      means
+      %em hard for a computer to deal with
+    -# %li.fragment
+    -#   %div.red Cut for time! Stooopid rules.
+    -#   %div Homework: Find a spelling of "Michigan" not in any catalog records.
+
+-# %section
+-#   %h2 Example: "unique" identifiers
+-#   %ul
+-#     %li.fragment ISBN (020a)
+-#     %ul
+-#       %li.fragment 3.22M with an 020‡a
+-#       %li.fragment 6,500 without an ISBN
+-#       %li.fragment 8,500 that fail checksum
+-#       %li.fragment 3.1M  unique
+
+%section
+  %h2 Cut for time! But briefly:
+  %ul
+    %li 6500 '020a' subfields with no ISBN in them; 8500 fail checksum
+    %li 30k records with invalid 008 fields
+
+%section
+  %h2 Things to think about
+  %ul
+    %li.fragment Typos render things invisible (and you can't browse an increasing percentage of stuff)
+    %li.fragment We're not far from "our" data being used primarily outside of "our" systems.
+    %li.fragment Thinking about serials too hard will give you night terrors.
+
+-# %section
+-#   %h2 But wait!
+-#   %ul
+-#     %li.fragment Why not search by title?
+-#     %li.fragment Why not search by author?
+-#     %li.fragment Because:
+-#     %ul
+-#       %li.fragment Titles and authors are even worse
+-#       %li.fragment Slavish adherance to "what's on the object" can make things impossible to find.
+-#       %li.fragment
+-#         %strong Because they're not searching in your system!!!!
+-# %section
+-#   %h2 Other examples
+-#   %ul
+-#     %li.fragment OCLC numbers have changed over the years
+-#     %li.fragment Diacritics are often left out
+-#     %li.fragment
+-#       I
+-#       %em double-dog dare you
+-#       to ask me about serials.
+
+
+%section
+  %h2 ISBN (020a) parenthetical notes
+  %ul
+    %li.fragment
+      %em What dinglefritz thought this was a good idea????
+    %li.fragment
+      Contains anyting you want. But often binding information.
+
+%section
+  %p hard | hard adhesive | hard back | hard bd | hard book | hard bound | hard bound book | hard boundhard case | hard casehard copy | hard copy | hard copy set | hard cov | hard cover | hard covers | hard sewn | hard signed | hard-backhard-backcased | hard-bound | hard-cover | hard-cover acid-free | hardb | hard\cover | hardbach | hardback | hardback book | hardback cover | hardbackcased | hardbd | hardbk | hardbond | hardbook | hardboubd | hardbound | hardboundhardboundtion | hardc | hardcase | hardcopy | hardcopy publication | hardcov | hardcov er | hardcovcer | hardcove | hardcover | hardcover-alk. paper | hardcovercloth | hardcoverflexibound | hardcoverhardcoverwith cd | hardcoverr | hardcovers | hardcoversame | hardcoversame as above | hardcoverset | hardcovertion | hardcver | hardcvoer | hardcvr | harddback | harde | hardocover | hardover | hardpack | hardpaper | hardvocer | hardware | hd | hd bd | hd. bd | hd. bd. in slip case | hd. bd.in sl.cs | hd. bk | hd. cover | hd.bd | hd.bd. in box | hdb | hdbd | hdbk | hdbkb | hdbkhdbk | hdbnd | hdc | hdcvr | hdk | hdp | hdpk | hradback | hradcover | hrd | hrdbk | hrdcver | hrdcvr
+
+%section
+  %h2 The MARC format is dumb
+  %li.fragment
+    %strong Dumb
+    means
+    %em restrictive in what it can easly represent
+
+%section
+  %h2 How do we know MARC is insufficient?
+  %div.fragment Answer: Because catalogers have to make up ways to represent structured data.
+
+%section
+  %h2 Example: Table of Contents
+  %h3 "Rendered"
+  %img{:src => 'images/ss1.png', :style=>"width: 250%"}
+
+%section
+  %h2 Example: Table of Contents
+  %h3 Source
+  %img{:src => 'images/ss2.png'}
+  %div.fragment  Foreword. Conceptual order and collaborative tools : creating intellectual identity / Margaret Riel -- Introduction to electronic collaborators ; Computer conferencing and collaborative writing tools : starting a dialogue about student dialogue / Curtis Jay Bonk, Kira S. King -- Searching for learner-centered, constructivist, and sociocultural components of collaborative educational learning tools / Curtis Jay Bonk, Donald J. Cunningham -- Critical thinking in a distributed environment : a pedagogical base for the design of conferencing systems / Thomas M. Duffy, Bill Dueber, Chandra L. Hawley
+
+%section
+  %h2 Cataloging rules are insane
+  %div (Briefly)
+
+
+%section
+  %div{:style=>"margin-left: 0px; margin-right: 3em; float:left; width: 50%"}
+    %img{:src=>'images/czara1_couple.png'}
+    %div Meet Jim and Sharon
+  %div.fragment
+    Jim needs to read
+    %em The Taming of the Shrew
+    and would prefer, but not require, large type
+  %div.fragment.topspace
+    Sharon wants to look at the title page of a standalone copy of
+    %em The Tempest
+    printed in Louisville in 1903
+
+%section
+  %img{:src=>'images/czara1_couple.png', :style=>"margin-left: 0px; margin-right: 3em; float:left; width: 50%"}
+  %div
+    %strong Library data standards make Jim's task harder (or at best, no easier) than Sharon's
+
+%section
+  %h2 Complexity in the system
+  %ul
+    %li.fragment ...is not hidden
+    %li.fragment ...is ridiculously hard to mask
+
+%section
+  %h2 "Bibliographic data is inherently complex..."
+  %div "People need to accept that a variety of tools are necessary..."
+  %div "Cataloging rules have changed over time, and local pratice..."
+  %div "You have to understand that historically, ..."
+
+%section
+  %h2.red SHUT UP SHUT UP SHUT UP SHUT UP!!!!!!!!!!
+  %div.fragment
+    Users "oughta wanna" be interested in / know / understand
+    %strong LOTS
+    of things. But they don't. And they never will.
+
+%section
+  %h2 "I just need to write a parser to..."
+  %ul
+    %li.fragment
+      Try to determine if a book is an edited work.
+      %strong.fragment REALLY????
+    %li.fragment Figure out which of the four dates present is most useful
+    %li.fragment Find and normalize supposedly-unique identifiers
+    %li.fragment Enumerate and expand every possible shortening (and spelling) of "Department"
+    %li.fragment
+      A double-dog-dare:
+      %div.fragment.red Ask me about enum/chron.
+
+%section
+  %h2 Other annoyances:
+  %ul
+    %li Dates appear everywhere
+    %li LC numbers are insanely complex (inline '118th'????)
+    %li
+      %em The place code ai was once used for Anguilla, but as of January 1, 1985 catalogers are instructed to use ai to mean Armenia (based on cataloging date, not date of publication)
+
+%section
+  %h2 Two final thoughts
+
+%section
+  %h2 1. I know why many of these practices came to be.
+  %div.fragment (too few people thought beyond printing cards)
+
+%section
+  %h2
+    It
+    %strong kills
+    me that it's happening now.
+  %ul
+    %li.fragment
+      At this very moment, somone is cataloging a work with these rules and formats.
+      Data are being
+      %strong thrown away
+      and we all know they'll never be recovered.
+
+%section
+  %h2 2. Coming technologies / "standards"
+  %div FRBR, BibFrame, RDA
+  %ul
+    %li.fragment Don't think of how many years they've been in development
+    %li.fragment Think of how many thousands and thousands of catalog records have been created
+    %li.fragment ...and weep for me. 
+
+%section
+  %h2 Thanks
+  %div Bill Dueber, Library Systems, dueberb@umich.edu
