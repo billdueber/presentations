@@ -1,0 +1,27 @@
+.reveal section img.emoji {
+    background: none;
+    border: 0;
+    box-shadow: none;
+    margin: 0;
+}
+
+.reveal .slides  {
+  text-align: left;
+}
+
+.reveal .slides p:before {
+  content: "\02013\00a0"
+}
+
+
+.reveal .slides .topspace {
+  margin-top: 2em;
+}
+
+.reveal .slides strong {
+  color: red;
+}
+
+.red {
+  color: red !important;
+}
