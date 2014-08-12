@@ -1,5 +1,6 @@
 %section
   %h1 Your data are bad, and you should feel bad
+  %h2 The evils of typos and free text
   %h3 Bill Dueber, Library Systems
   %p dueberb@umich.edu
   %p @billdueber / Twitter
@@ -14,20 +15,15 @@
 %section
   %h2 Where I'm coming from
   %ul
-    %li.fragment MS's in Computer Science and Instructional Technology
     %li.fragment No MLS
-    %li.fragment "Bad" metadata makes search hard, has huge opportunity cost
-
-%section
-  %h2 Two guiding principles
+    %li.fragment MS's in Computer Science and Instructional Technology
+  %h2{:style=>"margin-top: 1em"} Assertions
   %ul
     %li.fragment Metadata is useful insofar as it makes things discoverable.
     %li.fragment Common things should be easy; hard things should be possible.
-
-%section
-  %h2 Running theme:
-  %div Library "standards" often dumb and routinely ignored
-
+    %li.fragment Free-text metadata makes search hard, has huge opportunity cost
+    %li.fragment Incorrect data is rare but problematic
+    %li.fragment Library "standards" are often dumb and routinely ignored
 
 %section
   %h2 What we'll cover in the next four minutes
@@ -35,7 +31,7 @@
     %li.fragment
       The data are bad
     %li.fragment The MARC format is dumb
-    %li.fragment The cataloging rules are insane
+    %li.fragment Many cataloging rules are insane
   %div.fragment
     %p Warning: I'm rather excitable. There may be some yelling
     %p Also, I'm probably going to use the word "crappy" a lot.
@@ -43,18 +39,35 @@
 
 %section
   %h2 1. The data are bad
-  %ul
-    %li.fragment
-      %strong bad
-      means
-      %em hard for a computer to deal with
+  %div
+    %strong "Bad"
+    means
+    %em incorrect
+    OR
+    %em inconsistent
+    OR
+    %em otherwise hard for a computer to deal with
+  %ul.fragment
+    %li "Unique" identifiers aren't unique
+    %li "Standards" aren't standard
+    %li "Local practice" doesn't help when there's no more "local"
+    %li.red We're not printing cards anymore!
 
 %section
-  %h2 Cut for time! But briefly:
+  %h2 More than 5mn worth. But briefly:
+  %div The problem is death by a thousand cuts
   %ul
     %li 6500 '020a' subfields with no ISBN in them; 8500 fail checksum
     %li 30k records with invalid 008 fields
+    %li Punctuation overloaded with syntactic and sematic meaning? Really??
+    %li Q: How many LCSH headings should include these "words":
+    %ul
+      %li Unitd
+      %li Germay
+      %li Austrlia
+      %li Libaries
     %li Did you know we put E-ISSNs in the 022y (reserved for incorrect ISSNs)?
+
 
 %section
   %h2 Things to consider
@@ -98,43 +111,27 @@
   %h2 Example: Table of Contents
   %h3 Source
   %img{:src => 'images/ss2.png'}
-  %div.fragment  Foreword. Conceptual order and collaborative tools : creating intellectual identity / Margaret Riel -- Introduction to electronic collaborators ; Computer conferencing and collaborative writing tools : starting a dialogue about student dialogue / Curtis Jay Bonk, Kira S. King -- Searching for learner-centered, constructivist, and sociocultural components of collaborative educational learning tools / Curtis Jay Bonk, Donald J. Cunningham -- Critical thinking in a distributed environment : a pedagogical base for the design of conferencing systems / Thomas M. Duffy, Bill Dueber, Chandra L. Hawley
+  %div  Foreword. Conceptual order and collaborative tools : creating intellectual identity / Margaret Riel -- Introduction to electronic collaborators ; Computer conferencing and collaborative writing tools : starting a dialogue about student dialogue / Curtis Jay Bonk, Kira S. King -- Searching for learner-centered, constructivist, and sociocultural components of collaborative educational learning tools / Curtis Jay Bonk, Donald J. Cunningham -- Critical thinking in a distributed environment : a pedagogical base for the design of conferencing systems / Thomas M. Duffy, Bill Dueber, Chandra L. Hawley
 
 %section
-  %h2 Cataloging rules are insane
-  %div (Briefly)
-
-
-%section
-  %div{:style=>"margin-left: 0px; margin-right: 3em; float:left; width: 50%"}
-    %img{:src=>'images/czara1_couple.png'}
-    %div Meet Jim and Sharon
-  %div.fragment
-    Jim needs to read
-    %em The Taming of the Shrew
-    and would prefer, but not require, large type
-  %div.fragment.topspace
-    Sharon wants to look at the title page of a standalone copy of
-    %em The Tempest
-    printed in Louisville in 1903
-
-%section
-  %img{:src=>'images/czara1_couple.png', :style=>"margin-left: 0px; margin-right: 3em; float:left; width: 50%"}
+  %h2 My beef
+  %div is both with what we do and how we do it
   %div
-    %strong Library data standards make Jim's task harder (or at best, no easier) than Sharon's
+    when only librarians (and a few weirdos) care about anything other than
+    %em the right words in the right order.
+
 
 %section
-  %h2 Complexity in the system
-  %ul
-    %li.fragment ...is not hidden
-    %li.fragment ...is ridiculously hard to mask
-
-%section
-  %h2 "Bibliographic data is inherently complex..."
-  %div "People need to accept that a variety of tools are necessary..."
-  %div "Cataloging rules have changed over time, and local practice..."
-  %div ...and my personal favorite:
-  %div.fragment "You have to understand that historically, ..."
+  %h2  Bibliographic data is inherently complex
+  %div
+    %em
+      "People need to accept that a variety of tools are necessary..."
+  %div
+    %em
+      "Cataloging rules have changed over time, and local practice..."
+  %div (And my personal favorite)
+  %div.fragment
+    %em "You have to understand that historically, ..."
 
 %section
   %h2.red SHUT UP SHUT UP SHUT UP SHUT UP!!!!!!!!!!
@@ -145,7 +142,8 @@
     of things. But they don't. And they never will.
 
 %section
-  %h2 "I just need to write a parser to..."
+  %h2 Free text
+  %div "I just need to write a parser to..."
   %ul
     %li.fragment
       Try to determine if a book is an edited work.
@@ -161,7 +159,8 @@
   %h2 Other annoyances:
   %ul
     %li Dates appear everywhere
-    %li LC numbers are insanely complex (inline '118th'????)
+    %li LC class numbers are insanely complex (inline '118th'????)
+    %li LCSH is essentially useless to essentially everyone.
     %li
       %em The place code ai was once used for Anguilla, but as of January 1, 1985 catalogers are instructed to use ai to mean Armenia (based on cataloging date, not date of publication)
 
@@ -185,7 +184,7 @@
       and we all know they'll never be recovered.
 
 %section
-  %h2 2. Coming technologies / "standards"
+  %h2 Coming technologies / "standards"
   %div FRBR, BibFrame, RDA
   %ul
     %li.fragment Don't think of how many years they've been in development
