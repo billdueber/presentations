@@ -21,8 +21,13 @@
 %section
   %h2 Two guiding principles
   %ul
-    %li.fragment I care about metadata insofar as it makes things discoverable.
+    %li.fragment Metadata is useful insofar as it makes things discoverable.
     %li.fragment Common things should be easy; hard things should be possible.
+
+%section
+  %h2 Running theme:
+  %div Library "standards" often dumb and routinely ignored
+
 
 %section
   %h2 What we'll cover in the next four minutes
@@ -34,7 +39,6 @@
   %p.fragment Warning: I'm rather excitable. There may be some yelling
 
 
-
 %section
   %h2 1. The data are bad
   %ul
@@ -42,54 +46,21 @@
       %strong bad
       means
       %em hard for a computer to deal with
-    -# %li.fragment
-    -#   %div.red Cut for time! Stooopid rules.
-    -#   %div Homework: Find a spelling of "Michigan" not in any catalog records.
-
--# %section
--#   %h2 Example: "unique" identifiers
--#   %ul
--#     %li.fragment ISBN (020a)
--#     %ul
--#       %li.fragment 3.22M with an 020‡a
--#       %li.fragment 6,500 without an ISBN
--#       %li.fragment 8,500 that fail checksum
--#       %li.fragment 3.1M  unique
 
 %section
   %h2 Cut for time! But briefly:
   %ul
     %li 6500 '020a' subfields with no ISBN in them; 8500 fail checksum
     %li 30k records with invalid 008 fields
+    %li Did you know we put E-ISSNs in the 022y (reserved for incorrect ISSNs)?
 
 %section
   %h2 Things to think about
   %ul
     %li.fragment Typos render things invisible (and you can't browse an increasing percentage of stuff)
     %li.fragment We're not far from "our" data being used primarily outside of "our" systems.
+    %li.fragment Things will only be cataloged once. Don't throw away data!
     %li.fragment Thinking about serials too hard will give you night terrors.
-
--# %section
--#   %h2 But wait!
--#   %ul
--#     %li.fragment Why not search by title?
--#     %li.fragment Why not search by author?
--#     %li.fragment Because:
--#     %ul
--#       %li.fragment Titles and authors are even worse
--#       %li.fragment Slavish adherance to "what's on the object" can make things impossible to find.
--#       %li.fragment
--#         %strong Because they're not searching in your system!!!!
--# %section
--#   %h2 Other examples
--#   %ul
--#     %li.fragment OCLC numbers have changed over the years
--#     %li.fragment Diacritics are often left out
--#     %li.fragment
--#       I
--#       %em double-dog dare you
--#       to ask me about serials.
-
 
 %section
   %h2 ISBN (020a) parenthetical notes
@@ -97,7 +68,7 @@
     %li.fragment
       %em What dinglefritz thought this was a good idea????
     %li.fragment
-      Contains anyting you want. But often binding information.
+      Contains anything you want. But often binding information.
 
 %section
   %p hard | hard adhesive | hard back | hard bd | hard book | hard bound | hard bound book | hard boundhard case | hard casehard copy | hard copy | hard copy set | hard cov | hard cover | hard covers | hard sewn | hard signed | hard-backhard-backcased | hard-bound | hard-cover | hard-cover acid-free | hardb | hard\cover | hardbach | hardback | hardback book | hardback cover | hardbackcased | hardbd | hardbk | hardbond | hardbook | hardboubd | hardbound | hardboundhardboundtion | hardc | hardcase | hardcopy | hardcopy publication | hardcov | hardcov er | hardcovcer | hardcove | hardcover | hardcover-alk. paper | hardcovercloth | hardcoverflexibound | hardcoverhardcoverwith cd | hardcoverr | hardcovers | hardcoversame | hardcoversame as above | hardcoverset | hardcovertion | hardcver | hardcvoer | hardcvr | harddback | harde | hardocover | hardover | hardpack | hardpaper | hardvocer | hardware | hd | hd bd | hd. bd | hd. bd. in slip case | hd. bd.in sl.cs | hd. bk | hd. cover | hd.bd | hd.bd. in box | hdb | hdbd | hdbk | hdbkb | hdbkhdbk | hdbnd | hdc | hdcvr | hdk | hdp | hdpk | hradback | hradcover | hrd | hrdbk | hrdcver | hrdcvr
@@ -107,11 +78,14 @@
   %li.fragment
     %strong Dumb
     means
-    %em restrictive in what it can easly represent
+    %em restrictive in what it can easily represent
 
 %section
-  %h2 How do we know MARC is insufficient?
-  %div.fragment Answer: Because catalogers have to make up ways to represent structured data.
+  %h2 How do we know MARC is insufficient as a data strucure?
+  %div.fragment
+    Answer: Because catalogers have to make up
+    %em stoopid
+    ways to represent structured data.
 
 %section
   %h2 Example: Table of Contents
@@ -156,11 +130,13 @@
 %section
   %h2 "Bibliographic data is inherently complex..."
   %div "People need to accept that a variety of tools are necessary..."
-  %div "Cataloging rules have changed over time, and local pratice..."
-  %div "You have to understand that historically, ..."
+  %div "Cataloging rules have changed over time, and local practice..."
+  %div ...and my personal favorite:
+  %div.fragment "You have to understand that historically, ..."
 
 %section
   %h2.red SHUT UP SHUT UP SHUT UP SHUT UP!!!!!!!!!!
+  %div Stop hiding behind those increasingly lame excuses.
   %div.fragment
     Users "oughta wanna" be interested in / know / understand
     %strong LOTS
@@ -201,7 +177,7 @@
     me that it's happening now.
   %ul
     %li.fragment
-      At this very moment, somone is cataloging a work with these rules and formats.
+      At this very moment, someone is cataloging a work with these rules and formats.
       Data are being
       %strong thrown away
       and we all know they'll never be recovered.
@@ -212,7 +188,7 @@
   %ul
     %li.fragment Don't think of how many years they've been in development
     %li.fragment Think of how many thousands and thousands of catalog records have been created
-    %li.fragment ...and weep for me. 
+    %li.fragment ...and weep for me.
 
 %section
   %h2 Thanks
